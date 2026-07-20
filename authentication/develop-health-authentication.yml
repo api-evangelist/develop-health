@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/develop-health-openapi.yml
+docs: https://docs.develophealth.ai/api-reference/authentication
+notes: >-
+  Identity is managed by Frontegg (login, sessions, MFA, SSO via the Develop
+  Health platform). API callers obtain a Frontegg-issued JWT from the platform
+  dashboard and present it as an HTTP bearer token (Authorization: Bearer <JWT>).
+  Suitable for server-to-server and third-party integrations. No OAuth2
+  scope/permission surface is documented.
+summary:
+  types:
+  - http
+  provider: Frontegg
+schemes:
+- name: FronteggJWTAuthentication
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Bearer authentication header of the form `Bearer <token>`, where `<token>` is
+    your auth token.
+  sources:
+  - openapi/develop-health-openapi.yml
