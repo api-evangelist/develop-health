@@ -1,0 +1,5018 @@
+openapi: 3.1.0
+info:
+  title: Develop Health Public public-api API
+  description: Develop Health Public API
+  version: '1.0'
+servers:
+- url: https://api.develophealth.ai
+tags:
+- name: public-api
+paths:
+  /benefit-verification:
+    post:
+      tags:
+      - public-api
+      summary: Create Benefit Verification Route
+      operationId: create_benefit_verification_route_benefit_verification_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateBenefitVerificationRequest'
+              title: Data
+              examples:
+              - priority: 3
+                drugs:
+                - name: Wegovy
+                  dosage: 0.25 mg
+                  quantity: 1.0
+                - name: Ozempic
+                  dosage: 2.68 mg
+                  quantity: 1.0
+                - name: Mounjaro
+                  dosage: 2.5 mg
+                  quantity: 1.0
+                drug_history:
+                  currently_taking_drugs:
+                  - name: Metformin
+                  previously_taken_drugs:
+                  - name: Jardiance
+                  - name: Rybelsus
+                diagnoses:
+                - code: E66.9
+                - code: I10
+                insurance:
+                - file_content: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAFgwJ/lzvN2QAAAABJRU5ErkJggg==
+                - file_content: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAFgwJ/lzvN2QAAAABJRU5ErkJggg==
+                patient:
+                  internal_id: 39dca4a2-8788-4fd6-9e31-15c56e454322
+                  first_name: John
+                  last_name: Smith
+                  gender: male
+                  date_of_birth: '1980-01-01'
+                  address:
+                    street: 123 Main St, Apt 1
+                    city: Los Angeles
+                    state_province: CA
+                    zip_postal_code: '94001'
+                    country: USA
+                  phone: 555-555-5555
+                provider:
+                  first_name: Jane
+                  last_name: Green
+                  address:
+                    street: 9071 E. Mississippi Ave
+                    city: Denver
+                    state_province: CO
+                    zip_postal_code: '80247'
+                    country: USA
+                  phone: '1231231234'
+                  fax: None
+                  npi: '0000000000'
+                  in_network_payers: []
+                entity:
+                  legal_name: Test Entity
+                  tax_id: '111223333'
+                mock_result:
+                  status: completed
+                  case: drugs_covered__prior_auth_required__has_copay
+                use_patient_plan_fund_source_check: false
+        required: true
+      responses:
+        '200':
+          description: Successful creation of a benefit verification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateBenefitVerificationResponse'
+              example:
+                status: success
+                data:
+                  id: bv_sdkfj3f
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - FronteggJWTAuthentication: []
+  /benefit-verification/{id}:
+    get:
+      tags:
+      - public-api
+      summary: Get Benefit Verification Route
+      operationId: get_benefit_verification_route_benefit_verification__id__get
+      security:
+      - FronteggJWTAuthentication: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Id
+      responses:
+        '200':
+          description: Successfully returned a benefit verification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetBenefitVerificationResponse'
+              example:
+                status: success
+                data:
+                  id: bv_dj3wiu
+                  object: benefit_verification
+                  status: completed
+                  status_description: The verification was successful
+                  review_status: not_reviewed
+                  drugs:
+                  - name: Wegovy
+                    dosage: 0.25 mg
+                    quantity: 1.0
+                    coverage: covered
+                    coverage_detail_code: insurer_reported_value
+                    prior_authorization_required: 'yes'
+                    copay: $30 for 28 days supply
+                    copay_options:
+                    - amount_cents: 3000
+                      supply_duration_days: 28
+                    determination_details:
+                      is_on_formulary: true
+                  - name: Ozempic
+                    dosage: 2.68 mg
+                    quantity: 1.0
+                    coverage: covered
+                    coverage_detail_code: insurer_reported_value
+                    prior_authorization_required: 'yes'
+                    copay: $30 for 28 days supply
+                    copay_options:
+                    - amount_cents: 3000
+                      supply_duration_days: 28
+                    determination_details:
+                      is_on_formulary: true
+                  - name: Mounjaro
+                    dosage: 2.5 mg
+                    quantity: 1.0
+                    coverage: covered
+                    coverage_detail_code: insurer_reported_value
+                    prior_authorization_required: 'yes'
+                    copay: $30 for 28 days supply
+                    copay_options:
+                    - amount_cents: 3000
+                      supply_duration_days: 28
+                    determination_details:
+                      is_on_formulary: true
+                  drug_history:
+                    currently_taking_drugs:
+                    - name: Metformin
+                    previously_taken_drugs:
+                    - name: Jardiance
+                    - name: Rybelsus
+                  diagnoses:
+                  - code: E66.9
+                  - code: I10
+                  patient:
+                    internal_id: 39dca4a2-8788-4fd6-9e31-15c56e454322
+                    first_name: John
+                    last_name: Smith
+                    gender: male
+                    date_of_birth: '1980-01-01'
+                    address:
+                      street: 123 Main St, Apt 1
+                      city: Los Angeles
+                      state_province: CA
+                      zip_postal_code: '94001'
+                      country: USA
+                    phone: 555-555-5555
+                  provider:
+                    first_name: Jane
+                    last_name: Green
+                    address:
+                      street: 9071 E. Mississippi Ave
+                      city: Denver
+                      state_province: CO
+                      zip_postal_code: '80247'
+                      country: USA
+                    phone: '1231231234'
+                    fax: None
+                    npi: '0000000000'
+                    in_network_payers: []
+                  entity:
+                    legal_name: Test Entity
+                    tax_id: '111223333'
+                  insurance:
+                  - scanned_content:
+                      client_name: Company
+                      group_number: '12345678'
+                      member_name: John Smith
+                      member_number: '12345678'
+                      payer_name: United
+                      plan_name: Plus Plan
+                      rx_bin: '123456'
+                      rx_group: ADV
+                      rx_pcn: FAC
+                    discrete_content: {}
+                    url: https://example.com/insurance_doc
+                  - scanned_content:
+                      error: Unable to extract information from card
+                    discrete_content: {}
+                    url: https://example.com/insurance_doc2
+                  patient_coverage_status: covered
+                  verification_methods:
+                  - id: bva_23j3234
+                    type: ai_call
+                    transcript: Call transcript
+                    recording_url: https://example.com/recording
+                  patient_plan_fund_source: question_not_asked
+                  patient_coverage_type: question_not_asked
+                  priority: 2
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /benefit-verification/{id}/cancel:
+    post:
+      tags:
+      - public-api
+      summary: Cancel Benefit Verification Route
+      operationId: cancel_benefit_verification_route_benefit_verification__id__cancel_post
+      security:
+      - FronteggJWTAuthentication: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Id
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /clinical-qualification:
+    post:
+      tags:
+      - public-api
+      summary: Create Clinical Qualification Route
+      operationId: create_clinical_qualification_route_clinical_qualification_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateClinicalQualificationRequest'
+              title: Data
+              examples:
+              - diagnoses:
+                - code: E66.9
+                evidence:
+                - content:
+                    bmi_value: 32
+                    date_measured: '2023-11-10'
+                  date_created: '2023-11-10T10:15:00'
+                  title: BMI Chart
+                - content:
+                    medication_name: Metformin
+                    response: No significant weight loss
+                  date_created: '2023-11-10T10:15:00'
+                  title: Previous Medication History
+                patient:
+                  address:
+                    street: 123 Health St.
+                    city: Wellness
+                    state_province: CA
+                    zip_postal_code: '12345'
+                    country: USA
+                  date_of_birth: '1980-01-01'
+                  email: johndoe@email.com
+                  first_name: John
+                  last_name: Doe
+                  gender: male
+                  internal_id: '123456'
+                  phone: 123-456-7890
+                insurance:
+                - file_content: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAFgwJ/lzvN2QAAAABJRU5ErkJggg==
+                - file_content: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAFgwJ/lzvN2QAAAABJRU5ErkJggg==
+                drugs:
+                - days_supply: 30
+                  quantity: 2
+                  directions: Inject subcutaneously once a week
+                  drug_name: Wegovy
+                  strength: 0.25 mg/0.5 mL (0.25 mg dose)
+                  dose_form: injectable
+                  route_of_administration: subcutaneous
+                - days_supply: 28
+                  quantity: 1
+                  directions: Inject subcutaneously once a week
+                  drug_name: Ozempic
+                  strength: 0.5 mg/dose
+                  dose_form: injectable
+                  route_of_administration: subcutaneous
+                - days_supply: 28
+                  quantity: 4
+                  directions: Inject subcutaneously once a week
+                  drug_name: Zepbound
+                  strength: 1 mg/dose
+                  dose_form: injectable
+                  route_of_administration: subcutaneous
+                provider:
+                  address:
+                    street: 456 Care Blvd.
+                    city: Healtown
+                    state_province: CA
+                    zip_postal_code: '67890'
+                    country: USA
+                  fax: 987-654-3211
+                  first_name: Alice
+                  internal_id: provider_12345
+                  last_name: Smith
+                  npi: '1234567890'
+                  phone: 987-654-3210
+                questionnaires:
+                - questions:
+                  - answer: I usually eat a balanced diet and exercise 3 times a week.
+                    question: Please describe your current diet and exercise routine.
+                  - answer: Yes, I have tried metformin without significant results.
+                    question: Have you previously tried other weight loss medications?
+                  date_created: '2023-11-01T08:00:00'
+                visit_notes:
+                - content: Patient presents with a BMI of 32, indicating obesity. Recommended to start Wegovy for weight management.
+                  date_created: '2023-11-10T10:00:00'
+        required: true
+      responses:
+        '200':
+          description: Successful creation of an clinical qualification.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClinicalQualificationResponse'
+              example:
+                status: success
+                data:
+                  id: cq_sdkfj3f
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - FronteggJWTAuthentication: []
+  /clinical-qualification/{id}:
+    get:
+      tags:
+      - public-api
+      summary: Get Clinical Qualification Submission By Id
+      operationId: get_clinical_qualification_submission_by_id_clinical_qualification__id__get
+      security:
+      - FronteggJWTAuthentication: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Id
+      responses:
+        '200':
+          description: Successfully returned an clinical qualification.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetClinicalQualificationResponse'
+              example:
+                status: success
+                data:
+                  id: cq_sdkfj3f
+                  object: clinical_qualification
+                  diagnoses:
+                  - code: E66.9
+                  evidence:
+                  - content:
+                      bmi_value: 32
+                      date_measured: '2023-11-10'
+                    date_created: '2023-11-10T10:15:00'
+                    title: BMI Chart
+                  - content:
+                      medication_name: Metformin
+                      response: No significant weight loss
+                    date_created: '2023-11-10T10:15:00'
+                    title: Previous Medication History
+                  patient:
+                    address:
+                      street: 123 Health St.
+                      city: Wellness
+                      state_province: CA
+                      zip_postal_code: '12345'
+                      country: USA
+                    date_of_birth: '1980-01-01'
+                    email: johndoe@email.com
+                    first_name: John
+                    last_name: Doe
+                    gender: male
+                    internal_id: '123456'
+                    phone: 123-456-7890
+                  insurance:
+                  - scanned_content:
+                      client_name: Company
+                      group_number: '12345678'
+                      member_name: John Doe
+                      member_number: '12345678'
+                      payer_name: United
+                      plan_name: Plus Plan
+                      rx_bin: '123456'
+                      rx_group: ADV
+                      rx_pcn: FAC
+                    discrete_content: {}
+                    url: https://example.com/insurance_doc
+                  - scanned_content:
+                      error: Unable to extract information from card
+                    discrete_content: {}
+                    url: https://example.com/insurance_doc2
+                  drugs:
+                  - days_supply: 30
+                    quantity: 2
+                    directions: Inject subcutaneously once a week
+                    drug_name: Wegovy
+                    strength: 0.25 mg/0.5 mL (0.25 mg dose)
+                    dose_form: injectable
+                    route_of_administration: subcutaneous
+                  - days_supply: 28
+                    quantity: 1
+                    directions: Inject subcutaneously once a week
+                    drug_name: Ozempic
+                    strength: 0.5 mg/dose
+                    dose_form: injectable
+                    route_of_administration: subcutaneous
+                  - days_supply: 28
+                    quantity: 4
+                    directions: Inject subcutaneously once a week
+                    drug_name: Zepbound
+                    strength: 1 mg/dose
+                    dose_form: injectable
+                    route_of_administration: subcutaneous
+                  provider:
+                    address:
+                      street: 456 Care Blvd.
+                      city: Healtown
+                      state_province: CA
+                      zip_postal_code: '67890'
+                      country: USA
+                    fax: 987-654-3211
+                    first_name: Alice
+                    internal_id: provider_12345
+                    last_name: Smith
+                    npi: '1234567890'
+                    phone: 987-654-3210
+                  questionnaires:
+                  - questions:
+                    - answer: I usually eat a balanced diet and exercise 3 times a week.
+                      question: Please describe your current diet and exercise routine.
+                    - answer: Yes, I have tried metformin without significant results.
+                      question: Have you previously tried other weight loss medications?
+                    date_created: '2023-11-01T08:00:00'
+                  visit_notes:
+                  - content: Patient presents with a BMI of 32, indicating obesity. Recommended to start Wegovy for weight management.
+                    date_created: '2023-11-10T10:00:00'
+                  results:
+                  - drug:
+                      days_supply: 30
+                      quantity: 2
+                      directions: Inject subcutaneously once a week
+                      drug_name: Wegovy
+                      strength: 0.25 mg/0.5 mL (0.25 mg dose)
+                      dose_form: injectable
+                      route_of_administration: subcutaneous
+                    status: qualified
+                    unqualified_reasons: []
+                  - drug:
+                      days_supply: 28
+                      quantity: 4
+                      directions: Inject subcutaneously once a week
+                      drug_name: Zepbound
+                      strength: 1 mg/dose
+                      dose_form: injectable
+                      route_of_administration: subcutaneous
+                    status: qualified
+                    unqualified_reasons: []
+                  - drug:
+                      days_supply: 28
+                      quantity: 1
+                      directions: Inject subcutaneously once a week
+                      drug_name: Ozempic
+                      strength: 0.5 mg/dose
+                      dose_form: injectable
+                      route_of_administration: subcutaneous
+                    status: unqualified
+                    unqualified_reasons:
+                    - description: The patient does not have a diagnosis of type 2 diabetes.
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /prior-authorization/{id}/cancel:
+    post:
+      tags:
+      - public-api
+      summary: Cancel Prior Auth Submission By Id
+      description: 'Cancel a prior authorization request.
+
+
+        The request must not already be in a terminal state (`completed`, `failed`,
+
+        or `cancelled`). Requires a `cancellation_reason` payload which is stored
+
+        for analytics.'
+      operationId: cancel_prior_auth_submission_by_id_prior_authorization__id__cancel_post
+      security:
+      - FronteggJWTAuthentication: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              allOf:
+              - $ref: '#/components/schemas/CancelPriorAuthRequest'
+      responses:
+        '200':
+          description: Successfully cancelled a prior authorization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelPriorAuthResponse'
+              example:
+                status: success
+        '400':
+          content:
+            application/json:
+              example:
+                detail: 'Cannot cancel a prior authorization request with status: COMPLETED'
+          description: Cannot cancel a prior authorization in completed, failed, or cancelled state
+        '404':
+          content:
+            application/json:
+              example:
+                detail: Prior Authorization Request does not exist.
+          description: Prior Authorization Request does not exist
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /prior-authorization/{id}/feedback:
+    post:
+      tags:
+      - public-api
+      summary: Submit Prior Auth Feedback
+      description: 'Submit feedback related to a prior authorization request.
+
+
+        The feedback is used to improve the product and is surfaced in analytics dashboards.'
+      operationId: submit_prior_auth_feedback_prior_authorization__id__feedback_post
+      security:
+      - FronteggJWTAuthentication: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              allOf:
+              - $ref: '#/components/schemas/PriorAuthFeedbackRequest'
+      responses:
+        '201':
+          description: Successfully submitted feedback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriorAuthFeedbackResponse'
+              example:
+                status: success
+        '404':
+          content:
+            application/json:
+              example:
+                detail: Prior Authorization Request does not exist.
+          description: Prior Authorization Request does not exist
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /prior-authorization/{id}/ndp-submission:
+    patch:
+      tags:
+      - public-api
+      summary: Update Ndp Submission By Id
+      description: 'Update the preferred pharmacy NCPDP ID for a prior authorization''s NDP
+
+        submission. Only allowed while the PA request is active and no transfer
+
+        attempts have been made.'
+      operationId: update_ndp_submission_by_id_prior_authorization__id__ndp_submission_patch
+      security:
+      - FronteggJWTAuthentication: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              allOf:
+              - $ref: '#/components/schemas/UpdateNDPSubmissionRequest'
+      responses:
+        '200':
+          description: Successfully updated preferred pharmacy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateNDPSubmissionResponse'
+              example:
+                status: success
+                data:
+                  preferred_pharmacy_ncpdp_id: '1234567'
+        '400':
+          content:
+            application/json:
+              example:
+                detail: 'Cannot update preferred pharmacy for a prior authorization request with status: COMPLETED'
+          description: Cannot update preferred pharmacy for terminal PA requests.
+        '404':
+          content:
+            application/json:
+              example:
+                detail: Prior Authorization Request does not exist.
+          description: Prior Authorization Request does not exist.
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /prior-authorization/{id}/prescription-transfer/cancel:
+    post:
+      tags:
+      - public-api
+      summary: Cancel Prescription Transfer By Id
+      description: Cancel the prescription transfer for a prior authorization with NDP submission.
+      operationId: cancel_prescription_transfer_by_id_prior_authorization__id__prescription_transfer_cancel_post
+      security:
+      - FronteggJWTAuthentication: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Id
+      responses:
+        '200':
+          description: Successfully cancelled prescription transfer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelPriorAuthPrescriptionTransferResponse'
+              example:
+                status: success
+        '400':
+          content:
+            application/json:
+              example:
+                detail: Cannot cancel prescription transfer due to completed status
+          description: Cannot cancel prescription transfer in completed state
+        '404':
+          content:
+            application/json:
+              example:
+                detail: Prior Authorization Request does not exist.
+          description: Prior Authorization Request does not exist
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /prior-authorization:
+    post:
+      tags:
+      - public-api
+      summary: Create Prior Auth Route
+      operationId: create_prior_auth_route_prior_authorization_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreatePriorAuthRequest'
+              title: Data
+              examples:
+              - diagnoses:
+                - code: E66.9
+                evidence:
+                - content:
+                    bmi_value: 32
+                    date_measured: '2023-11-10'
+                  date_created: '2023-11-10T10:15:00'
+                  title: BMI Chart
+                - content:
+                    medication_name: Metformin
+                    response: No significant weight loss
+                  date_created: '2023-11-10T10:15:00'
+                  title: Previous Medication History
+                patient:
+                  address:
+                    street: 123 Health St.
+                    city: Wellness
+                    state_province: CA
+                    zip_postal_code: '12345'
+                    country: USA
+                  date_of_birth: '1980-01-01'
+                  email: johndoe@email.com
+                  first_name: John
+                  last_name: Doe
+                  gender: male
+                  internal_id: '123456'
+                  phone: 123-456-7890
+                insurance:
+                - file_content: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAFgwJ/lzvN2QAAAABJRU5ErkJggg==
+                - file_content: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAFgwJ/lzvN2QAAAABJRU5ErkJggg==
+                prescription:
+                  days_supply: 30
+                  quantity: 2
+                  directions: Inject subcutaneously once a week
+                  drug_name: Wegovy
+                  strength: 0.25 mg/0.5 mL (0.25 mg dose)
+                  dose_form: injectable
+                  route_of_administration: subcutaneous
+                  extra:
+                    prescribing_information: Prescribed for weight management in patients with obesity
+                  prescription_date: '2024-02-14T05:46:07.764000'
+                provider:
+                  address:
+                    street: 456 Care Blvd.
+                    city: Healtown
+                    state_province: CA
+                    zip_postal_code: '67890'
+                    country: USA
+                  fax: 987-654-3211
+                  first_name: Alice
+                  internal_id: provider_12345
+                  last_name: Smith
+                  npi: '1234567890'
+                  phone: 987-654-3210
+                pharmacy:
+                  name: Walgreens
+                  address:
+                    street: 789 Pharmacy Ave.
+                    city: Medtown
+                    state_province: MD
+                    zip_postal_code: '12345'
+                    country: USA
+                questionnaires:
+                - questions:
+                  - answer: I usually eat a balanced diet and exercise 3 times a week.
+                    question: Please describe your current diet and exercise routine.
+                  - answer: Yes, I have tried metformin without significant results.
+                    question: Have you previously tried other weight loss medications?
+                  date_created: '2023-11-01T08:00:00'
+                visit_notes:
+                - content: Patient presents with a BMI of 32, indicating obesity. Recommended to start Wegovy for weight management.
+                  date_created: '2023-11-10T10:00:00'
+                priority: 2
+        required: true
+      responses:
+        '200':
+          description: Successful creation of a prior authorization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePriorAuthResponse'
+              example:
+                status: success
+                data:
+                  id: pa_sdkfj3f
+        '400':
+          description: API error during creation of the prior authorization request
+          content:
+            application/json:
+              example:
+                status: error
+                error:
+                  title: Unsupported Drug
+                  description: The drug you submitted is not yet supported for prior authorization.
+                  code: unsupported_drug
+        '409':
+          description: 'Conflict: prescription message already linked to existing prior authorization'
+          content:
+            application/json:
+              example:
+                status: error
+                error:
+                  title: Prescription Already Linked
+                  description: The prescription_message_id provided is already linked to a prior authorization request that is in progress or has already been completed as approved. The existing PA request must be cancelled before submitting a new request for the same prescription.
+                  code: prescription_message_already_linked
+                  existing_prior_auth_request_id: par_example123
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - FronteggJWTAuthentication: []
+  /prior-authorization/{id}:
+    get:
+      tags:
+      - public-api
+      summary: Get Prior Auth Submission By Id
+      operationId: get_prior_auth_submission_by_id_prior_authorization__id__get
+      security:
+      - FronteggJWTAuthentication: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Id
+      responses:
+        '200':
+          description: Successfully returned a prior authorization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPriorAuthResponse'
+              example:
+                status: success
+                data:
+                  id: pa_sdkfj3f
+                  object: prior_authorization
+                  url: https://platform.develophealth.ai/prior-authorizations/pa_sdkfj3f
+                  status: completed
+                  diagnoses:
+                  - code: E66.9
+                  evidence:
+                  - content:
+                      bmi_value: 32
+                      date_measured: '2023-11-10'
+                    date_created: '2023-11-10T10:15:00'
+                    title: BMI Chart
+                  - content:
+                      medication_name: Metformin
+                      response: No significant weight loss
+                    date_created: '2023-11-10T10:15:00'
+                    title: Previous Medication History
+                  patient:
+                    address:
+                      street: 123 Health St.
+                      city: Wellness
+                      state_province: CA
+                      zip_postal_code: '12345'
+                      country: USA
+                    date_of_birth: '1980-01-01'
+                    email: johndoe@email.com
+                    first_name: John
+                    last_name: Doe
+                    gender: male
+                    internal_id: '123456'
+                    phone: 123-456-7890
+                  insurance:
+                  - scanned_content:
+                      client_name: Company
+                      group_number: '12345678'
+                      member_name: John Doe
+                      member_number: '12345678'
+                      payer_name: United
+                      plan_name: Plus Plan
+                      rx_bin: '123456'
+                      rx_group: ADV
+                      rx_pcn: FAC
+                    discrete_content: {}
+                    url: https://example.com/insurance_doc
+                  - scanned_content:
+                      error: Unable to extract information from card
+                    discrete_content: {}
+                    url: https://example.com/insurance_doc2
+                  prescription:
+                    days_supply: 30
+                    quantity: 2
+                    directions: Inject subcutaneously once a week
+                    drug_name: Wegovy
+                    strength: 0.25 mg/0.5 mL (0.25 mg dose)
+                    dose_form: injectable
+                    route_of_administration: subcutaneous
+                    extra:
+                      prescribing_information: Prescribed for weight management in patients with obesity
+                    prescription_date: '2024-02-14T05:46:07.764000'
+                  provider:
+                    address:
+                      street: 456 Care Blvd.
+                      city: Healtown
+                      state_province: CA
+                      zip_postal_code: '67890'
+                      country: USA
+                    fax: 987-654-3211
+                    first_name: Alice
+                    internal_id: provider_12345
+                    last_name: Smith
+                    npi: '1234567890'
+                    phone: 987-654-3210
+                  pharmacy:
+                    name: Walgreens
+                    address:
+                      street: 789 Pharmacy Ave.
+                      city: Medtown
+                      state_province: MD
+                      zip_postal_code: '12345'
+                      country: USA
+                  questionnaires:
+                  - questions:
+                    - answer: I usually eat a balanced diet and exercise 3 times a week.
+                      question: Please describe your current diet and exercise routine.
+                    - answer: Yes, I have tried metformin without significant results.
+                      question: Have you previously tried other weight loss medications?
+                    date_created: '2023-11-01T08:00:00'
+                  visit_notes:
+                  - content: Patient presents with a BMI of 32, indicating obesity. Recommended to start Wegovy for weight management.
+                    date_created: '2023-11-10T10:00:00'
+                  activity_log:
+                  - id: sent_fax__S4382DA
+                    created_at: '2024-02-14T02:01:02'
+                    type: sent_fax
+                    details:
+                      url: https://example.com/sent_fax
+                  - id: rec_fax__SJ34WX
+                    created_at: '2024-02-14T05:46:07'
+                    type: received_fax
+                    details:
+                      url: https://example.com/received_fax
+                  - id: pa_follow_up_call__BF9AJ56
+                    created_at: '2024-02-14T05:50:10'
+                    type: follow_up_call
+                    details:
+                      notes: Called Example PBM and ...
+                      recording_url: https://example.com/follow_up_call_recording
+                      transcript: Hello, this is Example PBM ...
+                  submitted_by:
+                    first_name: John
+                    last_name: Doe
+                    email: johndoe@email.com
+                  reviewed_by:
+                    first_name: Jane
+                    last_name: Doe
+                    email: janedoe@email.com
+                  denial_reason_analysis:
+                    categories:
+                    - Preferred Products Not Tried First
+                    explanation: The prior authorization request for Zepbound (tirzepatide) was denied because the patient's health plan requires ...
+                    next_steps: Discuss with Provider
+                    next_steps_explanation: The denial was due to the requirement to try a primary covered drug, Wegovy, before Zepbound can be approved. The client should discuss with the provider ...
+                  is_appeal: false
+                  patient_consent_required: false
+                  outcome:
+                    detail: Step Therapy Criteria Not Met
+                    result: Denied
+                    detail_code: step_therapy_criteria_not_met
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /status:
+    get:
+      tags:
+      - public-api
+      summary: Get Status Route
+      description: "Handles GET requests at the '/status' endpoint.\n\nThis route function is designed to provide a quick status check of the API.\nWhen called, it returns a JSON response indicating the operational status of the API.\n\nReturns:\n    ApiResponse: An object of ApiResponse schema which includes a 'status' key set to 'success'\n                 and a 'data' key containing a message about the API's operational status."
+      operationId: get_status_route_status_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - FronteggJWTAuthentication: []
+  /provider/authorize:
+    post:
+      tags:
+      - public-api
+      summary: Authorize Provider
+      operationId: authorize_provider_provider_authorize_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AuthorizeProviderRequest'
+              title: Data
+        required: true
+      responses:
+        '200':
+          description: Successful initiation of provider authorization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+              example:
+                status: success
+        '400':
+          description: Provider authorization already initiated
+          content:
+            application/json:
+              example:
+                status: error
+                error:
+                  title: Provider Authorization Already Initiated
+                  description: Authorization has already been initiated for a provider with this NPI or email
+                  code: PROVIDER_AUTHORIZATION_ALREADY_INITIATED
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - FronteggJWTAuthentication: []
+  /authorized-providers:
+    get:
+      tags:
+      - public-api
+      summary: Get Authorized Providers
+      description: "Retrieve all authorized providers for the organization.\n\nReturns a list of providers that have been authorized or are pending authorization.\nProviders with signed_at=null are pending authorization (they haven't signed the form yet).\nProviders with signed_at populated have completed the authorization process.\n\nReturns:\n    ApiResponse containing a list of AuthorizedProviderResponse objects"
+      operationId: get_authorized_providers_authorized_providers_get
+      responses:
+        '200':
+          description: Successfully retrieved authorized providers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse_list_api.schemas.platform.public_api.provider.AuthorizedProviderResponse__'
+              example:
+                status: success
+                data:
+                - npi: '1234567890'
+                  first_name: John
+                  last_name: Doe
+                  email: john.doe@example.com
+                  signed_at: '2024-01-15T10:30:00Z'
+                - npi: 0987654321
+                  first_name: Jane
+                  last_name: Smith
+                  email: jane.smith@example.com
+      security:
+      - FronteggJWTAuthentication: []
+  /provider/lookup:
+    post:
+      tags:
+      - public-api
+      summary: Lookup Provider
+      description: 'Look up a provider by NPI or by name+state.
+
+
+        NPI mode: returns ``active``, ``deactivated`` (with name+state search
+
+        candidates seeded from the deactivated record''s name), ``not_found``, or
+
+        ``registry_error``. Sandbox organizations may receive an ``active``
+
+        mock identity when the NPI is absent from the registry. Deactivated
+
+        records with no name on file return an empty candidate list — the FE
+
+        prompts for manual name+state entry.
+
+
+        Name mode: ``last_name`` is required, ``first_name`` and ``state`` are
+
+        optional. Always returns ``search_results`` (the candidate list may be
+
+        empty when no match is found).'
+      operationId: lookup_provider_provider_lookup_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ProviderLookupRequest'
+              title: Body
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse_ProviderLookupResponse_'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - FronteggJWTAuthentication: []
+components:
+  schemas:
+    DrugHistoryItem:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the drug.
+      type: object
+      required:
+      - name
+      title: DrugHistoryItem
+      description: Represents information about a currently or previously taken drug.
+    Diagnosis:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: ICD-10 code for the diagnosis. i.e. 'E66.9'
+      type: object
+      required:
+      - code
+      title: Diagnosis
+      description: Represents a medical diagnosis with a code and description.
+    InsuranceDocumentInfo:
+      properties:
+        scanned_content:
+          allOf:
+          - $ref: '#/components/schemas/ScannedContent'
+          title: Scanned Content
+          description: An object containing details that were extracted from the insurance card images provided in the creation request.
+        discrete_content:
+          allOf:
+          - $ref: '#/components/schemas/PartialInsuranceInfo'
+          title: Discrete Content
+          description: An object containing manually-provided insurance details from the creation request.
+        url:
+          type: string
+          title: Url
+          description: If applicable, the Base64 encoded insurance card image you send in the request is stored on our servers. A signed URL to the image is returned here. This URL has a short expiry time, so you should download the image immediately after receiving it if you want to view the asset.
+      type: object
+      required:
+      - scanned_content
+      - discrete_content
+      title: InsuranceDocumentInfo
+    PriorAuthSubmissionDenialOutcome:
+      properties:
+        detail:
+          type: string
+          maxLength: 2048
+          title: Detail
+          description: A human-readable note providing additional information about the outcome. This will usually be an automated message corresponding to `detail_code`. In some cases it will contain more specific details about the outcome. For example, "Patient must enroll in the Omada Health Program."
+        result:
+          type: string
+          enum:
+          - Denied
+          const: Denied
+          title: Result
+          description: The Prior Authorization has been denied.
+          default: Denied
+        detail_code:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthOutcomeDenialDetail'
+          description: 'A code indicating the reason for the prior auth outcome. The possible values are:
+
+            - **formulary_alternative_preferred**: The formulary alternative is preferred.
+
+            - **medical_necessity_criteria_not_met**: The medical necessity criteria are not met.
+
+            - **plan_exclusion**: The drug is excluded by the plan.
+
+            - **step_therapy_criteria_not_met**: The step therapy criteria are not met.
+
+            - **existing_denial**: An existing denial is on file for this medication and patient. Please follow the appeals process if you wish to adjust this outcome
+
+            - **coverage_limits_exceeded**: The coverage limits have been exceeded for this patient''s plan.
+
+            - **prior_weight_loss_program_required**: The patient has not completed the required weight loss program prior to therapy.
+
+            - **unknown**: The prior authorization request has been denied.'
+        client_code:
+          type: string
+          title: Client Code
+          description: A client-specific outcome code for the prior authorization request. This field is only populated for clients with custom client codes configured. To configure your outcome codes, please contact support.
+      type: object
+      title: PriorAuthSubmissionDenialOutcome
+    BenefitVerificationMethodInfo:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of the verification method.
+        type:
+          type: string
+          title: Type
+          description: The type of the verification method.
+        transcript:
+          type: string
+          title: Transcript
+          description: The call transcript
+        recording_url:
+          type: string
+          title: Recording Url
+          description: The URL to the call recording
+      type: object
+      required:
+      - id
+      - type
+      title: BenefitVerificationMethodInfo
+      description: Represents the verification method used in a benefit verification response.
+    DoseForm:
+      type: string
+      enum:
+      - aerosol
+      - bar
+      - bead
+      - breadstick
+      - bulk
+      - capsule
+      - catheter
+      - cement
+      - cigarette
+      - cloth
+      - concentrate
+      - cone
+      - cream
+      - crystal
+      - culture
+      - dentifrice
+      - deposit
+      - device
+      - diaphragm
+      - disc
+      - douche
+      - dressing
+      - drops
+      - elixir
+      - emulsion
+      - enema
+      - extract
+      - film
+      - food
+      - foam
+      - gel
+      - generator
+      - globule
+      - graft
+      - gum
+      - implant
+      - infusion
+      - inhalant
+      - inhalation
+      - inhaler
+      - injectable
+      - injection
+      - insert
+      - irrigant
+      - irrigation
+      - jelly
+      - kit
+      - lens
+      - liner
+      - liniment
+      - lipstick
+      - liquid
+      - lollipop
+      - lotion
+      - lozenge
+      - miscellaneous
+      - mouthwash
+      - mucilage
+      - oil
+      - ointment
+      - packing
+      - paste
+      - pastille
+      - patch
+      - pellet
+      - pill
+      - plaster
+      - poultice
+      - powder
+      - resin
+      - ring
+      - rinse
+      - rod
+      - salve
+      - shampoo
+      - soap
+      - sol
+      - solution
+      - sponge
+      - spray
+      - stick
+      - strip
+      - suppository
+      - suspension
+      - suture
+      - swab
+      - syrup
+      - tablet
+      - tampon
+      - tape
+      - tea
+      - test
+      - tincture
+      - troche
+      - vaginal_suppository
+      - vaginal_tablet
+      - wafer
+      - wash
+      - wax
+      title: DoseForm
+      description: An enumeration.
+    PatientCoverageStatus:
+      type: string
+      enum:
+      - patient_not_found
+      - coverage_expired
+      - coverage_not_started
+      - covered
+      - patient_not_covered_unspecified
+      - human_unable_to_answer
+      - missing_from_transcript
+      - unknown
+      title: PatientCoverageStatus
+      description: An enumeration.
+    CreateBenefitVerificationResponseData:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: A unique identifier for the benefit verification result.
+      type: object
+      required:
+      - id
+      title: CreateBenefitVerificationResponseData
+      description: Represents the data contained in the response for a create benefit verification request.
+    Gender:
+      type: string
+      enum:
+      - male
+      - female
+      - other
+      - not_specified
+      title: Gender
+      description: An enumeration.
+    DrugCoverageDeterminationDetails:
+      properties:
+        is_on_formulary:
+          type: boolean
+          title: Is On Formulary
+          description: Whether the drug is on the formulary for the patient's plan.
+          nullable: true
+        is_explicit_plan_exclusion:
+          type: boolean
+          title: Is Explicit Plan Exclusion
+          description: Whether the drug is explicitly excluded from the patient's plan.
+          nullable: true
+        is_prior_auth_acting_as_exception_request:
+          type: boolean
+          title: Is Prior Auth Acting As Exception Request
+          description: Whether the prior authorization is acting as an exception request. This is only applicable if the drug is not on the formulary.
+          nullable: true
+      type: object
+      title: DrugCoverageDeterminationDetails
+    RouteOfAdministration:
+      type: string
+      enum:
+      - auricular (otic)
+      - otic
+      - buccal
+      - conjunctival
+      - cutaneous
+      - dental
+      - electro-osmosis
+      - endocervical
+      - endosinusial
+      - endotracheal
+      - enteral
+      - epidural
+      - extra-amniotic
+      - extracorporeal
+      - hemodialysis
+      - infiltration
+      - interstitial
+      - intra-abdominal
+      - intra-amniotic
+      - intra-arterial
+      - intra-articular
+      - intrabiliary
+      - intrabronchial
+      - intrabursal
+      - intracameral
+      - intracanalicular
+      - intracardiac
+      - intracartilaginous
+      - intracaudal
+      - intracavernous
+      - intracavitary
+      - intracerebral
+      - intracisternal
+      - intracorneal
+      - intracoronal, dental
+      - intracoronary
+      - intracorporus cavernosum
+      - intracranial
+      - intradermal
+      - intradiscal
+      - intraductal
+      - intraduodenal
+      - intradural
+      - intraepicardial
+      - intraepidermal
+      - intraesophageal
+      - intragastric
+      - intragingival
+      - intrahepatic
+      - intraileal
+      - intralesional
+      - intralingual
+      - intraluminal
+      - intralymphatic
+      - intramammary
+      - intramedullary
+      - intrameningeal
+      - intramuscular
+      - intranodal
+      - intraocular
+      - intraomentum
+      - intraovarian
+      - intrapericardial
+      - intraperitoneal
+      - intrapleural
+      - intraprostatic
+      - intrapulmonary
+      - intraruminal
+      - intrasinal
+      - intraspinal
+      - intrasynovial
+      - intratendinous
+      - intratesticular
+      - intrathecal
+      - intrathoracic
+      - intratubular
+      - intratumor
+      - intratympanic
+      - intrauterine
+      - intravascular
+      - intravenous
+      - intraventricular
+      - intravesical
+      - intravitreal
+      - iontophoresis
+      - irrigation
+      - laryngeal
+      - nasal
+      - nasogastric
+      - not applicable
+      - occlusive dressing technique
+      - ophthalmic
+      - oral
+      - oropharyngeal
+      - parenteral
+      - percutaneous
+      - periarticular
+      - peridural
+      - perineural
+      - periodontal
+      - rectal
+      - respiratory (inhalation)
+      - inhalation
+      - retrobulbar
+      - soft tissue
+      - subarachnoid
+      - subconjunctival
+      - subcutaneous
+      - subgingival
+      - sublingual
+      - submucosal
+      - subretinal
+      - suprachoroidal
+      - topical
+      - transdermal
+      - transendocardial
+      - transmucosal
+      - transplacental
+      - transtracheal
+      - transtympanic
+      - ureteral
+      - urethral
+      - vaginal
+      title: RouteOfAdministration
+      description: 'See: https://www.fda.gov/industry/structured-product-labeling-resources/route-administration'
+    PriorAuthOutcomeDenialDetail:
+      type: string
+      enum:
+      - formulary_alternative_preferred
+      - medical_necessity_criteria_not_met
+      - plan_exclusion
+      - step_therapy_criteria_not_met
+      - existing_denial
+      - coverage_limits_exceeded
+      - prior_weight_loss_program_required
+      - unknown
+      title: PriorAuthOutcomeDenialDetail
+      description: An enumeration.
+    UnqualifiedReason:
+      properties:
+        description:
+          type: string
+          title: Description
+          description: Reason for ineligibility. This is a free text field that could include any text.
+      type: object
+      required:
+      - description
+      title: UnqualifiedReason
+      description: 'Represents the reason why a drug is not eligible for a clinical qualification check.
+
+
+        More structured fields will be added to this model in the future.'
+    TriggerBenefitVerificationConfig:
+      properties:
+        enabled:
+          type: boolean
+          title: Enabled
+          description: Whether to trigger a benefit verification when creating this PA.
+        additional_medications:
+          items:
+            $ref: '#/components/schemas/TriggerBenefitVerificationMedication'
+          type: array
+          title: Additional Medications
+          description: Additional medications to check coverage for alongside the prescribed medication.
+      type: object
+      required:
+      - enabled
+      title: TriggerBenefitVerificationConfig
+    TriggerBenefitVerificationMedication:
+      properties:
+        ndc:
+          type: string
+          title: Ndc
+          description: The NDC of the additional medication to check coverage for.
+        quantity:
+          type: integer
+          title: Quantity
+          description: The quantity of the medication to check coverage for.
+      type: object
+      required:
+      - ndc
+      - quantity
+      title: TriggerBenefitVerificationMedication
+    PriorAuthSubmissionOtherOutcome:
+      properties:
+        detail:
+          type: string
+          maxLength: 2048
+          title: Detail
+          description: A human-readable note providing additional information about the outcome. This will usually be an automated message corresponding to `detail_code`. In some cases it will contain more specific details about the outcome. For example, "Patient must enroll in the Omada Health Program."
+        result:
+          type: string
+          enum:
+          - Other
+          const: Other
+          title: Result
+          description: The Prior Authorization has completed without an approval/denial determination.
+          default: Other
+        detail_code:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthOutcomeOtherDetailPublic'
+          description: 'A code indicating the reason for the prior auth outcome. The possible values are:
+
+            - **coverage_inactive**: The patient''s coverage has expired.
+
+            - **coverage_not_yet_started**: The patient''s coverage has not yet started.
+
+            - **no_pharmacy_benefits**: The patient''s insurance does not include pharmacy benefits.
+
+            - **payer_unable_to_locate_member**: The payer could not locate the member in their system.
+
+            - **npi_taxonomy_ineligible**: The payer rejected the request because the prescriber''s NPI taxonomy, provider type, specialty, or credentials are not eligible to submit this prior authorization.
+
+            - **payer_reported_invalid_patient_info**: The payer located the patient in their system but some submitted patient information does not match.
+
+            - **duplicate_request**: The request is a duplicate. Please cancel the existing request and resubmit if needed.
+
+            - **prior_auth_not_required**: A prior authorization is not required for this medication.
+
+            - **patient_consent_required**: The payer requires verbal consent from the patient before discussing or processing the prior authorization.
+
+            - **more_information_required**: Insufficient information provided to complete the prior authorization.
+
+            - **other**: A problem not listed here was encountered. Check the `outcome.detail` field for more information.'
+      type: object
+      title: PriorAuthSubmissionOtherOutcome
+    PriorAuthActivityLogFollowUpCall:
+      properties:
+        id:
+          type: string
+          title: Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        type:
+          type: string
+          enum:
+          - follow_up_call
+          title: Type
+          default: follow_up_call
+        details:
+          $ref: '#/components/schemas/PriorAuthActivityLogFollowUpCallDetails'
+      type: object
+      required:
+      - id
+      - created_at
+      - details
+      title: PriorAuthActivityLogFollowUpCall
+    CreateClinicalQualificationResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          allOf:
+          - $ref: '#/components/schemas/CreateClinicalQualificationResponseData'
+          title: Data
+          description: Data payload of the response, containing details of the created clinical qualification request, or None if the request was unsuccessful.
+      type: object
+      title: CreateClinicalQualificationResponse
+      description: Models the response received upon creating a clinical qualification request.
+    RealTimeBenefitsCheckResponse:
+      properties:
+        patient_cost:
+          type: string
+          title: Patient Cost
+          description: Patient cost for the requested prescription
+        prior_auth_required:
+          type: boolean
+          title: Prior Auth Required
+          description: Whether a prior authorization is required for the requested prescription
+        alternatives:
+          items:
+            $ref: '#/components/schemas/RealTimeBenefitsCheckAlternative'
+          type: array
+          title: Alternatives
+          description: List of alternative drugs
+      type: object
+      required:
+      - patient_cost
+      title: RealTimeBenefitsCheckResponse
+    CreatePriorAuthResponseError:
+      properties:
+        title:
+          type: string
+          title: Title
+          description: A brief title summarizing the error.
+        description:
+          type: string
+          title: Description
+          description: A detailed message explaining the error. These messages may be unique to the specific prior authorization request.
+        code:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthErrorCode'
+          description: "A specific code identifying the error. While we'll aim to ensure that the occurence of these errors is minimal, it's likely they will occur. To prevent delays to patient care, we generally recommend that you implement a strategy of falling back to your existing process for handling a prior authorization if you encounter one of these errors. The Develop Health team will then work with you in parallel to fix the issue. The following codes are currently possible: \n- **unsupported_patient**: This means that the patient you submitted the prior authorization for is not currently supported. We're rapidly increasing our PBM and payer coverage, so we'll be reducing the occurrence of these over time.\n- **unsupported_drug**: The drug you submitted is not yet supported for prior authorization.\n- **insurance_card_member_id_ocr_failure**: We were unable to extract the member ID from the insurance card image provided and no discrete values were provided.\n- **insurance_content_invalid_rx_bin**: The Rx BIN provided in the insurance content is invalid. This should be a 6 digit number.\n- **prescription_message_not_found**: The prescription_message_id provided does not correspond to any known prescription.\n- **prescription_message_already_linked**: The prescription_message_id provided is already linked to a prior authorization request that is in progress or has already been completed as approved. The existing PA request must be cancelled before submitting a new request for the same prescription.\n- **provider_not_authorized**: The NPI provided is not authorized to submit requests. To enable prior authorization requests for this provider, please complete the provider authorization process.\n- **evidence_file_download_failed**: The evidence file could not be downloaded from the provided URL.\n- **invalid_qle_resubmission**: Quantity limit exception resubmissions are only allowed when the previous prior authorization was approved or was not required.\n- **previous_pa_request_in_progress**: The previous prior authorization request referenced in resubmission_info is still in progress. It must be completed or cancelled before a new resubmission can be created.\n- **other**: An unexpected error occurred during the prior authorization process."
+          choices:
+          - - unsupported_patient
+            - unsupported_patient
+          - - unsupported_drug
+            - unsupported_drug
+          - - insurance_card_member_id_ocr_failure
+            - insurance_card_member_id_ocr_failure
+          - - insurance_content_invalid_rx_bin
+            - insurance_content_invalid_rx_bin
+          - - prescription_message_not_found
+            - prescription_message_not_found
+          - - prescription_message_already_linked
+            - prescription_message_already_linked
+          - - provider_not_authorized
+            - provider_not_authorized
+          - - evidence_file_download_failed
+            - evidence_file_download_failed
+          - - invalid_qle_resubmission
+            - invalid_qle_resubmission
+          - - previous_pa_request_in_progress
+            - previous_pa_request_in_progress
+          - - other
+            - other
+        existing_prior_auth_request_id:
+          type: string
+          title: Existing Prior Auth Request Id
+          description: Identifier of an existing prior authorization request related to this error.
+      type: object
+      required:
+      - title
+      - code
+      title: CreatePriorAuthResponseError
+    ProviderIdentitySchema:
+      properties:
+        npi:
+          type: string
+          title: Npi
+        first_name:
+          type: string
+          title: First Name
+        last_name:
+          type: string
+          title: Last Name
+        middle_name:
+          type: string
+          title: Middle Name
+        name_prefix:
+          type: string
+          title: Name Prefix
+        name_suffix:
+          type: string
+          title: Name Suffix
+        credential:
+          type: string
+          title: Credential
+        status:
+          type: string
+          title: Status
+          description: 'Registry status code: ''A'' or ''D''.'
+        practice_address:
+          allOf:
+          - $ref: '#/components/schemas/OptionalAddress'
+          title: Practice Address
+          description: The primary practice address, if any.
+        addresses:
+          items:
+            $ref: '#/components/schemas/PracticeLocation'
+          type: array
+          title: Addresses
+          description: All practice locations the registry has for this provider, in the order CMS reports them. Each location pairs the postal address with the phone/fax recorded for it.
+      type: object
+      required:
+      - npi
+      - first_name
+      - last_name
+      - status
+      title: ProviderIdentitySchema
+      description: Identity fields surfaced from a registry record.
+    PriorAuthSubmissionNotSubmittedOutcome:
+      properties:
+        detail:
+          type: string
+          maxLength: 2048
+          title: Detail
+          description: A human-readable note providing additional information about the outcome. This will usually be an automated message corresponding to `detail_code`. In some cases it will contain more specific details about the outcome. For example, "Patient must enroll in the Omada Health Program."
+        result:
+          type: string
+          enum:
+          - Not Submitted
+          const: Not Submitted
+          title: Result
+          description: The prior authorization request will not be submitted. For example, when the eligibility check is enabled and the check returns as error.
+          default: Not Submitted
+        detail_code:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthOutcomeNotSubmittedDetail'
+          description: 'A code indicating the reason for the prior auth outcome. The possible values are:
+
+            - **eligibility_check_error**: Indicates eligibility check encountered an error. Error details will be surfaced in the `eligibility_check_response` field. This status will not happen if `ndp_submission.ignore_eligibility_check_error` was set to True for the PA request.
+
+            - **eligibility_check_government_plan**: Indicates that the eligibility check revealed the patient has only government insurance plan(s). The `eligibility_check_response` field will contain the successful eligibility check response. This status will not happen if `ndp_submission.submit_pa_with_eligibility_check_government_plan` was set to True for the PA request.
+
+            - **prescription_message_not_found**: Indicates the provided prescription message ID does not correspond to a prescription. This can happen if the eScript received to the NDP could not be converted into a valid prescription.
+
+            - **more_information_required**: Indicates that additional information is required before this request can be submitted. The request was not submitted and should be resubmitted with the additional details.
+
+            - **formulary_alternative_required**: Indicates that the patient needs to try a formulary alternative before the PA can be approved. The request was not submitted and should instead be submitted for the formulary alternative outlined in the outcome message.
+
+            - **benefit_verification_no_medication_coverage**: Indicates that a triggered benefit verification determined the prescribed medication is not covered by the patient''s plan.
+
+            - **benefit_verification_only_alternative_medication_covered**: Indicates that a triggered benefit verification determined the prescribed medication is not covered, but an alternative medication specified in the request is covered.
+
+            - **benefit_verification_pa_not_required**: Indicates that a triggered benefit verification determined the prescribed medication is covered and does not require prior authorization.
+
+            - **pbm_excluded**: Indicates that the eligibility check revealed only an excluded PBM payer and the PA was not submitted. The `eligibility_check_response` field will contain the successful eligibility check response.
+
+            - **payer_not_supported**: Indicates that the eligibility check revealed the patient''s health plan is not supported. Currently, Kaiser health plans are not supported. The `eligibility_check_response` field will contain the successful eligibility check response.'
+      type: object
+      title: PriorAuthSubmissionNotSubmittedOutcome
+    ApiResponse_ProviderLookupResponse_:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          $ref: '#/components/schemas/ProviderLookupResponse'
+      type: object
+      title: ApiResponse[ProviderLookupResponse]
+    PriorAuthOutcomeOtherDetailPublic:
+      type: string
+      enum:
+      - coverage_inactive
+      - coverage_not_yet_started
+      - no_pharmacy_benefits
+      - payer_unable_to_locate_member
+      - npi_taxonomy_ineligible
+      - payer_reported_invalid_patient_info
+      - duplicate_request
+      - prior_auth_not_required
+      - patient_consent_required
+      - more_information_required
+      - other
+      title: PriorAuthOutcomeOtherDetailPublic
+      description: Public version of PriorAuthOutcomeOtherDetail. This is used in the API response.
+    Prescription:
+      properties:
+        days_supply:
+          type: integer
+          title: Days Supply
+          description: The number of days the prescription will be expected to last.
+        quantity:
+          type: integer
+          title: Quantity
+          description: The quantity of the medication.
+        directions:
+          type: string
+          minLength: 1
+          title: Directions
+          description: Instructions on how the medication should be taken.
+        drug_name:
+          type: string
+          minLength: 1
+          title: Drug Name
+          description: The name of the medication.
+        strength:
+          type: string
+          minLength: 1
+          title: Strength
+          description: The strength of the medication.
+        dose_form:
+          allOf:
+          - $ref: '#/components/schemas/DoseForm'
+          description: The form of the medication.
+        route_of_administration:
+          allOf:
+          - $ref: '#/components/schemas/RouteOfAdministration'
+          description: The route of administration for the medication.
+        extra:
+          type: object
+          title: Extra
+          description: An optional dictionary containing additional information related to the drug or future prescription.
+        expected_length_of_therapy:
+          type: string
+          title: Expected Length Of Therapy
+          description: The expected length of therapy for the prescribed drug. Defaults to 'Until No Longer Needed' if not provided.
+          examples:
+          - Until No Longer Needed
+          - 12 months
+          - 6 weeks
+        prescription_date:
+          type: string
+          format: date-time
+          title: Prescription Date
+          description: The date the prescription was issued
+      type: object
+      required:
+      - days_supply
+      - quantity
+      - directions
+      - drug_name
+      - strength
+      - dose_form
+      - route_of_administration
+      - prescription_date
+      title: Prescription
+      description: 'Represents a prescription issued by a healthcare provider. Prefer
+
+        CodedPrescription when NDCs are available.'
+    ClientInsuranceDocumentErrorDetailCode:
+      type: string
+      enum:
+      - incorrect_member_id
+      - incorrect_dob
+      - incorrect_address
+      - incorrect_phone_number
+      - missing_member_id
+      - medical_only_member_id
+      - name_mismatch
+      title: ClientInsuranceDocumentErrorDetailCode
+      description: An enumeration.
+    ProviderInfo:
+      properties:
+        first_name:
+          type: string
+          minLength: 1
+          title: First Name
+          description: The first name of the provider.
+        last_name:
+          type: string
+          minLength: 1
+          title: Last Name
+          description: The last name of the provider.
+        address:
+          allOf:
+          - $ref: '#/components/schemas/Address'
+          title: Address
+          description: The address of the provider.
+        phone:
+          type: string
+          title: Phone
+          description: The contact phone number of the provider.
+        fax:
+          type: string
+          title: Fax
+          description: The contact fax number of the provider.
+        npi:
+          type: string
+          minLength: 1
+          title: Npi
+          description: The National Provider Identifier (NPI) of the provider.
+        in_network_payers:
+          items:
+            type: string
+          type: array
+          title: In Network Payers
+          description: List of insurance payers that the provider is in-network with. This is optional and no longer seems to have much of an impact on the verification process. You can omit this if it is not readily available information
+      type: object
+      required:
+      - first_name
+      - last_name
+      - address
+      - npi
+      title: ProviderInfo
+      description: Contains information about a healthcare provider.
+    MockResult:
+      properties:
+        status:
+          $ref: '#/components/schemas/MockResultStatus'
+        case:
+          allOf:
+          - $ref: '#/components/schemas/MockResultCase'
+          description: "The case to simulate for the benefit verification. The options are: \n- **drugs_covered__prior_auth_required__has_copay**: Drug is covered, prior authorization required, and there is a copay.\n- **drugs_covered__prior_auth_required__no_copay**: Drug is covered, prior authorization required, but there is no copay.\n- **drugs_covered__prior_auth_not_required__has_copay**: Drug is covered, no prior authorization required, and there is a copay.\n- **drugs_covered__prior_auth_not_required__no_copay**: Drug is covered, no prior authorization required, and there is no copay.\n- **drugs_not_covered__prior_auth_na__no_copay**: Drug is not covered, prior authorization not applicable (because the drug is not covered), and there is no copay.\n- **patient_consent_required**: Patient consent is required to proceed with the benefit verification.\n- **reverification__existing_pa**: Reverification case where an existing prior authorization is found. Coverage status and PA requirement will be N/A, with has_active_prior_auth set to true.\n- **reverification__no_existing_pa**: Reverification case where no existing prior authorization is found. Drug is covered, prior authorization required, with has_active_prior_auth set to false."
+      type: object
+      required:
+      - status
+      - case
+      title: MockResult
+    DrugCoverage:
+      type: string
+      enum:
+      - covered
+      - not_covered
+      title: DrugCoverage
+      description: An enumeration.
+    PrescriptionTransferConfirmationAttempt:
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+          description: Timestamp of confirmation attempt
+        outcome:
+          allOf:
+          - $ref: '#/components/schemas/PrescriptionTransferConfirmationAttemptOutcome'
+          description: Outcome of the transfer confirmation attempt
+      type: object
+      required:
+      - timestamp
+      - outcome
+      title: PrescriptionTransferConfirmationAttempt
+    ScannedContent:
+      properties:
+        client_name:
+          type: string
+          title: Client Name
+          description: The client/employer name.
+        group_number:
+          type: string
+          title: Group Number
+          description: The group number on the card.
+        member_name:
+          type: string
+          title: Member Name
+          description: The member name on the card.
+        member_number:
+          type: string
+          title: Member Number
+          description: The member number on the card.
+        payer_name:
+          type: string
+          title: Payer Name
+          description: The payer name on the card. This field is not normalized, so the same plan may have different names depending on the way it appears on the card. i.e. 'United Healthcare', 'United', 'United Health' could all appear
+        plan_name:
+          type: string
+          title: Plan Name
+          description: The plan name on the card. This field is not normalized, so the same plan may have different names depending on the way it appears on the card
+        rx_bin:
+          type: string
+          title: Rx Bin
+          description: The Rx BIN number on the card.
+        rx_group:
+          type: string
+          title: Rx Group
+          description: The Rx group number on the card.
+        rx_pcn:
+          type: string
+          title: Rx Pcn
+          description: The Rx PCN number on the card.
+        error:
+          type: string
+          title: Error
+          description: Error message if we were unable to extract information from the card.
+      type: object
+      title: ScannedContent
+    DrugCoverageInfo:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the drug.
+        dosage:
+          type: string
+          title: Dosage
+          description: The prescribed dosage of the drug.
+        quantity:
+          type: number
+          title: Quantity
+          description: The quantity of the drug prescribed.
+        ndc:
+          type: string
+          title: Ndc
+          description: The National Drug Code (NDC) of the drug. Read-only; this field is ignored on input and populated from the resolved drug data.
+          readOnly: true
+          nullable: true
+        coverage:
+          allOf:
+          - $ref: '#/components/schemas/DrugCoverage'
+          description: This field will start off as null and will be populated if the benefit verification is successfully completed. The drug coverage result
+          nullable: true
+        coverage_detail_code:
+          allOf:
+          - $ref: '#/components/schemas/CoverageDetailCode'
+          description: 'This field will start off as null and will be populated if the benefit verification is successfully completed. The options are:
+
+            - **insurer_reported_value**: This is the exact value that the insurer reported for the drug coverage.
+
+            - **diagnoses_not_covered**: The drug is being reported as not covered due to this patient''s specific diagnosis codes.
+
+            - **quantity_limit_pa_required**: The drug is covered but exceeds the plan''s dispense quantity limit, so prior authorization is required.'
+          nullable: true
+        prior_authorization_required:
+          allOf:
+          - $ref: '#/components/schemas/DrugPriorAuthorizationRequirement'
+          description: This field will start off as null and will be populated if the benefit verification is successfully completed. A not_applicable value will be returned if the drug is not covered by the insurance plan.
+          nullable: true
+        copay:
+          type: string
+          title: Copay
+          description: This field will start off as null and will be populated if the benefit verification is successfully completed and a copay is received.
+          nullable: true
+        copay_options:
+          items:
+            $ref: '#/components/schemas/CopayOption'
+          type: array
+          title: Copay Options
+          description: A structured representation of the copay options for the drug.
+          nullable: true
+        determination_details:
+          allOf:
+          - $ref: '#/components/schemas/DrugCoverageDeterminationDetails'
+          title: Determination Details
+          description: A collection of more granular details surrounding the drug coverage determination.
+          nullable: false
+        has_active_prior_auth:
+          type: boolean
+          title: Has Active Prior Auth
+          description: Whether there is an active prior authorization for this drug. Only set if operating if explicitly requested by the original API call.
+          nullable: true
+      type: object
+      required:
+      - name
+      - dosage
+      - quantity
+      title: DrugCoverageInfo
+      description: Represents information about a specific drug.
+    Priority:
+      type: integer
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      title: Priority
+      description: 'Represents a priority level. Lower numbers are higher priority.
+
+
+        - CRITICAL: 0
+
+        - HIGH: 1
+
+        - MEDIUM: 2
+
+        - LOW: 3'
+    Pharmacy:
+      properties:
+        name:
+          type: string
+          minLength: 1
+          title: Name
+          description: The name of the pharmacy.
+        address:
+          $ref: '#/components/schemas/Address'
+      type: object
+      required:
+      - name
+      title: Pharmacy
+      description: "Represents a pharmacy.\n\nAttributes:\n    name (str): The name of the pharmacy.\n    address (Address): The pharmacy's postal address."
+    PriorAuthFeedbackResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          type: 'null'
+          title: Data
+      type: object
+      title: PriorAuthFeedbackResponse
+      description: Response returned after feedback has been accepted.
+    GetClinicalQualificationResponseData:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of this clinical qualification
+        object:
+          type: string
+          enum:
+          - clinical_qualification
+          title: Object
+          description: The type of object. This will always be 'clinical_qualification', from this endpoint, but this can be helpful for differentiating between different types of objects when parsing webhook responses.
+          default: clinical_qualification
+        diagnoses:
+          items:
+            $ref: '#/components/schemas/Diagnosis'
+          type: array
+          title: Diagnoses
+          description: Clinical diagnoses for the patient in ICD-10 format. i.e. 'E66.9'
+        evidence:
+          items:
+            $ref: '#/components/schemas/ResponseEvidenceItem'
+          type: array
+          title: Evidence
+          description: A collection of evidence items supporting the authorization request. Any other supporting evidence that doesn't fit into one of the explicitly declared fields above can be added here.
+        patient:
+          allOf:
+          - $ref: '#/components/schemas/Patient'
+          title: Patient
+          description: Demographic information for the patient
+        insurance:
+          items:
+            $ref: '#/components/schemas/InsuranceDocumentInfo'
+          type: array
+          title: Insurance
+          description: Array of insurance documents.
+        drugs:
+          items:
+            $ref: '#/components/schemas/Drug'
+          type: array
+          title: Drugs
+          description: Information regarding the potential prescriptions this clinical qualification check should be run for
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/Provider'
+          title: Provider
+          description: Details of the healthcare provider who created the prescription.
+        pharmacy:
+          allOf:
+          - $ref: '#/components/schemas/Pharmacy'
+          title: Pharmacy
+          description: Information about the pharmacy where the prescription will be filled.
+        questionnaires:
+          items:
+            $ref: '#/components/schemas/Questionnaire'
+          type: array
+          title: Questionnaires
+          description: list of questionnaires. This is the best place to send structured Q&A format data, such as intake forms, etc.
+        visit_notes:
+          items:
+            $ref: '#/components/schemas/VisitNote'
+          type: array
+          title: Visit Notes
+          description: list of visit notes.
+        results:
+          items:
+            $ref: '#/components/schemas/ClinicalQualificationResult'
+          type: array
+          title: Results
+          description: The results of the clinical qualification for each of the drugs.
+      type: object
+      required:
+      - id
+      - diagnoses
+      - patient
+      - insurance
+      - drugs
+      - provider
+      - results
+      title: GetClinicalQualificationResponseData
+    UpdateNDPSubmissionResponseData:
+      properties:
+        preferred_pharmacy_ncpdp_id:
+          type: string
+          title: Preferred Pharmacy Ncpdp Id
+          description: The updated NCPDP ID of the preferred pharmacy.
+      type: object
+      title: UpdateNDPSubmissionResponseData
+      description: Data payload returned after a successful NDP submission update.
+    ProviderLookupStatus:
+      type: string
+      enum:
+      - active
+      - deactivated
+      - not_found
+      - registry_error
+      - search_results
+      title: ProviderLookupStatus
+      description: Outcome of a provider lookup or search.
+    EvidenceItem:
+      properties:
+        asset:
+          allOf:
+          - $ref: '#/components/schemas/Asset'
+          title: Asset
+          description: File asset containing the evidence. This is an alternative to the `content` field which must be unused or null if `asset` is provided.
+        content:
+          anyOf:
+          - type: object
+          - type: string
+          title: Content
+          description: Detailed content of the evidence, which varies based on the type of evidence.
+        date_created:
+          type: string
+          format: date-time
+          title: Date Created
+          description: The date and time (if available) when the evidence was created. This is important for ensuring we have an accurate timeline of the patient's history.
+        title:
+          type: string
+          title: Title
+          description: Title of the evidence. This will be shown to users in the platform UI so it's recommended to give it a name that would be meaningful to them, such as 'Intake Form'
+      type: object
+      required:
+      - date_created
+      - title
+      title: EvidenceItem
+      description: Represents an item of evidence, which can include an associated digital asset.
+    PracticeLocation:
+      properties:
+        address:
+          $ref: '#/components/schemas/OptionalAddress'
+        phone:
+          type: string
+          title: Phone
+          description: The phone number the registry has for this practice location.
+        fax:
+          type: string
+          title: Fax
+          description: The fax number the registry has for this practice location.
+      type: object
+      required:
+      - address
+      title: PracticeLocation
+      description: 'A single practice location: postal address paired with the contact
+
+        methods (phone/fax) the registry reports for that address.
+
+
+        Fax matters for prior authorizations (we fax PAs to the practice), and
+
+        phone is useful for the user picking which location to operate on. Both
+
+        are nullable since CMS does not report contacts for every location.'
+    GetPriorAuthResponseData:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of this prior authorization
+        object:
+          type: string
+          enum:
+          - prior_authorization
+          title: Object
+          description: The type of object. This will always be 'prior_authorization', from this endpoint, but this can be helpful for differentiating between different types of objects when parsing webhook responses.
+          default: prior_authorization
+        url:
+          type: string
+          title: Url
+          description: The URL where the Prior Authorization can be viewed.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthRequestStatus'
+          description: The current status of the prior auth request.
+        diagnoses:
+          items:
+            $ref: '#/components/schemas/Diagnosis'
+          type: array
+          title: Diagnoses
+          description: Clinical diagnoses for the patient in ICD-10 format. i.e. 'E66.9'
+        evidence:
+          items:
+            $ref: '#/components/schemas/ResponseEvidenceItem'
+          type: array
+          title: Evidence
+          description: A collection of evidence items supporting the authorization request. Any other supporting evidence that doesn't fit into one of the explicitly declared fields above can be added here.
+        patient:
+          allOf:
+          - $ref: '#/components/schemas/Patient'
+          title: Patient
+          description: Demographic information for the patient
+        insurance:
+          items:
+            $ref: '#/components/schemas/InsuranceDocumentInfo'
+          type: array
+          title: Insurance
+          description: Array of insurance documents.
+        prescription:
+          allOf:
+          - $ref: '#/components/schemas/Prescription'
+          title: Prescription
+          description: Information regarding the prescription this prior authorization is being created for.
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/Provider'
+          title: Provider
+          description: Details of the healthcare provider who created the prescription.
+        pharmacy:
+          allOf:
+          - $ref: '#/components/schemas/Pharmacy'
+          title: Pharmacy
+          description: Information about the pharmacy where the prescription will be filled.
+        questionnaires:
+          items:
+            $ref: '#/components/schemas/Questionnaire'
+          type: array
+          title: Questionnaires
+          description: List of questionnaires. This is the best place to send structured Q&A format data, such as intake forms, etc.
+        visit_notes:
+          items:
+            $ref: '#/components/schemas/VisitNote'
+          type: array
+          title: Visit Notes
+          description: List of visit notes.
+        ndp_submission:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthRequestNDPSubmission'
+          title: Ndp Submission
+          description: Configuration for processing the prescription associated with this PA request.
+        resubmission_info:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthRequestResubmissionInfo'
+          title: Resubmission Info
+          description: Information provided when resubmitting a prior authorization request.
+        activity_log:
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/PriorAuthActivityLogSentFax'
+            - $ref: '#/components/schemas/PriorAuthActivityLogReceivedFax'
+            - $ref: '#/components/schemas/PriorAuthActivityLogFollowUpCall'
+            discriminator:
+              propertyName: type
+              mapping:
+                sent_fax: '#/components/schemas/PriorAuthActivityLogSentFax'
+                received_fax: '#/components/schemas/PriorAuthActivityLogReceivedFax'
+                follow_up_call: '#/components/schemas/PriorAuthActivityLogFollowUpCall'
+          type: array
+          title: Activity Log
+          description: 'A list of activity log items for the prior authorization request.
+
+            Note: additional item types will be added here in future, so please ensure that unknown types are ignored when parsing this array to avoid validation errors when new types are added.'
+        submitted_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          title: Submitted By
+          description: The user who submitted the prior authorization request.
+        reviewed_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          title: Reviewed By
+          description: The user who reviewed the prior authorization request.
+        eligibility_check_response:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/EligibilityCheckResponseSuccessItem'
+            - $ref: '#/components/schemas/EligibilityCheckResponseErrorItem'
+          type: array
+          minItems: 1
+          title: Eligibility Check Response
+          description: Populated after the eligibility check has been made for the PA, if enabled
+        real_time_benefits_check_response:
+          allOf:
+          - $ref: '#/components/schemas/RealTimeBenefitsCheckResponse'
+          title: Real Time Benefits Check Response
+          description: Populated after the real-time benefits check has been made for the PA, if enabled
+        prescription_transfer:
+          allOf:
+          - $ref: '#/components/schemas/PrescriptionTransfer'
+          title: Prescription Transfer
+          description: Information about the prescription transfer status and attempts
+        mock_result:
+          anyOf:
+          - $ref: '#/components/schemas/PriorAuthMockResultApproved'
+          - $ref: '#/components/schemas/PriorAuthMockResultDenied'
+          - $ref: '#/components/schemas/PriorAuthMockResultOther'
+          - $ref: '#/components/schemas/PriorAuthMockResultNotSubmitted'
+          title: Mock Result
+          description: The mock result of the prior authorization request, if one was provided in the initial request
+        out_of_pocket_costs:
+          items:
+            $ref: '#/components/schemas/CopayOption'
+          type: array
+          title: Out Of Pocket Costs
+          description: List of copay options with amounts in cents and supply duration in days
+        denial_reason_analysis:
+          allOf:
+          - $ref: '#/components/schemas/DenialReasonAnalysis'
+          title: Denial Reason Analysis
+          description: Analysis of the denial reason(s). Populated when the prior authorization request has been denied.
+        message_thread:
+          allOf:
+          - $ref: '#/components/schemas/PlatformMessageThread'
+          title: Message Thread
+          description: Message thread for this prior authorization, including whether it is resolved and its messages.
+        triggered_benefit_verification_id:
+          type: string
+          title: Triggered Benefit Verification Id
+          description: The ID of the benefit verification triggered by this PA request, if one was configured.
+        is_appeal:
+          type: boolean
+          title: Is Appeal
+          description: Whether this prior authorization request is an appeal of a previously denied PA.
+          default: false
+        patient_consent_required:
+          type: boolean
+          title: Patient Consent Required
+          description: Whether the payer currently requires verbal patient consent for this prior authorization.
+          default: false
+        outcome:
+          oneOf:
+          - $ref: '#/components/schemas/PriorAuthSubmissionApprovalOutcome'
+          - $ref: '#/components/schemas/PriorAuthSubmissionDenialOutcome'
+          - $ref: '#/components/schemas/PriorAuthSubmissionOtherOutcome'
+          - $ref: '#/components/schemas/PriorAuthSubmissionPendingOutcome'
+          - $ref: '#/components/schemas/PriorAuthSubmissionNotSubmittedOutcome'
+          title: Outcome
+          description: Details of the outcome of the prior authorization request.
+          discriminator:
+            propertyName: result
+            mapping:
+              Approved: '#/components/schemas/PriorAuthSubmissionApprovalOutcome'
+              Denied: '#/components/schemas/PriorAuthSubmissionDenialOutcome'
+              Other: '#/components/schemas/PriorAuthSubmissionOtherOutcome'
+              Pending: '#/components/schemas/PriorAuthSubmissionPendingOutcome'
+              Not Submitted: '#/components/schemas/PriorAuthSubmissionNotSubmittedOutcome'
+      type: object
+      required:
+      - id
+      - url
+      - status
+      - diagnoses
+      - patient
+      - insurance
+      - provider
+      - outcome
+      title: GetPriorAuthResponseData
+    PriorAuthMockResultNotSubmitted:
+      properties:
+        result:
+          type: string
+          enum:
+          - Not Submitted
+          const: Not Submitted
+          title: Result
+          description: The prior authorization request will not be submitted. For example, when the eligibility check is enabled and the check returns as error.
+          default: Not Submitted
+        detail_code:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthOutcomeNotSubmittedDetail'
+          description: 'A code indicating the reason for the prior auth outcome. The possible values are:
+
+            - **eligibility_check_error**: Indicates eligibility check encountered an error. Error details will be surfaced in the `eligibility_check_response` field. This status will not happen if `ndp_submission.ignore_eligibility_check_error` was set to True for the PA request.
+
+            - **eligibility_check_government_plan**: Indicates that the eligibility check revealed the patient has only government insurance plan(s). The `eligibility_check_response` field will contain the successful eligibility check response. This status will not happen if `ndp_submission.submit_pa_with_eligibility_check_government_plan` was set to True for the PA request.
+
+            - **prescription_message_not_found**: Indicates the provided prescription message ID does not correspond to a prescription. This can happen if the eScript received to the NDP could not be converted into a valid prescription.
+
+            - **more_information_required**: Indicates that additional information is required before this request can be submitted. The request was not submitted and should be resubmitted with the additional details.
+
+            - **formulary_alternative_required**: Indicates that the patient needs to try a formulary alternative before the PA can be approved. The request was not submitted and should instead be submitted for the formulary alternative outlined in the outcome message.
+
+            - **benefit_verification_no_medication_coverage**: Indicates that a triggered benefit verification determined the prescribed medication is not covered by the patient''s plan.
+
+            - **benefit_verification_only_alternative_medication_covered**: Indicates that a triggered benefit verification determined the prescribed medication is not covered, but an alternative medication specified in the request is covered.
+
+            - **benefit_verification_pa_not_required**: Indicates that a triggered benefit verification determined the prescribed medication is covered and does not require prior authorization.
+
+            - **pbm_excluded**: Indicates that the eligibility check revealed only an excluded PBM payer and the PA was not submitted. The `eligibility_check_response` field will contain the successful eligibility check response.
+
+            - **payer_not_supported**: Indicates that the eligibility check revealed the patient''s health plan is not supported. Currently, Kaiser health plans are not supported. The `eligibility_check_response` field will contain the successful eligibility check response.'
+      type: object
+      title: PriorAuthMockResultNotSubmitted
+      description: 'Represents a mock result where the prior authorization was NOT submitted
+
+        because the eligibility check either encountered an error or revealed the
+
+        patient has a government plan.'
+    PriorAuthOutcomeApprovalDetail:
+      type: string
+      enum:
+      - prior_auth_not_required
+      - approval
+      - existing_approval
+      title: PriorAuthOutcomeApprovalDetail
+      description: An enumeration.
+    api__schemas__platform__public_api__provider__AuthorizedProviderResponse:
+      properties:
+        npi:
+          type: string
+          title: Npi
+          description: The NPI of the provider.
+        first_name:
+          type: string
+          title: First Name
+          description: The first name of the provider.
+        last_name:
+          type: string
+          title: Last Name
+          description: The last name of the provider.
+        email:
+          type: string
+          title: Email
+          description: The email of the provider.
+        fax_number:
+          type: string
+          title: Fax Number
+          description: The provider's fax number.
+        phone_number:
+          type: string
+          title: Phone Number
+          description: The provider's phone number.
+        address:
+          allOf:
+          - $ref: '#/components/schemas/OptionalAddress'
+          title: Address
+          description: The provider's practice address.
+        signed_at:
+          type: string
+          format: date-time
+          title: Signed At
+          description: The date and time when the provider signed the authorization form. If null, the authorization is pending.
+      type: object
+      required:
+      - npi
+      - first_name
+      - last_name
+      title: AuthorizedProviderResponse
+      description: 'Represents an authorized provider with their authorization status.
+
+        If signed_at is null, the authorization is pending.'
+    AuthorizeProviderRequest:
+      properties:
+        npi:
+          type: string
+          title: Npi
+          description: The NPI of the provider.
+        first_name:
+          type: string
+          title: First Name
+          description: The first name of the provider.
+        last_name:
+          type: string
+          title: Last Name
+          description: The last name of the provider.
+        email:
+          type: string
+          title: Email
+          description: The email of the provider.
+        fax_number:
+          type: string
+          title: Fax Number
+          description: The provider's fax number.
+        phone_number:
+          type: string
+          title: Phone Number
+          description: The provider's phone number.
+        address:
+          allOf:
+          - $ref: '#/components/schemas/OptionalAddress'
+          title: Address
+          description: The provider's practice address.
+      type: object
+      required:
+      - npi
+      - first_name
+      - last_name
+      title: AuthorizeProviderRequest
+      description: Represents a request for authorizing a provider.
+    PriorAuthMockResultApproved:
+      properties:
+        result:
+          type: string
+          enum:
+          - Approved
+          const: Approved
+          title: Result
+          description: The Prior Authorization has been approved.
+          default: Approved
+        detail_code:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthOutcomeApprovalDetail'
+          description: 'A code indicating the reason for the prior auth outcome. The possible values are:
+
+            - **prior_auth_not_required**: A prior authorization is not required.
+
+            - **approval**: The prior authorization request has been approved.
+
+            - **existing_approval**: An active prior authorization approval already exists for the patient.'
+        prescription_transfer_error_code:
+          allOf:
+          - $ref: '#/components/schemas/PrescriptionTransferErrorCode'
+          description: This field is only used if the ndp_submission.preferred_pharmacy_ncpdp_id was provided in the request. If provided, a prescription transfer error will be mocked. Otherwise / by default, a successful transfer will be mocked.
+      type: object
+      title: PriorAuthMockResultApproved
+      description: Represents a mock result for a prior authorization request.
+    ApiResponse_list_api.schemas.platform.public_api.provider.AuthorizedProviderResponse__:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          items:
+            $ref: '#/components/schemas/api__schemas__platform__public_api__provider__AuthorizedProviderResponse'
+          type: array
+          title: Data
+      type: object
+      title: ApiResponse[list[api.schemas.platform.public_api.provider.AuthorizedProviderResponse]]
+    PriorAuthOutcomeNotSubmittedDetail:
+      type: string
+      enum:
+      - eligibility_check_error
+      - eligibility_check_government_plan
+      - prescription_message_not_found
+      - more_information_required
+      - formulary_alternative_required
+      - benefit_verification_no_medication_coverage
+      - benefit_verification_only_alternative_medication_covered
+      - benefit_verification_pa_not_required
+      - pbm_excluded
+      - payer_not_supported
+      title: PriorAuthOutcomeNotSubmittedDetail
+      description: An enumeration.
+    CodedDrugInfo:
+      properties:
+        ndc:
+          type: string
+          pattern: ^(\d{5}-?\d{4}-?\d{2}|\d{4,5}-\d{3,4}-\d{1,2}|\d{5}-?\d{4}|\d{4,5}-\d{3,4})$
+          title: Ndc
+          description: The NDC of the medication.
+          examples:
+          - 00169-4505-14
+          - 0169-4505-14
+          - 00169450514
+          - 00169-4505
+          - 0169-4505
+          - 001694505
+        quantity:
+          type: integer
+          title: Quantity
+          description: The quantity of the drug prescribed.
+          examples:
+          - 1
+      type: object
+      required:
+      - ndc
+      - quantity
+      title: CodedDrugInfo
+      description: 'Like DrugInfo, but more closely aligned with NCPDP standards. Helps reduce
+
+        any confusion on the payer-side.'
+    FailureDetails:
+      properties:
+        title:
+          type: string
+          title: Title
+          description: A brief title summarizing the error.
+        code:
+          allOf:
+          - $ref: '#/components/schemas/ClientErrorCode'
+          description: "A specific code identifying the error. This list will likely expand over time to provide more specific error codes. The following codes are currently supported: \n- **Unable to Route Call**: We were unable to determine the correct number to call using the insurance information provided. More information is required.\n- **Document Info Missing or Incorrect**: The insurance documents provided are missing information that is necessary to identify the patient. The information could be outdated or not present in the documentation. For example, the documents might be missing the member ID for the patient, or could have a medical only ID, or could have an out of date address. To fix this error you can try re-uploading documents that contain the information specified in the message for this error.\n- **Document Quality Error**: The insurance documents provided are not valid insurance documents or are low quality (blurry or low resolution) and therefore cannot be processed by our system. To fix this error you can try re-uploading higher quality documents.\n- **Insurance Card OCR Failure**: This error means we were unable to read the necessary information from the insurance card image provided. This could be due to the image being unclear. Please check the images provided and/or provide the information manually if possible. This is generally an issue that would be handled on your side, and may involve reaching out to the patient to get a better image of their insurance card.\n- **Insurance Unable to Provide Information**: The insurance company was unable to provide the information needed to determine the patient's coverage status. This could be due to various reasons such as the insurance representative being unable or unwilling to provide the necessary details, or issues during the call, like refusal to transfer to a supervisor.\n- **Patient Not Found**: The plan contact we called was unable to locate the patient in their system. We weren't able to identify a root cause issue with the documentation provided, but re-uploading additional documents may help.\n- **Unable to Gather Benefits**: We were unable to gather benefits from the insurance company. This could be due to a variety of reasons, such as the insurance company not being able to provide the information, or the information provided not being sufficient to determine the patient's coverage status. To fix this error, you can try providing insurace information manually and/or providing medication history.\n- **Internal Error**: There was an internal error during the benefit verification.\n- **Provider Not Authorized**: The NPI provided is not authorized to submit requests. To enable benefit verification requests for this provider, please complete the provider authorization process.\n- **Patient Consent Required**: Benefit verification could not be completed. The payer requires the patient to provide verbal consent during the call."
+        detail_code:
+          anyOf:
+          - $ref: '#/components/schemas/ClientInsuranceDocumentErrorDetailCode'
+          - $ref: '#/components/schemas/ClientOtherErrorDetailCode'
+          title: Detail Code
+          description: A more detailed code that can be used to identify the specific issue that caused the error.
+        message:
+          type: string
+          title: Message
+          description: 'A detailed message explaining the error, such as: ''We were unable to extract the member ID from the insurance card image provided, the image(s) my be unclear.'' These messages may be unique to the specific benefit verification request.'
+        detail_message:
+          type: string
+          title: Detail Message
+          description: A more detailed message that can be used to identify the specific issue that caused the error.
+      type: object
+      required:
+      - title
+      title: FailureDetails
+      description: Represents status details about a failed benefit verification.
+    DrugPriorAuthorizationRequirement:
+      type: string
+      enum:
+      - 'yes'
+      - 'no'
+      - not_applicable
+      title: DrugPriorAuthorizationRequirement
+      description: An enumeration.
+    AppealLetter:
+      properties:
+        asset:
+          allOf:
+          - $ref: '#/components/schemas/Asset'
+          title: Asset
+          description: File asset containing the appeal letter.
+        title:
+          type: string
+          minLength: 1
+          title: Title
+          description: Title of the appeal letter
+        date_created:
+          type: string
+          format: date-time
+          title: Date Created
+          description: The date and time when the appeal letter was created.
+      type: object
+      required:
+      - asset
+      - title
+      - date_created
+      title: AppealLetter
+      description: An appeal letter file to include with the appeal submission.
+    ClinicalQualificationResultStatus:
+      type: string
+      enum:
+      - pending
+      - qualified
+      - unqualified
+      - unknown
+      title: ClinicalQualificationResultStatus
+      description: The status of a clinical qualification check.
+    PriorAuthRequestStatus:
+      type: string
+      enum:
+      - failed
+      - not_submitted
+      - processing
+      - awaiting_review
+      - awaiting_outcome
+      - validating_outcome
+      - completed
+      - cancelled
+      - awaiting_provider_response
+      title: PriorAuthRequestStatus
+      description: The status of a prior authorization request.
+    PriorAuthErrorCode:
+      type: string
+      enum:
+      - unsupported_patient
+      - unsupported_drug
+      - insurance_card_member_id_ocr_failure
+      - insurance_content_invalid_rx_bin
+      - prescription_message_not_found
+      - prescription_message_already_linked
+      - provider_not_authorized
+      - evidence_file_download_failed
+      - invalid_qle_resubmission
+      - previous_pa_request_in_progress
+      - other
+      title: PriorAuthErrorCode
+      description: Public version of PriorAuthErrorCode. This is used in the API response.
+    PriorAuthRequestNDPSubmission:
+      properties:
+        prescription_message_id:
+          type: string
+          minLength: 1
+          title: Prescription Message Id
+          description: The Surescripts message ID for the prescription transfer.
+        ignore_eligibility_check_error:
+          type: boolean
+          title: Ignore Eligibility Check Error
+          description: If set to True, error responses from the eligibility check will not terminate the PA request.
+        submit_pa_with_eligibility_check_government_plan:
+          type: boolean
+          title: Submit Pa With Eligibility Check Government Plan
+          description: If set to True, the PA request will be submitted even if the eligibility check reveals the patient has only government insurance plan(s).
+          default: false
+        preferred_pharmacy_ncpdp_id:
+          type: string
+          pattern: ^\d{7}$
+          title: Preferred Pharmacy Ncpdp Id
+          description: The NCPDP ID of the preferred pharmacy where the prescription will be transferred after the PA request has been approved.
+        preferred_pharmacy_details:
+          type: string
+          title: Preferred Pharmacy Details
+          description: Free-text pharmacy preference information (e.g. 'CVS Pharmacy, 123 Main St, Portland OR 97201'). At least one of preferred_pharmacy_ncpdp_id or preferred_pharmacy_details must be provided.
+      type: object
+      required:
+      - prescription_message_id
+      - ignore_eligibility_check_error
+      title: PriorAuthRequestNDPSubmission
+      description: 'Configuration for processing the prescription associated with this PA request.
+
+
+        This field should only be provided when a prescription has been sent to Develop
+
+        Health''s non-dispensing pharmacy.'
+    RealTimeBenefitsCheckAlternative:
+      properties:
+        product_id:
+          type: string
+          title: Product Id
+          description: The product ID (NDC or RxNorm) of the alternative drug
+        description:
+          type: string
+          title: Description
+          description: Drug name and strength of the alternative drug
+        patient_cost:
+          type: string
+          title: Patient Cost
+          description: Patient cost for the alternative drug
+        prior_auth_required:
+          type: boolean
+          title: Prior Auth Required
+          description: Whether prior authorization is required for the alternative drug
+      type: object
+      required:
+      - product_id
+      - description
+      - patient_cost
+      title: RealTimeBenefitsCheckAlternative
+    CoverageDetailCode:
+      type: string
+      enum:
+      - insurer_reported_value
+      - diagnoses_not_covered
+      - quantity_limit_pa_required
+      title: CoverageDetailCode
+      description: An enumeration.
+    ClientOtherErrorDetailCode:
+      type: string
+      enum:
+      - missing_tax_id
+      - incorrect_tax_id
+      - incorrect_npi
+      - patient_consent_required
+      - patient_declined_consent
+      - kaiser_prescriber_required
+      - expired
+      title: ClientOtherErrorDetailCode
+      description: An enumeration.
+    PriorAuthSubmissionPendingOutcome:
+      properties:
+        detail:
+          type: 'null'
+          title: Detail
+        result:
+          type: string
+          enum:
+          - Pending
+          const: Pending
+          title: Result
+          description: The Prior Authorization has been submitted but does not yet have a determination.
+          default: Pending
+        detail_code:
+          type: 'null'
+          title: Detail Code
+      type: object
+      required:
+      - detail
+      - detail_code
+      title: PriorAuthSubmissionPendingOutcome
+    api__schemas__platform__public_api__insurance_document__InsuranceDocument:
+      properties:
+        file_content:
+          type: string
+          title: File Content
+      type: object
+      required:
+      - file_content
+      title: InsuranceDocument
+      description: "Represents an insurance document.\n\nAttributes:\n    file_content (str): The content of the insurance document,\n                        base64 encoded"
+    CreateBenefitVerificationResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          $ref: '#/components/schemas/CreateBenefitVerificationResponseData'
+      type: object
+      title: CreateBenefitVerificationResponse
+      description: Models the response received upon creating a benefit verification request.
+    ReviewStatus:
+      type: string
+      enum:
+      - reviewed
+      - not_reviewed
+      title: ReviewStatus
+      description: An enumeration.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    DrugInfo:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the drug.
+        dosage:
+          type: string
+          title: Dosage
+          description: The prescribed dosage of the drug.
+        quantity:
+          type: number
+          title: Quantity
+          description: The quantity of the drug prescribed.
+        ndc:
+          type: string
+          title: Ndc
+          description: The National Drug Code (NDC) of the drug. Read-only; this field is ignored on input and populated from the resolved drug data.
+          readOnly: true
+          nullable: true
+      type: object
+      required:
+      - name
+      - dosage
+      - quantity
+      title: DrugInfo
+      description: Represents information about a specific drug.
+    ClientErrorCode:
+      type: string
+      enum:
+      - Patient Not Found
+      - Insurance Card OCR Failure
+      - Insurance Unable to Provide Information
+      - Document Quality Error
+      - Document Info Missing or Incorrect
+      - Unable to Route Call
+      - Unable to Gather Benefits
+      - Internal Error
+      - Provider Not Authorized
+      - Patient Consent Required
+      title: ClientErrorCode
+      description: An enumeration.
+    ClinicalQualificationResult:
+      properties:
+        drug:
+          allOf:
+          - $ref: '#/components/schemas/Drug'
+          title: Drug
+          description: The drug this clinical qualification is for.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ClinicalQualificationResultStatus'
+          description: The status of the clinical qualification for this prescription.
+        unqualified_reasons:
+          items:
+            $ref: '#/components/schemas/UnqualifiedReason'
+          type: array
+          title: Unqualified Reasons
+          description: If the status is ineligible, the reason(s) why. More structured fields will be added to this model in the future.
+      type: object
+      required:
+      - drug
+      - status
+      title: ClinicalQualificationResult
+    Patient:
+      properties:
+        address:
+          allOf:
+          - $ref: '#/components/schemas/Address'
+          title: Address
+          description: The patient's postal address
+        date_of_birth:
+          type: string
+          format: date
+          title: Date Of Birth
+          description: The patient's date of birth
+        email:
+          type: string
+          format: email
+          title: Email
+          description: The patient's email address
+        first_name:
+          type: string
+          minLength: 1
+          title: First Name
+          description: The patient's first name
+        last_name:
+          type: string
+          minLength: 1
+          title: Last Name
+          description: The patient's last name
+        gender:
+          allOf:
+          - $ref: '#/components/schemas/Gender'
+          description: The patient's gender
+        internal_id:
+          type: string
+          minLength: 1
+          title: Internal Id
+          description: Your internal ID for this patient. This is used for linking all of the requests for a given patient.
+        mrn:
+          type: string
+          title: Mrn
+          description: Medical record number
+        phone:
+          type: string
+          title: Phone
+          description: The patient's phone number
+      type: object
+      required:
+      - address
+      - date_of_birth
+      - first_name
+      - last_name
+      - gender
+      - internal_id
+      title: Patient
+      description: Represents patient information.
+    CreateClinicalQualificationRequest:
+      properties:
+        diagnoses:
+          items:
+            $ref: '#/components/schemas/Diagnosis'
+          type: array
+          title: Diagnoses
+          description: Clinical diagnoses for the patient in ICD-10 format. i.e. 'E66.9'
+        evidence:
+          items:
+            $ref: '#/components/schemas/EvidenceItem'
+          type: array
+          title: Evidence
+          description: A collection of evidence items supporting the authorization request. Any supporting evidence that doesn't belong in the other predefined fields can be added here.
+        patient:
+          allOf:
+          - $ref: '#/components/schemas/Patient'
+          title: Patient
+          description: Demographic information for the patient
+        insurance:
+          items:
+            $ref: '#/components/schemas/api__schemas__platform__public_api__insurance_document__InsuranceDocument'
+          type: array
+          title: Insurance
+          description: Array of insurance documents.
+        drugs:
+          items:
+            $ref: '#/components/schemas/Drug'
+          type: array
+          title: Drugs
+          description: Information regarding the drugs this clinical qualification check should be run for
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/Provider'
+          title: Provider
+          description: Details of the healthcare provider who created the prescription.
+        questionnaires:
+          items:
+            $ref: '#/components/schemas/Questionnaire'
+          type: array
+          title: Questionnaires
+          description: list of questionnaires. This is the best place to send structured Q&A format data, such as intake forms, etc.
+        visit_notes:
+          items:
+            $ref: '#/components/schemas/VisitNote'
+          type: array
+          title: Visit Notes
+          description: list of visit notes.
+      type: object
+      required:
+      - diagnoses
+      - patient
+      - insurance
+      - drugs
+      - provider
+      title: CreateClinicalQualificationRequest
+      description: 'Represents a request for creating a clinical qualification check for a list of medications. This includes detailed
+
+        information about the patient, their diagnosis, prescribed medication, evidence supporting the need for treatment,
+
+        insurance details, and responses to relevant questionnaires.'
+    UpdateNDPSubmissionRequest:
+      properties:
+        preferred_pharmacy_ncpdp_id:
+          type: string
+          pattern: ^\d{7}$
+          title: Preferred Pharmacy Ncpdp Id
+          description: The new NCPDP ID of the preferred pharmacy where the prescription will be transferred after the PA request has been approved.
+      type: object
+      title: UpdateNDPSubmissionRequest
+      description: 'Request to update the NDP submission details of a prior authorization.
+
+        Currently only supports updating the preferred pharmacy NCPDP ID.'
+    PlatformMessage:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of this message.
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+          description: Timestamp of when the message was sent
+        content:
+          type: string
+          title: Content
+          description: Message content
+        sent_by_name:
+          type: string
+          title: Sent By Name
+          description: Display name of the sender of this message.
+        direction:
+          type: string
+          enum:
+          - sent
+          - received
+          title: Direction
+          description: Direction of the message relative to you.
+        is_resolution:
+          type: boolean
+          title: Is Resolution
+          description: Whether this message resolves the thread.
+        attachments:
+          items:
+            $ref: '#/components/schemas/PlatformMessageAttachment'
+          type: array
+          title: Attachments
+          description: Files attached to this message.
+      type: object
+      required:
+      - id
+      - timestamp
+      - content
+      - sent_by_name
+      - direction
+      - is_resolution
+      title: PlatformMessage
+      description: A message within a message thread.
+    DrugHistory:
+      properties:
+        currently_taking_drugs:
+          items:
+            $ref: '#/components/schemas/DrugHistoryItem'
+          type: array
+          title: Currently Taking Drugs
+          description: The drugs that the patient is currently taking.
+          default: []
+        previously_taken_drugs:
+          items:
+            $ref: '#/components/schemas/DrugHistoryItem'
+          type: array
+          title: Previously Taken Drugs
+          description: The drugs that the patient has previously taken.
+          default: []
+      type: object
+      title: DrugHistory
+      description: Represents the history of drugs taken by a patient.
+    api__schemas__platform__public_api__benefit_verification__InsuranceDocument:
+      properties:
+        file_content:
+          type: string
+          title: File Content
+          description: The content of the insurance document, base64 encoded
+      type: object
+      required:
+      - file_content
+      title: InsuranceDocument
+      description: Represents an insurance document.
+    PatientPlanFundSource:
+      type: string
+      enum:
+      - commercial
+      - government
+      - question_not_asked
+      - unable_to_determine
+      title: PatientPlanFundSource
+      description: The source of the patient's plan funding.
+    PlatformMessageThread:
+      properties:
+        is_resolved:
+          type: boolean
+          title: Is Resolved
+          description: Whether this message thread is currently resolved. A thread may be unresolved/reopened if further discussion is needed.
+        messages:
+          items:
+            $ref: '#/components/schemas/PlatformMessage'
+          type: array
+          title: Messages
+          description: Messages in this thread.
+      type: object
+      required:
+      - is_resolved
+      - messages
+      title: PlatformMessageThread
+      description: A thread of messages related to this prior authorization.
+    MockResultCase:
+      type: string
+      enum:
+      - drugs_covered__prior_auth_required__has_copay
+      - drugs_covered__prior_auth_required__no_copay
+      - drugs_covered__prior_auth_not_required__has_copay
+      - drugs_covered__prior_auth_not_required__no_copay
+      - drugs_not_covered__prior_auth_na__no_copay
+      - patient_consent_required
+      - reverification__existing_pa
+      - reverification__no_existing_pa
+      title: MockResultCase
+      description: An enumeration.
+    EligibilityCheckResponseErrorItem:
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+          title: Status
+          default: error
+        error_code:
+          allOf:
+          - $ref: '#/components/schemas/EligibilityCheckErrorCode'
+          description: 'The error code indicating the specific error encountered. Possible values are:
+
+            - **provider_not_on_file**: The payer has no record of the provider ID supplied. Provider is not registered with the payer, provider must call payer directly to register their NPI.
+
+            - **patient_birth_date_does_not_match_database**: The DOB supplied doesn’t match the payer’s record for the member ID.
+
+            - **invalid_missing_subscriber_insured_id**: Member ID is empty, wrong length, or fails checksum/cross-file lookup. Or does not meet the payer requirements for subscriber ID. This error is rarely encountered.
+
+            - **subscriber_insured_not_found**: Member could not be located with the ID / name / DOB combination submitted. This error is the most common by far.
+
+            - **duplicate_subscriber_insured_id_number**: The ID supplied matches more than one person in the payer’s system; inquiry is ambiguous. This error is very rarely encountered, usually only around New Year.'
+        error_message:
+          type: string
+          maxLength: 256
+          title: Error Message
+          description: Human-readable description of the error. This always corresponds to the error code.
+        action_code:
+          allOf:
+          - $ref: '#/components/schemas/EligibilityCheckActionCode'
+          description: 'The action suggested by the payer in response to the error. Possible values are:
+
+            - **please_correct_and_resubmit**: The transaction failed basic edits (e.g., missing or invalid data). Fix the errors and resubmit. This indicates the data submitted is incorrect.
+
+            - **resubmission_not_allowed**: The payer will not accept this inquiry again in its current form; requires taking action outside of PMS / contacting the payer directly. For example, (49) PCP assignment requires updating, (76) duplicate patient records must be merged.'
+      type: object
+      required:
+      - error_code
+      - error_message
+      - action_code
+      title: EligibilityCheckResponseErrorItem
+    PriorAuthSubmissionApprovalOutcome:
+      properties:
+        detail:
+          type: string
+          maxLength: 2048
+          title: Detail
+          description: A human-readable note providing additional information about the outcome. This will usually be an automated message corresponding to `detail_code`. In some cases it will contain more specific details about the outcome. For example, "Patient must enroll in the Omada Health Program."
+        result:
+          type: string
+          enum:
+          - Approved
+          const: Approved
+          title: Result
+          description: The Prior Authorization has been approved.
+          default: Approved
+        detail_code:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthOutcomeApprovalDetail'
+          description: 'A code indicating the reason for the prior auth outcome. The possible values are:
+
+            - **prior_auth_not_required**: A prior authorization is not required.
+
+            - **approval**: The prior authorization request has been approved.
+
+            - **existing_approval**: An active prior authorization approval already exists for the patient.'
+        authorization_start_date:
+          type: string
+          format: date
+          title: Authorization Start Date
+          description: The date when the authorization became effective. This will typically only be populated for approved outcomes.
+        authorization_expiration:
+          type: string
+          format: date
+          title: Authorization Expiration
+          description: The date when the authorization expires. This information is not always available, but it will be included where possible.
+      type: object
+      title: PriorAuthSubmissionApprovalOutcome
+    ResponseEvidenceItem:
+      properties:
+        asset:
+          allOf:
+          - $ref: '#/components/schemas/AssetResponse'
+          title: Asset
+          description: File asset containing the evidence.
+        content:
+          type: object
+          title: Content
+          description: Detailed content of the evidence, which varies based on the type of evidence.
+        date_created:
+          type: string
+          format: date-time
+          title: Date Created
+          description: The date and time (if available) when the evidence was created. This is important for ensuring we have an accurate timeline of the patient's history.
+        title:
+          type: string
+          title: Title
+          description: Title of the evidence. This will be shown to users in the platform UI so it's recommended to give it a name that would be meaningful to them, such as 'Intake Form'
+      type: object
+      required:
+      - date_created
+      - title
+      title: ResponseEvidenceItem
+      description: Represents an item of evidence, which can include an associated digital asset.
+    CancelPriorAuthResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          type: 'null'
+          title: Data
+      type: object
+      title: CancelPriorAuthResponse
+      description: 'Represents the response structure for a POST /prior-authorization/:id/cancellation request.
+
+
+        This response is returned when a prior authorization is successfully cancelled.'
+    PrescriptionTransferAttempt:
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+          description: Timestamp of transfer attempt
+        pharmacy_ncpdp_id:
+          type: string
+          title: Pharmacy Ncpdp Id
+          description: NCPDP ID for the pharmacy receiving the transfer
+      type: object
+      required:
+      - timestamp
+      title: PrescriptionTransferAttempt
+    PriorAuthMockResultOther:
+      properties:
+        result:
+          type: string
+          enum:
+          - Other
+          const: Other
+          title: Result
+          description: The Prior Authorization has completed without an approval/denial determination.
+          default: Other
+        detail_code:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthOutcomeOtherDetailPublic'
+          description: 'A code indicating the reason for the prior auth outcome. The possible values are:
+
+            - **coverage_inactive**: The patient''s coverage has expired.
+
+            - **coverage_not_yet_started**: The patient''s coverage has not yet started.
+
+            - **no_pharmacy_benefits**: The patient''s insurance does not include pharmacy benefits.
+
+            - **payer_unable_to_locate_member**: The payer could not locate the member in their system.
+
+            - **npi_taxonomy_ineligible**: The payer rejected the request because the prescriber''s NPI taxonomy, provider type, specialty, or credentials are not eligible to submit this prior authorization.
+
+            - **payer_reported_invalid_patient_info**: The payer located the patient in their system but some submitted patient information does not match.
+
+            - **duplicate_request**: The request is a duplicate. Please cancel the existing request and resubmit if needed.
+
+            - **prior_auth_not_required**: A prior authorization is not required for this medication.
+
+            - **patient_consent_required**: The payer requires verbal consent from the patient before discussing or processing the prior authorization.
+
+            - **more_information_required**: Insufficient information provided to complete the prior authorization.
+
+            - **other**: A problem not listed here was encountered. Check the `outcome.detail` field for more information.'
+        trigger_message:
+          type: boolean
+          title: Trigger Message
+          description: If True, a message will be added to the prior authorization after creation. This simulates a follow-up message and will trigger the prior authorization message webhook.
+          default: false
+      type: object
+      title: PriorAuthMockResultOther
+      description: Represents a mock result for a prior authorization request.
+    DenialReasonAnalysis:
+      properties:
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: Categories describing the denial reason
+        explanation:
+          type: string
+          title: Explanation
+          description: Explanation of the denial
+        next_steps:
+          type: string
+          title: Next Steps
+          description: Suggested next steps to address the denial
+        next_steps_explanation:
+          type: string
+          title: Next Steps Explanation
+          description: Further details about the suggested next steps
+      type: object
+      required:
+      - categories
+      - explanation
+      - next_steps
+      - next_steps_explanation
+      title: DenialReasonAnalysis
+      description: Summary of why a prior authorization was denied.
+    CreatePriorAuthResponseData:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+          description: The unique identifier for the created prior authorization request.
+      type: object
+      required:
+      - id
+      title: CreatePriorAuthResponseData
+      description: Represents the data contained in the response for a create prior authorization request.
+    PrescriptionTransferErrorCode:
+      type: string
+      enum:
+      - pharmacy_does_not_exist
+      - pharmacy_permanently_closed
+      - pharmacy_unable_to_accept_transfer
+      - pharmacy_unable_to_fill_prescription
+      - prescription_transfer_not_received
+      - transfer_timed_out
+      - other
+      title: PrescriptionTransferErrorCode
+      description: An enumeration.
+    CreatePriorAuthResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          allOf:
+          - $ref: '#/components/schemas/CreatePriorAuthResponseError'
+          title: Error
+          description: Error payload of the response, containing details of the error that occurred during the creation of the prior authorization request.
+        data:
+          allOf:
+          - $ref: '#/components/schemas/CreatePriorAuthResponseData'
+          title: Data
+          description: Data payload of the response, containing details of the created prior authorization request, or None if the request was unsuccessful.
+      type: object
+      title: CreatePriorAuthResponse
+      description: Models the response received upon creating a prior authorization request.
+    GetPriorAuthResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          allOf:
+          - $ref: '#/components/schemas/GetPriorAuthResponseData'
+          title: Data
+          description: Contains the data from your prior authorization request, or None if an error occurred.
+      type: object
+      title: GetPriorAuthResponse
+      description: 'Represents the response structure for a GET /prior-authorization/:id request.
+
+
+        This class extends the generic ApiResponse, specifically tailored to handle responses related to
+
+        prior authorizations. It primarily includes the data attribute, which holds detailed information
+
+        about the benefit verification process and its results.'
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    EligibilityCheckResponseSuccessItem:
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          title: Status
+          default: success
+        health_plan_name:
+          type: string
+          title: Health Plan Name
+          description: Health plan name
+          nullable: true
+        plan_type:
+          allOf:
+          - $ref: '#/components/schemas/EligibilityCheckPlanType'
+          description: Type of the health plan if determined.
+        rx_bin:
+          type: string
+          pattern: ^\d{6}$
+          title: Rx Bin
+          description: Rx BIN
+          nullable: true
+        rx_pcn:
+          type: string
+          title: Rx Pcn
+          description: Rx PCN
+          nullable: true
+        rx_grp:
+          type: string
+          title: Rx Grp
+          description: Rx GRP
+          nullable: true
+        effective_start_date:
+          type: string
+          format: date
+          title: Effective Start Date
+          description: Effective start date of coverage
+        effective_end_date:
+          type: string
+          format: date
+          title: Effective End Date
+          description: Effective end date of coverage
+      type: object
+      required:
+      - effective_start_date
+      title: EligibilityCheckResponseSuccessItem
+    CreatePriorAuthRequest:
+      properties:
+        diagnoses:
+          items:
+            $ref: '#/components/schemas/Diagnosis'
+          type: array
+          title: Diagnoses
+          description: Clinical diagnoses for the patient in ICD-10 format. i.e. 'E66.9'
+        evidence:
+          items:
+            $ref: '#/components/schemas/EvidenceItem'
+          type: array
+          title: Evidence
+          description: A collection of evidence items supporting the authorization request. Any supporting evidence that doesn't belong in the other predefined fields can be added here.
+        patient:
+          allOf:
+          - $ref: '#/components/schemas/Patient'
+          title: Patient
+          description: Demographic information for the patient
+        insurance:
+          items:
+            $ref: '#/components/schemas/api__schemas__platform__public_api__insurance_document__InsuranceDocument'
+          type: array
+          title: Insurance
+          description: Insurance information for the patient. We will extract the required information from the insurance card images you provide. Please provide both the front and the back of the card. This is optional if you provide `insurance_content`, but highly recommended to ensure best results.
+        insurance_content:
+          allOf:
+          - $ref: '#/components/schemas/PartialInsuranceInfo'
+          title: Insurance Content
+          description: Insurance information for the patient. Values provided here will be used in combination with those extracted from any insurance cards provided. We recommend providing this information when available to ensure best results. If you provide both `insurance` and `insurance_content`, the values provided here will be used and the values extracted from `insurance` will be used as a fallback.
+        prescription:
+          anyOf:
+          - $ref: '#/components/schemas/CodedPrescription'
+          - $ref: '#/components/schemas/Prescription'
+          title: Prescription
+          description: Information regarding the prescription this prior authorization is being created for. Required unless `ndp_submission` is provided with a `prescription_message_id`. Prefer coded prescriptions when NDCs are available.
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/Provider'
+          title: Provider
+          description: Details of the healthcare provider who created the prescription.
+        pharmacy:
+          allOf:
+          - $ref: '#/components/schemas/Pharmacy'
+          title: Pharmacy
+          description: Information about the pharmacy where the prescription will be filled.
+        questionnaires:
+          items:
+            $ref: '#/components/schemas/Questionnaire'
+          type: array
+          title: Questionnaires
+          description: List of questionnaires. This is the best place to send structured Q&A format data, such as intake forms, etc.
+        visit_notes:
+          items:
+            $ref: '#/components/schemas/VisitNote'
+          type: array
+          title: Visit Notes
+          description: List of visit notes.
+        ndp_submission:
+          $ref: '#/components/schemas/PriorAuthRequestNDPSubmission'
+        resubmission_info:
+          $ref: '#/components/schemas/PriorAuthRequestResubmissionInfo'
+        appeal_details:
+          allOf:
+          - $ref: '#/components/schemas/AppealDetails'
+          title: Appeal Details
+          description: Details for submitting an appeal of a previously denied prior authorization. When provided, the request will be processed as an appeal.
+        mock_result:
+          anyOf:
+          - $ref: '#/components/schemas/PriorAuthMockResultApproved'
+          - $ref: '#/components/schemas/PriorAuthMockResultDenied'
+          - $ref: '#/components/schemas/PriorAuthMockResultOther'
+          - $ref: '#/components/schemas/PriorAuthMockResultNotSubmitted'
+          title: Mock Result
+          description: Specifies the simulated outcome for a completed prior authorization. Setting this field will instantly complete the prior authorization request and send a webhook with the value of this field. You will not be charged for these requests and you will not be sent the prior auth for manual review.
+        priority:
+          allOf:
+          - $ref: '#/components/schemas/Priority'
+          description: Specifies the priority of the prior authorization request. This is used to determine the order in which requests are processed. Lower values indicate higher priority.
+          default: 2
+        trigger_benefit_verification:
+          allOf:
+          - $ref: '#/components/schemas/TriggerBenefitVerificationConfig'
+          title: Trigger Benefit Verification
+          description: If provided and enabled, triggers a benefit verification to check drug coverage before the PA proceeds.
+      type: object
+      required:
+      - diagnoses
+      - patient
+      - provider
+      title: CreatePriorAuthRequest
+      description: 'Represents a request for creating a prior authorization for a medication. This includes detailed
+
+        information about the patient, their diagnosis, prescribed medication, evidence supporting the need for treatment,
+
+        insurance details, and responses to relevant questionnaires.'
+    BenefitVerificationStatus:
+      type: string
+      enum:
+      - pending
+      - failed
+      - completed
+      - cancelled
+      title: BenefitVerificationStatus
+      description: An enumeration.
+    PriorAuthFeedbackRequest:
+      properties:
+        category:
+          type: string
+          title: Category
+          description: User-defined category for the feedback. Used for grouping in analytics.
+        message:
+          type: string
+          title: Message
+          description: Free-text description of the issue or feedback.
+      type: object
+      required:
+      - category
+      - message
+      title: PriorAuthFeedbackRequest
+      description: Payload for submitting feedback related to a prior authorization request.
+    ProviderLookupResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/ProviderLookupStatus'
+        individual:
+          $ref: '#/components/schemas/ProviderIdentitySchema'
+        candidates:
+          items:
+            $ref: '#/components/schemas/ProviderIdentitySchema'
+          type: array
+          title: Candidates
+      type: object
+      required:
+      - status
+      title: ProviderLookupResponse
+      description: "Response shape for ``POST /provider/lookup``.\n\nThe fields populated depend on ``status``:\n- ``active``: ``individual`` is set; ``candidates`` is empty.\n- ``deactivated``: ``individual`` is the deactivated identity;\n  ``candidates`` is the active replacements found via name+state search\n  (may be empty when the deactivated record has no name on file).\n- ``not_found`` / ``registry_error``: both fields empty.\n- ``search_results``: ``candidates`` lists active matches; ``individual``\n  is empty."
+    GetBenefitVerificationResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          $ref: '#/components/schemas/GetBenefitVerificationResponseData'
+      type: object
+      title: GetBenefitVerificationResponse
+      description: 'Represents the response structure for a benefit verification query in a healthcare context.
+
+
+        This class extends the generic ApiResponse, specifically tailored to handle responses related to
+
+        benefit verifications. It primarily includes the data attribute, which holds detailed information
+
+        about the benefit verification process and its results.'
+    OptionalAddress:
+      properties:
+        street:
+          type: string
+          title: Street
+          description: Street address of residence.
+        street_line_2:
+          type: string
+          title: Street Line 2
+          description: Additional street address information.
+        city:
+          type: string
+          title: City
+          description: City of residence.
+        state_province:
+          type: string
+          title: State Province
+          description: State or province of residence.
+        zip_postal_code:
+          type: string
+          title: Zip Postal Code
+          description: ZIP or postal code part of the address.
+        country:
+          type: string
+          title: Country
+          description: Country of residence.
+      type: object
+      title: OptionalAddress
+      description: 'Represents a postal address with optional fields.
+
+        Used for cases where address information may not be complete at creation time.'
+    PriorAuthActivityLogSentFax:
+      properties:
+        id:
+          type: string
+          title: Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        type:
+          type: string
+          enum:
+          - sent_fax
+          title: Type
+          default: sent_fax
+        details:
+          $ref: '#/components/schemas/PriorAuthActivityLogFaxDetails'
+      type: object
+      required:
+      - id
+      - created_at
+      - details
+      title: PriorAuthActivityLogSentFax
+    EligibilityCheckActionCode:
+      type: string
+      enum:
+      - please_correct_and_resubmit
+      - resubmission_not_allowed
+      title: EligibilityCheckActionCode
+      description: Action code indicating the action suggested by the payer in the error case
+    PriorAuthActivityLogReceivedFax:
+      properties:
+        id:
+          type: string
+          title: Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        type:
+          type: string
+          enum:
+          - received_fax
+          title: Type
+          default: received_fax
+        details:
+          $ref: '#/components/schemas/PriorAuthActivityLogFaxDetails'
+      type: object
+      required:
+      - id
+      - created_at
+      - details
+      title: PriorAuthActivityLogReceivedFax
+    PrescriptionTransferConfirmationAttemptOutcome:
+      type: string
+      enum:
+      - success
+      - failed
+      title: PrescriptionTransferConfirmationAttemptOutcome
+      description: An enumeration.
+    CreateClinicalQualificationResponseData:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique identifier for the created clinical qualification request.
+      type: object
+      required:
+      - id
+      title: CreateClinicalQualificationResponseData
+      description: Represents the data contained in the response for a create clinical qualification request.
+    VisitNote:
+      properties:
+        title:
+          type: string
+          minLength: 1
+          title: Title
+          description: The title of the visit note. This is optional and can be used to give the note a meaningful name, such as 'Initial Consultation'.
+        content:
+          type: string
+          minLength: 1
+          title: Content
+          description: The content of the visit note.
+        date_created:
+          type: string
+          format: date-time
+          title: Date Created
+          description: The date and time (if available) when the visit note was created. This is important for ensuring we have an accurate timeline of the patient's history.
+      type: object
+      required:
+      - content
+      - date_created
+      title: VisitNote
+      description: Represents a note made during a patient visit.
+    CreateBenefitVerificationRequest:
+      properties:
+        priority:
+          allOf:
+          - $ref: '#/components/schemas/Priority'
+          description: The priority of the benefit verification request, where 0 is most urgent and 3 is least urgent. This will determine the order in which the request is processed.
+          default: 3
+          gte: 0
+          lte: 3
+        replaces:
+          type: string
+          title: Replaces
+          description: If this Benefit Verification is being submitted as a replacement for a canceled one, the ID of the canceled Benefit Verification it replaces.
+        drugs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/CodedDrugInfo'
+            type: array
+            maxItems: 7
+            minItems: 1
+          - items:
+              $ref: '#/components/schemas/DrugInfo'
+            type: array
+            maxItems: 7
+            minItems: 1
+          title: Drugs
+          description: Array of medications for which to perform the benefit verification. Prefer coded drugs when NDCs are available.
+        drug_history:
+          allOf:
+          - $ref: '#/components/schemas/DrugHistory'
+          title: Drug History
+          description: The patient's drug history. Although not a required field, this will increase the completion rate of your benefit verifications by 5%-10% if you provide it.
+        diagnoses:
+          items:
+            $ref: '#/components/schemas/Diagnosis'
+          type: array
+          title: Diagnoses
+          description: Clinical diagnoses for the patient in ICD-10 format. i.e. 'E66.9'
+        insurance:
+          items:
+            $ref: '#/components/schemas/api__schemas__platform__public_api__benefit_verification__InsuranceDocument'
+          type: array
+          title: Insurance
+          description: Insurance information for the patient. We will extract the required information from the insurance card images you provide. Please provide both the front and the back of the card. This is optional if you provide `insurance_content`, but highly recommended to ensure best results.
+        insurance_content:
+          allOf:
+          - $ref: '#/components/schemas/PartialInsuranceInfo'
+          title: Insurance Content
+          description: Insurance information for the patient. Values provided here will be used in combination with those extracted from any insurance cards provided. We recommend providing this information when available to ensure best results. If you provide both `insurance` and `insurance_content`, the values provided here will be used and the values extracted from `insurance` will be used as a fallback.
+        patient:
+          allOf:
+          - $ref: '#/components/schemas/api__schemas__platform__public_api__common__PatientInfo'
+          title: Patient
+          description: Demographic information for the patient
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/ProviderInfo'
+          title: Provider
+          description: Details of the healthcare provider whose NPI number can be used for the benefit verification.
+        entity:
+          allOf:
+          - $ref: '#/components/schemas/EntityInfo'
+          title: Entity
+          description: A large proportion (20%+) of payers will often ask for information on the legal entity that the provider is associated with. Without this information the benefit verification will fail. Although this is currently optional it will be required in the future. We highly recommend providing this information.
+        mock_result:
+          allOf:
+          - $ref: '#/components/schemas/MockResult'
+          title: Mock Result
+          description: Specifies the simulated outcome for a completed verification. These values will be applied to all drugs in the request.
+        use_patient_plan_fund_source_check:
+          type: boolean
+          title: Use Patient Plan Fund Source Check
+          description: Whether to check the patient's plan fund source during the benefit verification call.
+          default: false
+      type: object
+      required:
+      - drugs
+      - patient
+      - provider
+      title: CreateBenefitVerificationRequest
+      description: Models a request to create a benefit verification.
+    Asset:
+      properties:
+        file_content:
+          type: string
+          minLength: 1
+          title: File Content
+          description: The file content, encoded in Base64 format. Currently only PDF files are supported. This field cannot be used if `file_url` is provided.
+        file_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: File Url
+          description: URL pointing to the file. The file will be downloaded immediately. This field cannot be used if `file_content` is provided.
+      type: object
+      title: Asset
+    CancelPriorAuthPrescriptionTransferResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          type: 'null'
+          title: Data
+      type: object
+      title: CancelPriorAuthPrescriptionTransferResponse
+      description: 'Represents the response structure for a POST /prior-authorization/:id/prescription-transfer/cancel request.
+
+
+        This response is returned when a prior authorization is successfully cancelled.'
+    PriorAuthActivityLogFollowUpCallDetails:
+      properties:
+        notes:
+          type: string
+          title: Notes
+          description: Notes from the follow-up call.
+        recording_url:
+          type: string
+          title: Recording Url
+          description: URL to download the call recording.
+        transcript:
+          type: string
+          title: Transcript
+          description: Transcript of the follow-up call if available.
+      type: object
+      title: PriorAuthActivityLogFollowUpCallDetails
+    PrescriptionTransfer:
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/PrescriptionTransferStatus'
+          description: Status of the pharmacy transfer
+        confirmed:
+          type: boolean
+          title: Confirmed
+          description: True if completed and confirmation succeeded
+          default: false
+        error_code:
+          allOf:
+          - $ref: '#/components/schemas/PrescriptionTransferErrorCode'
+          description: 'Error code if transfer failed.
+
+
+            Note: this list of codes may grow over time, so your implementation should handle unrecognized values (probably in the same way as ''other'').
+
+            - **pharmacy_does_not_exist**: The specified pharmacy does not exist in our records.
+
+            - **pharmacy_permanently_closed**: The pharmacy has been permanently closed and cannot accept any transfers.
+
+            - **pharmacy_unable_to_accept_transfer**: The pharmacy is unable to accept the prescription transfer.
+
+            - **pharmacy_unable_to_fill_prescription**: The pharmacy cannot fill the prescription due to restrictions or lack of stock.
+
+            - **prescription_transfer_not_received**: The pharmacy did not receive the prescription transfer, possibly after several attempts.
+
+            - **transfer_timed_out**: The prescription transfer timed out before it could be completed.
+
+            - **other**: An unexpected error occurred during the prescription transfer process.'
+        transfer_attempts:
+          items:
+            $ref: '#/components/schemas/PrescriptionTransferAttempt'
+          type: array
+          title: Transfer Attempts
+          description: List of transfer attempts
+        confirmation_attempts:
+          items:
+            $ref: '#/components/schemas/PrescriptionTransferConfirmationAttempt'
+          type: array
+          title: Confirmation Attempts
+          description: List of confirmation attempts
+      type: object
+      required:
+      - status
+      title: PrescriptionTransfer
+      description: Information about prescription transfer status and attempts
+    PriorAuthMockResultDenied:
+      properties:
+        result:
+          type: string
+          enum:
+          - Denied
+          const: Denied
+          title: Result
+          description: The Prior Authorization has been denied.
+          default: Denied
+        detail_code:
+          allOf:
+          - $ref: '#/components/schemas/PriorAuthOutcomeDenialDetail'
+          description: 'A code indicating the reason for the prior auth outcome. The possible values are:
+
+            - **formulary_alternative_preferred**: The formulary alternative is preferred.
+
+            - **medical_necessity_criteria_not_met**: The medical necessity criteria are not met.
+
+            - **plan_exclusion**: The drug is excluded by the plan.
+
+            - **step_therapy_criteria_not_met**: The step therapy criteria are not met.
+
+            - **existing_denial**: An existing denial is on file for this medication and patient. Please follow the appeals process if you wish to adjust this outcome
+
+            - **coverage_limits_exceeded**: The coverage limits have been exceeded for this patient''s plan.
+
+            - **prior_weight_loss_program_required**: The patient has not completed the required weight loss program prior to therapy.
+
+            - **unknown**: The prior authorization request has been denied.'
+        client_code:
+          type: string
+          title: Client Code
+          description: A client-specific outcome code for the denial. This will be returned in the outcome response.
+      type: object
+      title: PriorAuthMockResultDenied
+      description: Represents a mock result for a prior authorization request.
+    Provider:
+      properties:
+        address:
+          allOf:
+          - $ref: '#/components/schemas/OptionalAddress'
+          title: Address
+          description: The provider's postal address.
+        fax:
+          type: string
+          title: Fax
+          description: The provider's fax number.
+        first_name:
+          type: string
+          minLength: 1
+          title: First Name
+          description: The provider's first name.
+        internal_id:
+          type: string
+          title: Internal Id
+          description: Your internal ID for this provider. This is used for linking all of the requests for a given provider.
+        last_name:
+          type: string
+          minLength: 1
+          title: Last Name
+          description: The provider's last name.
+        npi:
+          type: string
+          minLength: 1
+          title: Npi
+          description: The provider's NPI.
+        phone:
+          type: string
+          title: Phone
+          description: The provider's phone number.
+      type: object
+      required:
+      - address
+      - first_name
+      - last_name
+      - npi
+      title: Provider
+      description: Represents a healthcare provider.
+    PlatformMessageAttachment:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of this attachment.
+        file_name:
+          type: string
+          title: File Name
+          description: Original filename.
+        url:
+          type: string
+          title: Url
+          description: Download URL for the attachment.
+      type: object
+      required:
+      - id
+      - file_name
+      - url
+      title: PlatformMessageAttachment
+    DocType:
+      type: string
+      enum:
+      - application/pdf
+      - application/msword
+      - text/plain
+      - application/vnd.ms-excel
+      title: DocType
+      description: An enumeration.
+    PatientCoverageType:
+      type: string
+      enum:
+      - medicare
+      - medicare_advantage
+      - tricare
+      - medicaid
+      - other
+      - question_not_asked
+      - unable_to_determine
+      title: PatientCoverageType
+      description: The type of coverage the patient has.
+    GetClinicalQualificationResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          allOf:
+          - $ref: '#/components/schemas/GetClinicalQualificationResponseData'
+          title: Data
+          description: An instance of GetClinicalQualificationResponseData containing detailed information about the prior auth, or None if no such data is available.
+      type: object
+      title: GetClinicalQualificationResponse
+      description: 'Represents the response structure for a GET /prior-authorization/:id request.
+
+
+        This class extends the generic ApiResponse, specifically tailored to handle responses related to
+
+        clinical qualifications. It primarily includes the data attribute, which holds detailed information
+
+        about the benefit verification process and its results.'
+    EligibilityCheckPlanType:
+      type: string
+      enum:
+      - medicare
+      - medicare_advantage
+      - medicaid
+      - tricare
+      title: EligibilityCheckPlanType
+      description: An enumeration.
+    Drug:
+      properties:
+        days_supply:
+          type: integer
+          title: Days Supply
+          description: The number of days the prescription will be expected to last.
+        quantity:
+          type: integer
+          title: Quantity
+          description: The quantity of the medication.
+        directions:
+          type: string
+          minLength: 1
+          title: Directions
+          description: Instructions on how the medication should be taken.
+        drug_name:
+          type: string
+          minLength: 1
+          title: Drug Name
+          description: The name of the medication.
+        strength:
+          type: string
+          minLength: 1
+          title: Strength
+          description: The strength of the medication.
+        dose_form:
+          allOf:
+          - $ref: '#/components/schemas/DoseForm'
+          description: The form of the medication.
+        route_of_administration:
+          allOf:
+          - $ref: '#/components/schemas/RouteOfAdministration'
+          description: The route of administration for the medication.
+        extra:
+          type: object
+          title: Extra
+          description: An optional dictionary containing additional information related to the drug or future prescription.
+        expected_length_of_therapy:
+          type: string
+          title: Expected Length Of Therapy
+          description: The expected length of therapy for the prescribed drug. Defaults to 'Until No Longer Needed' if not provided.
+          examples:
+          - Until No Longer Needed
+          - 12 months
+          - 6 weeks
+      type: object
+      required:
+      - days_supply
+      - quantity
+      - directions
+      - drug_name
+      - strength
+      - dose_form
+      - route_of_administration
+      title: Drug
+      description: 'Represents a medication prescribed by a healthcare provider. Prefer
+
+        CodedDrug when NDCs are available.'
+    ApiError:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        code:
+          type: string
+          title: Code
+      type: object
+      required:
+      - title
+      - description
+      - code
+      title: ApiError
+    Address:
+      properties:
+        street:
+          type: string
+          minLength: 1
+          title: Street
+          description: Street address of residence.
+        street_line_2:
+          type: string
+          title: Street Line 2
+          description: Additional street address information.
+        city:
+          type: string
+          minLength: 1
+          title: City
+          description: City of residence.
+        state_province:
+          type: string
+          minLength: 1
+          title: State Province
+          description: State or province of residence.
+        zip_postal_code:
+          type: string
+          minLength: 1
+          title: Zip Postal Code
+          description: ZIP or postal code part of the address.
+        country:
+          type: string
+          minLength: 1
+          title: Country
+          description: Country of residence.
+      type: object
+      required:
+      - street
+      - city
+      - state_province
+      - zip_postal_code
+      - country
+      title: Address
+      description: Represents a postal address.
+    AppealDetails:
+      properties:
+        appeal_letter:
+          allOf:
+          - $ref: '#/components/schemas/AppealLetter'
+          title: Appeal Letter
+          description: Appeal letter file to submit with the appeal.
+        is_urgent:
+          type: boolean
+          title: Is Urgent
+          description: Whether this appeal should be treated as urgent.
+          default: false
+      type: object
+      required:
+      - appeal_letter
+      title: AppealDetails
+      description: Details for submitting an appeal of a previously denied prior authorization.
+    PriorAuthRequestResubmissionInfo:
+      properties:
+        previous_prior_auth_request_id:
+          type: string
+          title: Previous Prior Auth Request Id
+          description: Identifier of the previous prior authorization request.
+        note:
+          type: string
+          title: Note
+          description: Reason for resubmission or additional instructions for this attempt. Required unless `appeal_details` is provided.
+        quantity_limit_exception_reason:
+          type: string
+          title: Quantity Limit Exception Reason
+          description: Explanation for requesting an exception to the plan's quantity limit. Required when resubmitting due to a quantity limit denial.
+      type: object
+      title: PriorAuthRequestResubmissionInfo
+      description: Information provided when resubmitting a prior authorization request.
+    PrescriptionTransferStatus:
+      type: string
+      enum:
+      - in_progress
+      - cancelled
+      - awaiting_provider_response
+      - completed
+      - error
+      title: PrescriptionTransferStatus
+      description: An enumeration.
+    MockResultStatus:
+      type: string
+      enum:
+      - completed
+      - failed
+      title: MockResultStatus
+      description: An enumeration.
+    ApiResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          title: Data
+      type: object
+      title: ApiResponse
+    api__schemas__platform__public_api__common__PatientInfo:
+      properties:
+        internal_id:
+          type: string
+          minLength: 1
+          title: Internal Id
+          description: Your internal ID for this patient. This is used for linking all of the requests for a given patient.
+        first_name:
+          type: string
+          minLength: 1
+          title: First Name
+          description: The first name of the patient.
+        last_name:
+          type: string
+          minLength: 1
+          title: Last Name
+          description: The last name of the patient.
+        gender:
+          allOf:
+          - $ref: '#/components/schemas/Gender'
+          description: The gender of the patient.
+        date_of_birth:
+          type: string
+          format: date
+          title: Date Of Birth
+          description: The date of birth of the patient.
+        address:
+          allOf:
+          - $ref: '#/components/schemas/Address'
+          title: Address
+          description: The address of the patient.
+        phone:
+          type: string
+          title: Phone
+          description: The contact phone number of the patient.
+        email:
+          type: string
+          title: Email
+          description: The contact email address of the patient.
+      type: object
+      required:
+      - internal_id
+      - first_name
+      - last_name
+      - gender
+      - date_of_birth
+      - address
+      title: PatientInfo
+      description: Contains information about a patient.
+    PriorAuthActivityLogFaxDetails:
+      properties:
+        url:
+          type: string
+          title: Url
+          description: A signed URL to download the fax file. Note that this URL has a short lifespan and should be used immediately to download the file.
+      type: object
+      required:
+      - url
+      title: PriorAuthActivityLogFaxDetails
+    CopayOption:
+      properties:
+        amount_cents:
+          type: integer
+          title: Amount Cents
+          description: The amount of the copay in cents.
+        supply_duration_days:
+          type: integer
+          title: Supply Duration Days
+          description: The duration of the supply in days. Use null if unknown.
+      type: object
+      title: CopayOption
+    ProviderLookupRequest:
+      properties:
+        npi:
+          type: string
+          title: Npi
+          description: The NPI to look up. Optional names may be included as sandbox fallback hints.
+        first_name:
+          type: string
+          title: First Name
+          description: First name for name+state search. Optional when last_name is provided.
+        last_name:
+          type: string
+          title: Last Name
+          description: Last name for name+state search. Required for name search.
+        state:
+          type: string
+          title: State
+          description: Two-letter state abbreviation. Optional in name searches.
+      type: object
+      title: ProviderLookupRequest
+      description: 'Body for ``POST /provider/lookup``.
+
+
+        Either ``npi`` or a ``last_name`` must be supplied. NPI lookup branches on
+
+        the registry''s ``status`` value and may return active, deactivated (with
+
+        name+state search candidates), not_found, or registry_error. Optional names
+
+        may accompany NPI lookup as hints for sandbox mock-NPI fallback. A
+
+        name+state body without NPI always returns search_results.'
+    EligibilityCheckErrorCode:
+      type: string
+      enum:
+      - provider_not_on_file
+      - patient_birth_date_does_not_match_database
+      - invalid_missing_subscriber_insured_id
+      - subscriber_insured_not_found
+      - duplicate_subscriber_insured_id_number
+      title: EligibilityCheckErrorCode
+      description: Error code indicating the specific error encountered
+    Question:
+      properties:
+        answer:
+          type: string
+          minLength: 1
+          title: Answer
+          description: The answer to the question.
+        choices:
+          items:
+            type: string
+          type: array
+          title: Choices
+          description: 'Optional list of choices for the question. If provided, the answer must be one of the choices. It''s important to include this list of choices for any multiple choice question. This allows our AI to know what a user has effectively said ''no'' to by picking another option. I.e. for a question ''Do you have any of the following conditions: Diabetes, Heart Disease, Cancer, None of the above'' if the user answers ''None of the above'' we can infer that they don''t have any of those conditions. Without the choices list we would have no way of knowing that.'
+        question:
+          type: string
+          minLength: 1
+          title: Question
+          description: The question to be answered.
+      type: object
+      required:
+      - answer
+      - question
+      title: Question
+      description: Represents a single question, as part of a questionnaire.
+    User:
+      properties:
+        first_name:
+          type: string
+          title: First Name
+          description: The first name of the user.
+        last_name:
+          type: string
+          title: Last Name
+          description: The last name of the user.
+        email:
+          type: string
+          title: Email
+          description: The email of the user.
+      type: object
+      required:
+      - email
+      title: User
+    GetBenefitVerificationResponseData:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of the benefit verification request.
+        object:
+          type: string
+          enum:
+          - benefit_verification
+          title: Object
+          description: The type of object the response is about, which is 'benefit_verification'.
+          default: benefit_verification
+        status:
+          allOf:
+          - $ref: '#/components/schemas/BenefitVerificationStatus'
+          description: Benefit Verifications will always start in the pending state. Once the verification is complete, the status will change to completed or failed. If the verification is still in progress, the status will remain pending.
+        status_description:
+          type: string
+          title: Status Description
+          description: Provides additional information about the verification status.
+        error:
+          allOf:
+          - $ref: '#/components/schemas/FailureDetails'
+          title: Error
+          description: Specific error information if the benefit verification failed
+        review_status:
+          allOf:
+          - $ref: '#/components/schemas/ReviewStatus'
+          description: The status on if this benefits investigation has been reviewed in the portal. Users of the portal can click the 'Mark as Reviewed' button to mark the benefits investigation as reviewed.
+        drugs:
+          items:
+            $ref: '#/components/schemas/DrugCoverageInfo'
+          type: array
+          title: Drugs
+          description: List of drug coverage information related to the verification.
+        drug_history:
+          allOf:
+          - $ref: '#/components/schemas/DrugHistory'
+          title: Drug History
+          description: The patient's drug history
+        diagnoses:
+          items:
+            $ref: '#/components/schemas/Diagnosis'
+          type: array
+          title: Diagnoses
+          description: List of diagnoses for the patient.
+        patient:
+          allOf:
+          - $ref: '#/components/schemas/api__schemas__platform__public_api__common__PatientInfo'
+          title: Patient
+          description: Demographic information for the patient
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/ProviderInfo'
+          title: Provider
+          description: Details of the healthcare provider whose NPI number can be used for the benefit verification.
+        entity:
+          allOf:
+          - $ref: '#/components/schemas/EntityInfo'
+          title: Entity
+          description: A large proportion (20%+) of payers will often ask for information on the legal entity that the provider is associated with. Without this information the benefit verification will fail. Although this is currently optional it will be required in the future. We highly recommend providing this information.
+        insurance:
+          items:
+            $ref: '#/components/schemas/InsuranceDocumentInfo'
+          type: array
+          title: Insurance
+          description: Insurance information for the patient.
+        pharmacy_benefit_manager_name:
+          type: string
+          title: Pharmacy Benefit Manager Name
+          description: The name of the pharmacy benefit manager (PBM) responsible for the patient's coverage. E.g. 'OptumRx' or 'Express Scripts'. May be null if the PBM's name is not available.
+        patient_coverage_status:
+          allOf:
+          - $ref: '#/components/schemas/PatientCoverageStatus'
+          description: 'This field indicates the insurance coverage status of the patient. The options are:
+
+            - **covered**: Indicates that the patient is covered by the insurance plan.
+
+            - **patient_not_found**: Indicates that the patient could not be found in the insurance database.
+
+            - **coverage_expired**: Implies that the patient''s insurance coverage has expired.
+
+            - **coverage_not_started**: Suggests that the patient''s insurance coverage is in place but has not started yet.
+
+            - **patient_not_covered_unspecified**: Used when the patient is not covered by the insurance plan, but the specific reason is not specified.
+
+            - **unknown**: We were unable to determine the patient''s insurance coverage status.'
+        verification_methods:
+          items:
+            $ref: '#/components/schemas/BenefitVerificationMethodInfo'
+          type: array
+          title: Verification Methods
+          description: List of verification methods used to determine the coverage status of the drug. These will contain evidence from the verification procedure, such as a transcript of the phone conversation between the AI and the insurance provider.
+        mock_result:
+          allOf:
+          - $ref: '#/components/schemas/MockResult'
+          title: Mock Result
+          description: Details of the mock result if one was used for this benefit verification.
+        patient_plan_fund_source:
+          allOf:
+          - $ref: '#/components/schemas/PatientPlanFundSource'
+          description: 'The source of the patient''s plan funding. The options are:
+
+            - commercial: The patient''s plan is commercial insurance.
+
+            - government: The patient''s plan is government-funded.
+
+            - question_not_asked: The patient''s plan funding source was not asked.
+
+            - unable_to_determine: The patient''s plan funding source was asked, but could not be determined.'
+          default: question_not_asked
+        patient_coverage_type:
+          allOf:
+          - $ref: '#/components/schemas/PatientCoverageType'
+          description: 'The type of coverage the patient has. The options are:
+
+            - medicare
+
+            - medicare_advantage
+
+            - tricare
+
+            - medicaid
+
+            - other
+
+            - question_not_asked
+
+            - unable_to_determine'
+          default: question_not_asked
+        priority:
+          allOf:
+          - $ref: '#/components/schemas/Priority'
+          description: The priority of the benefit verification request, as defined in the creation request.
+        replaced_by:
+          type: string
+          title: Replaced By
+          description: If this Benefit Verification was canceled and subsequently resubmitted, this field stores the ID of the new (replacement) Benefit Verification.
+        replaces:
+          type: string
+          title: Replaces
+          description: If this Benefit Verification was submitted as a replacement for a canceled one, this field stores the ID of the canceled Benefit Verification it replaces.
+        triggered_by_pa_id:
+          type: string
+          title: Triggered By Pa Id
+          description: The ID of the PA request that triggered this benefit verification, if applicable.
+      type: object
+      required:
+      - id
+      - status
+      - status_description
+      - review_status
+      - drugs
+      - patient
+      - provider
+      - insurance
+      - patient_coverage_status
+      - verification_methods
+      - priority
+      title: GetBenefitVerificationResponseData
+      description: Represents the data the data contained in the response for a get benefit verification request.
+    CancelPriorAuthRequest:
+      properties:
+        cancellation_reason:
+          type: string
+          minLength: 1
+          title: Cancellation Reason
+          description: Reason for cancellation. This is used for analytics purposes.
+      type: object
+      required:
+      - cancellation_reason
+      title: CancelPriorAuthRequest
+      description: Request to cancel a prior authorization.
+    EntityInfo:
+      properties:
+        legal_name:
+          type: string
+          title: Legal Name
+          description: The legal name of the entity. This is the name that the provider is associated with.
+        tax_id:
+          type: string
+          title: Tax Id
+          description: The tax identifier of the entity. This is the tax ID that the provider is associated with.
+      type: object
+      title: EntityInfo
+      description: Contains information about a healthcare entity.
+    CodedPrescription:
+      properties:
+        ndc:
+          type: string
+          pattern: ^(\d{5}-?\d{4}-?\d{2}|\d{4,5}-\d{3,4}-\d{1,2}|\d{5}-?\d{4}|\d{4,5}-\d{3,4})$
+          title: Ndc
+          description: The NDC of the medication. Both 10 and 11-digit NDCs are supported.
+          examples:
+          - 00169-4505-14
+          - 0169-4505-14
+          - 00169450514
+        directions:
+          type: string
+          minLength: 1
+          title: Directions
+          description: Instructions on how the medication should be taken.
+          examples:
+          - Inject 0.25 mg under the skin once weekly
+          - Take 1 tablet by mouth daily
+        quantity:
+          type: integer
+          title: Quantity
+          description: The quantity of the medication.
+          examples:
+          - 1
+        quantity_unit_of_measure:
+          type: string
+          title: Quantity Unit Of Measure
+          description: The unit of measurement for the quantity of the medication (subset code C89510). Either an NCIt code or the name of the term. If not provided, C38046 (Unspecified) will be used.
+          default: C38046
+          examples:
+          - C48504
+          - Kit
+        days_supply:
+          type: integer
+          title: Days Supply
+          description: The number of days the prescription will be expected to last.
+          examples:
+          - 28
+          - 30
+          - 90
+        expected_length_of_therapy:
+          type: string
+          title: Expected Length Of Therapy
+          description: The expected length of therapy for the prescribed drug. Defaults to 'Until No Longer Needed' if not provided.
+          examples:
+          - Until No Longer Needed
+          - 12 months
+          - 6 weeks
+        extra:
+          type: object
+          title: Extra
+          description: An optional dictionary containing additional information related to the drug or future prescription.
+          examples:
+          - notes: Patient prefers brand name
+            prior_auth_reference: ABC123
+        prescription_date:
+          type: string
+          format: date-time
+          title: Prescription Date
+          description: The date the prescription was issued
+      type: object
+      required:
+      - ndc
+      - directions
+      - quantity
+      - days_supply
+      - prescription_date
+      title: CodedPrescription
+      description: 'Represents a prescription issued by a healthcare provider. This is an
+
+        alternative to the Prescription model that is more closely aligned with
+
+        NCPDP standards and helps reduce any confusion on the payer-side. Prefer
+
+        this model over Prescription when NDCs are available.'
+    PartialInsuranceInfo:
+      properties:
+        client_name:
+          type: string
+          title: Client Name
+          description: The client/employer name.
+        group_number:
+          type: string
+          title: Group Number
+          description: The group number on the card.
+        member_name:
+          type: string
+          title: Member Name
+          description: The member name on the card.
+        member_number:
+          type: string
+          title: Member Number
+          description: The member number on the card.
+        payer_name:
+          type: string
+          title: Payer Name
+          description: The payer name on the card. This field is not normalized, so the same plan may have different names depending on the way it appears on the card. i.e. 'United Healthcare', 'United', 'United Health' could all appear
+        plan_name:
+          type: string
+          title: Plan Name
+          description: The plan name on the card. This field is not normalized, so the same plan may have different names depending on the way it appears on the card
+        rx_bin:
+          type: string
+          title: Rx Bin
+          description: The Rx BIN number on the card.
+        rx_group:
+          type: string
+          title: Rx Group
+          description: The Rx group number on the card.
+        rx_pcn:
+          type: string
+          title: Rx Pcn
+          description: The Rx PCN number on the card.
+      type: object
+      title: PartialInsuranceInfo
+    AssetResponse:
+      properties:
+        url:
+          type: string
+          minLength: 1
+          title: Url
+          description: The URL where the asset can be accessed.
+        file_type:
+          allOf:
+          - $ref: '#/components/schemas/DocType'
+          description: MIME type of the file. e.g. `application/pdf`
+      type: object
+      required:
+      - url
+      - file_type
+      title: AssetResponse
+    Questionnaire:
+      properties:
+        questions:
+          items:
+            $ref: '#/components/schemas/Question'
+          type: array
+          title: Questions
+          description: A list of questions included in the questionnaire.
+        date_created:
+          type: string
+          format: date-time
+          title: Date Created
+          description: The date and time when the questionnaire was answered. This is important for ensuring we have an accurate timeline of the patient's history.
+      type: object
+      required:
+      - questions
+      - date_created
+      title: Questionnaire
+    UpdateNDPSubmissionResponse:
+      properties:
+        status:
+          anyOf:
+          - type: string
+            enum:
+            - success
+          - type: string
+            enum:
+            - error
+          title: Status
+          default: success
+        error:
+          $ref: '#/components/schemas/ApiError'
+        data:
+          allOf:
+          - $ref: '#/components/schemas/UpdateNDPSubmissionResponseData'
+          title: Data
+          description: Contains the updated NDP submission data, or None if an error occurred.
+      type: object
+      title: UpdateNDPSubmissionResponse
+      description: Represents the response structure for a PATCH /prior-authorization/:id/ndp-submission request.
+  securitySchemes:
+    FronteggJWTAuthentication:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
