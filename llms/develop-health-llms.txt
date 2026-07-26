@@ -1,0 +1,31 @@
+# Develop Health
+
+## Docs
+
+- [Authentication](https://docs.develophealth.ai/api-reference/authentication.md)
+- [Changelog](https://docs.develophealth.ai/api-reference/changelog.md)
+- [Cancel Benefit Verification](https://docs.develophealth.ai/api-reference/medication-benefit-check/cancel_item.md)
+- [Retrieve Benefit Verification](https://docs.develophealth.ai/api-reference/medication-benefit-check/get_item.md)
+- [Run Benefit Verification](https://docs.develophealth.ai/api-reference/medication-benefit-check/post.md)
+- [Retrieve Prior Authorization](https://docs.develophealth.ai/api-reference/prior-authorization/get_item.md)
+- [Update Prior Authorization NDP Submission](https://docs.develophealth.ai/api-reference/prior-authorization/patch_ndp_submission.md): Update the preferred pharmacy NCPDP ID for a prior authorization's NDP submission. Only allowed while the PA request is active and no transfer attempts have been made.
+- [Send Prior Authorization](https://docs.develophealth.ai/api-reference/prior-authorization/post.md)
+- [Cancel Prior Authorization](https://docs.develophealth.ai/api-reference/prior-authorization/post_cancel.md): Cancel a prior authorization request.
+- [Submit Prior Authorization Feedback](https://docs.develophealth.ai/api-reference/prior-authorization/post_feedback.md): Submit feedback related to a prior authorization request.
+- [Cancel Prior Authorization Prescription Transfer](https://docs.develophealth.ai/api-reference/prior-authorization/post_prescription_transfer_cancel.md): Cancel the prescription transfer for a prior authorization with NDP submission.
+- [Quickstart Guide](https://docs.develophealth.ai/api-reference/quickstart.md)
+- [Webhooks](https://docs.develophealth.ai/api-reference/webhooks.md)
+- [Introduction](https://docs.develophealth.ai/introduction.md): The Develop Health API for benefit verification, prior authorization, and provider authorization.
+
+## OpenAPI Specs
+
+- [openapi_exported_from_backend_repo](https://docs.develophealth.ai/openapi/openapi_exported_from_backend_repo.yaml)
+- [prior-auth-status](https://docs.develophealth.ai/openapi/prior-auth-status.yaml)
+- [find-pbm](https://docs.develophealth.ai/openapi/find-pbm.yaml)
+- [openapi](https://docs.develophealth.ai/openapi.yaml)
+- [package](https://docs.develophealth.ai/package.json)
+- [package-lock](https://docs.develophealth.ai/package-lock.json)
+- [extensions](https://docs.develophealth.ai/.vscode/extensions.json)
+- [check-clinical-eligibility](https://docs.develophealth.ai/openapi/check-clinical-eligibility.yaml)
+- [prior-auth-submit](https://docs.develophealth.ai/openapi/prior-auth-submit.yaml)
+- [check-med-benefits](https://docs.develophealth.ai/openapi/check-med-benefits.yaml)

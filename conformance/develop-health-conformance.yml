@@ -1,0 +1,35 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/develop-health-openapi.yml
+description: >-
+  Cross-cutting standards conformance for the Develop Health Public API,
+  derived from the OpenAPI and the published API reference. Develop Health
+  operates in the US healthcare / medication-access domain (PHI) and publishes
+  a HIPAA policy, but no independently published SOC 2 / HIPAA attestation or
+  trust-center page was found during this pass, so no Compliance pointer is
+  asserted (no fabrication).
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: Auth is Frontegg-issued JWT presented as an http bearer scheme, not an OpenAPI oauth2 flow.
+  - id: openid-connect
+    conforms: false
+    evidence: Frontegg backs identity but no OIDC discovery document is exposed on the API host.
+  - id: jwt-bearer
+    conforms: true
+    evidence: securitySchemes.FronteggJWTAuthentication type=http scheme=bearer bearerFormat=JWT
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use an {error, message} envelope and FastAPI 422 {detail[]}, not application/problem+json.
+  - id: fhir-r4
+    conforms: false
+    evidence: Public API uses bespoke BV/PA/clinical-qualification schemas, not FHIR resources (FHIR is used internally for EHR ingest, e.g. the org's fhir-to-postgres tooling).
+  - id: openapi-3.1
+    conforms: true
+    evidence: openapi/develop-health-openapi.yml declares openapi 3.1.0
+  - id: webhooks-signed
+    conforms: true
+    evidence: Webhook deliveries carry an X-Webhook-Secret JWT signed with the per-webhook secret.
+  - id: hipaa
+    conforms: unverified
+    evidence: Healthcare medication-access platform handling PHI; publishes a HIPAA anti-retaliation policy, but no public attestation/trust page was located this pass.

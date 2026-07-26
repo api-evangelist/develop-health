@@ -1,0 +1,60 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/develop-health-openapi.yml
+format: non-standard
+description: >-
+  Error catalog derived from the Develop Health Public API OpenAPI 4xx/5xx
+  responses. The API does not use RFC 9457 application/problem+json; standard
+  error responses use an Error envelope of the form {error, message}, and
+  request validation failures (422) use the FastAPI HTTPValidationError shape
+  {detail: [{loc, msg, type}]}.
+envelope:
+  standard:
+    schema: Error
+    fields: [error, message]
+  validation:
+    schema: HTTPValidationError
+    fields: [detail]
+    item_schema: ValidationError
+    item_fields: [loc, msg, type]
+problems:
+  - status: 400
+    title: Cannot cancel prior authorization in terminal state
+    detail: Cannot cancel a prior authorization in completed, failed, or cancelled state.
+    source_operation: openapi/develop-health-openapi.yml#cancel_prior_auth_submission_by_id_prior_authorization__id__cancel_post
+  - status: 400
+    title: Prior authorization creation error
+    detail: API error during creation of the prior authorization request.
+    source_operation: openapi/develop-health-openapi.yml#create_prior_auth_route_prior_authorization_post
+  - status: 400
+    title: Cannot update preferred pharmacy for terminal PA request
+    detail: Cannot update preferred pharmacy for terminal PA requests.
+    source_operation: openapi/develop-health-openapi.yml#update_ndp_submission_by_id_prior_authorization__id__ndp_submission_patch
+  - status: 400
+    title: Cannot cancel prescription transfer in completed state
+    detail: Cannot cancel prescription transfer in completed state.
+    source_operation: openapi/develop-health-openapi.yml#cancel_prescription_transfer_by_id_prior_authorization__id__prescription_transfer_cancel_post
+  - status: 400
+    title: Provider authorization already initiated
+    detail: Provider authorization already initiated.
+    source_operation: openapi/develop-health-openapi.yml#authorize_provider_provider_authorize_post
+  - status: 404
+    title: Prior Authorization Request does not exist
+    detail: The referenced prior authorization request id could not be found.
+    source_operation: openapi/develop-health-openapi.yml#get_prior_auth_submission_by_id_prior_authorization__id__get
+  - status: 409
+    title: Prescription already linked to existing prior authorization
+    detail: Conflict - prescription message already linked to existing prior authorization.
+    source_operation: openapi/develop-health-openapi.yml#create_prior_auth_route_prior_authorization_post
+  - status: 422
+    title: Validation Error
+    detail: Request body or parameters failed validation. See detail[] for loc/msg/type of each failure.
+    source_operation: openapi/develop-health-openapi.yml (all write operations)
+  - status: 401
+    title: Unauthorized
+    detail: Access token (Frontegg JWT bearer) is missing or invalid.
+    source: https://docs.develophealth.ai/api-reference/quickstart
+  - status: 500
+    title: Internal Server Error
+    detail: An error occurred on the Develop Health server.
+    source: https://docs.develophealth.ai/api-reference/quickstart

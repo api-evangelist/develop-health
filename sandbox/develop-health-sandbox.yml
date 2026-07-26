@@ -1,0 +1,24 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.develophealth.ai/api-reference/changelog
+description: >-
+  Sandbox / testing surface for the Develop Health Public API. Rather than a
+  separate test host, Develop Health supports deterministic testing on the
+  submission endpoints via a mock_result property that lets callers submit a
+  mock outcome for Benefit Verification and Prior Authorization requests, so
+  integrations can exercise webhook and status flows without a live payer call.
+test_mode:
+  mechanism: mock_result request property
+  applies_to:
+    - openapi/develop-health-openapi.yml#create_benefit_verification_route_benefit_verification_post
+    - openapi/develop-health-openapi.yml#create_prior_auth_route_prior_authorization_post
+  description: >-
+    Set mock_result on the create request to have the platform return a
+    predetermined mock outcome for testing purposes (added 2024-07-05).
+credentials:
+  auth: Frontegg JWT bearer token obtained from the Develop Health platform dashboard
+  note: No public/anonymous sandbox keys are published; a Develop Health account is required.
+test_values: []
+notes: >-
+  No published magic test identifiers, test cards, or hosted test tokens; the
+  documented testing path is the mock_result property. Never invent test values.

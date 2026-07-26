@@ -1,26 +1,117 @@
 aid: develop-health
 name: Develop Health
-description: Develop Health is a company surfaced as a portfolio company of wing-venture-capital and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Develop Health is a San Francisco-based healthcare technology company that
+  automates medication access for prescribers using generative AI. Its platform
+  runs real-time medication benefit verification, clinical qualification, and
+  end-to-end prior authorization (generating and submitting PA packages, then
+  following up and returning structured status) so care teams spend less time on
+  payer paperwork. The Develop Health Public API exposes these capabilities to
+  EHRs and partners over an HTTPS JSON REST interface secured with Frontegg JWT
+  bearer tokens, with asynchronous results delivered by signed webhooks. It
+  integrates with EHRs such as athenahealth and Canvas. Surfaced as a portfolio
+  company of Wing Venture Capital and enriched into the API Evangelist network.
 url: https://raw.githubusercontent.com/api-evangelist/develop-health/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://framerusercontent.com/images/7uigtcymLe3mrSSSwT0H9pgISWc.jpg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - wing-venture-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: enriched
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Healthcare
+- Prior Authorization
+- Benefit Verification
+- Medication Access
+- Insurance
+- Health Tech
+- Artificial Intelligence
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: develop-health:develop-health-public-api-api
+  name: Develop Health public-api API
+  description: The public-api API from Develop Health — 15 operation(s) for public-api.
+  humanURL: https://docs.develophealth.ai/introduction
+  baseURL: https://api.develophealth.io
+  tags:
+  - public-api
+  properties:
+  - type: OpenAPI
+    url: openapi/develop-health-public-api-api-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/develop-health-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/develop-health-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/develop-health-problem-types.yml
+  - type: DataModel
+    url: data-model/develop-health-data-model.yml
 common:
+- type: Documentation
+  url: https://docs.develophealth.ai/introduction
+- type: APIReference
+  url: https://docs.develophealth.ai/api-reference/quickstart
+- type: GettingStarted
+  url: https://docs.develophealth.ai/api-reference/quickstart
+- type: Authentication
+  url: authentication/develop-health-authentication.yml
+- type: Conventions
+  url: conventions/develop-health-conventions.yml
+- type: Conformance
+  url: conformance/develop-health-conformance.yml
+- type: Lifecycle
+  url: lifecycle/develop-health-lifecycle.yml
+- type: StatusPage
+  url: https://status.develophealth.io
+- type: ChangeLog
+  url: changelog/develop-health-changelog.yml
+- type: Sandbox
+  url: sandbox/develop-health-sandbox.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/develop-health-agentic-access.yml
+- type: DomainSecurity
+  url: security/develop-health-domain-security.yml
+- type: LLMsTxt
+  url: llms/develop-health-llms.txt
+- type: Blog
+  url: https://www.develophealth.ai/blog
+- type: GitHubOrganization
+  url: https://github.com/develop-health
+- type: SignUp
+  url: https://platform.develophealth.ai
+- type: TermsOfService
+  url: https://www.develophealth.ai/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.develophealth.ai/privacy-notice
+- type: Support
+  url: mailto:support@develophealth.io
 - type: Website
   url: https://www.develophealth.ai/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

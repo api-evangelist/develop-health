@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/develop-health-openapi.yml
+skills:
+  - file: develop-health-benefit-verification.md
+    name: Run a medication benefit verification
+    api: openapi/develop-health-openapi.yml
+    operations:
+      - create_benefit_verification_route_benefit_verification_post
+      - get_benefit_verification_route_benefit_verification__id__get
+      - cancel_benefit_verification_route_benefit_verification__id__cancel_post
+  - file: develop-health-prior-authorization.md
+    name: Submit and track a prior authorization
+    api: openapi/develop-health-openapi.yml
+    operations:
+      - create_prior_auth_route_prior_authorization_post
+      - get_prior_auth_submission_by_id_prior_authorization__id__get
+      - update_ndp_submission_by_id_prior_authorization__id__ndp_submission_patch
+      - submit_prior_auth_feedback_prior_authorization__id__feedback_post
+      - cancel_prescription_transfer_by_id_prior_authorization__id__prescription_transfer_cancel_post
+      - cancel_prior_auth_submission_by_id_prior_authorization__id__cancel_post
+  - file: develop-health-provider-authorization.md
+    name: Authorize and look up providers
+    api: openapi/develop-health-openapi.yml
+    operations:
+      - authorize_provider_provider_authorize_post
+      - get_authorized_providers_authorized_providers_get
+      - lookup_provider_provider_lookup_post

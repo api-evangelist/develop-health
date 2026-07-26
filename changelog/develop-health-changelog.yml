@@ -1,0 +1,67 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.develophealth.ai/api-reference/changelog
+scheme: date-based
+description: >-
+  Dated changelog for the Develop Health Public API, grouped by product area
+  (Benefit Verification, Prior Authorization, Misc). Recent window captured
+  verbatim from the provider's published changelog.
+entries:
+  - date: '2025-12-15'
+    area: Benefit Verification
+    breaking: false
+    highlights:
+      - Changed quantity example in documentation from 28 to 1 for clarity (quantity is not days supply).
+  - date: '2025-09-25'
+    area: Benefit Verification, Prior Authorization
+    breaking: false
+    highlights:
+      - Added support for new "Coded" variants for BV and PA drug models, allowing drug details in a more NCPDP-compliant format for improved accuracy.
+  - date: '2025-02-17'
+    area: Benefit Verification
+    breaking: false
+    highlights:
+      - Added POST /benefit-verification/{id}/cancel endpoint to cancel a benefit verification request.
+      - Added support for per-BV priority levels.
+      - Added support for linking cancelled BVs to resubmitted BVs.
+  - date: '2024-11-21'
+    area: Misc
+    breaking: false
+    highlights:
+      - Added discrete_content field to insurance objects in GET /benefit-verification/{id} and GET /prior-authorization/{id}.
+      - Added validation to the insurance_content.rx_bin field on POST /benefit-verification and POST /prior-authorization.
+  - date: '2024-10-25'
+    area: Benefit Verification
+    breaking: false
+    highlights:
+      - Added determination_details field to the benefit verification response for each drug.
+  - date: '2024-10-01'
+    area: Prior Authorization
+    breaking: false
+    highlights:
+      - Added a validating_outcome status to the prior authorization response.
+  - date: '2024-09-27'
+    area: Benefit Verification
+    breaking: false
+    highlights:
+      - Added optional use_patient_plan_fund_source_check field to BV creation.
+      - Added patient_plan_fund_source field (commercial/government/question_not_asked/unable_to_determine) to BV status response.
+  - date: '2024-09-08'
+    area: Prior Authorization
+    breaking: false
+    highlights:
+      - Added a priority field to the CreatePriorAuthRequest object.
+  - date: '2024-07-25'
+    area: Benefit Verification, Prior Authorization
+    breaking: false
+    highlights:
+      - Added diagnoses list to the benefit verification request (recommended for accuracy).
+      - Added coverage_detail_code field to BV response drugs object.
+      - Added activity log list to the prior authorization response.
+  - date: '2024-07-05'
+    area: Benefit Verification, Prior Authorization, Misc
+    breaking: false
+    highlights:
+      - Added mock_result property to allow submission of a mock result for testing.
+      - Added insurance_content to BV and PA request bodies for discrete insurance details.
+      - Added not_specified option to the Gender enum.

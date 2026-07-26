@@ -1,0 +1,31 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Develop Health Public API
+  version: 1.0.0
+extends: openapi/develop-health-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-18'
+      x-apievangelist-tags:
+        - Healthcare
+        - Prior Authorization
+        - Benefit Verification
+        - Medication Access
+      x-apievangelist-async: webhooks
+      x-apievangelist-auth: frontegg-jwt-bearer
+  - target: $.servers
+    update:
+      description: >-
+        The published API reference documents the production base URL as
+        https://api.develophealth.io (the OpenAPI export lists api.develophealth.ai);
+        confirm the host with Develop Health for a given tenant.
+  - target: $.info
+    update:
+      x-apievangelist-artifacts:
+        webhooks: asyncapi/develop-health-webhooks.yml
+        errors: errors/develop-health-problem-types.yml
+        conventions: conventions/develop-health-conventions.yml
+        lifecycle: lifecycle/develop-health-lifecycle.yml
+        authentication: authentication/develop-health-authentication.yml
+        changelog: changelog/develop-health-changelog.yml

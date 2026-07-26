@@ -1,0 +1,48 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.develophealth.ai/api-reference/quickstart
+description: >-
+  Cross-cutting request/response conventions for the Develop Health Public API,
+  captured from the API reference and derived from the OpenAPI. Auth is Frontegg
+  JWT bearer; resources are id-addressed (bv_*, pa_req_*) and status is delivered
+  asynchronously via webhooks. No idempotency-key or pagination contract is
+  documented.
+authentication:
+  style: bearer
+  scheme: Frontegg JWT
+  header: 'Authorization: Bearer <JWT>'
+  docs: https://docs.develophealth.ai/api-reference/authentication
+base_url: https://api.develophealth.io
+content_type: application/json
+async_model:
+  pattern: submit-then-webhook
+  description: >-
+    Create endpoints return an id immediately; the request is processed
+    asynchronously and terminal/interim status is delivered via webhooks
+    (benefit_verification.status_change, prior_authorization.status_change, etc.).
+    Callers may also poll the GET /{id} endpoints.
+  polling_endpoints:
+    - openapi/develop-health-openapi.yml#get_benefit_verification_route_benefit_verification__id__get
+    - openapi/develop-health-openapi.yml#get_prior_auth_submission_by_id_prior_authorization__id__get
+identifiers:
+  benefit_verification: bv_*
+  prior_authorization: pa_req_*
+  note: Object type is echoed in the top-level 'object' field of GET responses.
+error_envelope:
+  standard: '{error, message}'
+  validation: '{detail: [{loc, msg, type}]}  # FastAPI 422'
+  reference: errors/develop-health-problem-types.yml
+webhooks:
+  signature_header: X-Webhook-Secret
+  signature_scheme: JWT signed with the per-webhook secret
+  reference: asyncapi/develop-health-webhooks.yml
+idempotency:
+  supported: false
+  notes: No Idempotency-Key header or idempotent-retry contract is documented.
+pagination:
+  supported: false
+  notes: No cursor/offset pagination is documented; list surface (GET /authorized-providers) returns a full collection.
+versioning:
+  reference: lifecycle/develop-health-lifecycle.yml
+rate_limiting:
+  documented: false

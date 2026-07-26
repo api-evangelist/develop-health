@@ -1,0 +1,14 @@
+{
+  "provider": "develop-health",
+  "sources": [
+    "develop-health-public-api-api-openapi.yml"
+  ],
+  "outputs": [
+    "develop-health-public-api-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

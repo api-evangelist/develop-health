@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+description: >-
+  Probe of the /.well-known/ discovery surface for the Develop Health API and
+  web hosts. No documents were served (all 404); recorded for audit. Absence is
+  valid, expected data — no WellKnown/SecurityTxt pointer is wired.
+hosts:
+  - host: https://api.develophealth.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://www.develophealth.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+  - host: https://docs.develophealth.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 404}

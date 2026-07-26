@@ -1,0 +1,85 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/develop-health-openapi.yml
+description: >-
+  Entity-relationship model derived from the Develop Health Public API OpenAPI
+  schemas and webhook payloads. The three core submission objects
+  (BenefitVerification, ClinicalQualification, PriorAuthorization) each embed a
+  patient / provider / insurance / drug graph; Prior Authorization additionally
+  carries an activity log, a platform message thread, and prescription-transfer
+  state. Providers form a separate authorization surface.
+id_prefixes:
+  benefit_verification: bv_
+  prior_authorization: pa_req_
+entities:
+  - name: BenefitVerification
+    object: benefit_verification
+    schema: GetBenefitVerificationResponseData
+    id_prefix: bv_
+    fields: [id, object, status, status_description, error, review_status, drugs, drug_history, diagnoses, patient, provider, entity, insurance]
+  - name: ClinicalQualification
+    object: clinical_qualification
+    schema: GetClinicalQualificationResponseData
+    fields: [id, object, diagnoses, evidence, patient, insurance, drugs, provider, pharmacy, questionnaires, visit_notes, results]
+  - name: PriorAuthorization
+    object: prior_authorization
+    schema: GetPriorAuthResponseData
+    id_prefix: pa_req_
+    fields: [id, object, url, status, diagnoses, evidence, patient, insurance, prescription, provider, pharmacy, questionnaires, message_thread, activity_log]
+  - name: Provider
+    schema: ProviderContactSchema
+    fields: [id, is_primary, fax_number, phone_number, address_street, address_city, address_state_province, address_zip_postal_code, created_at]
+  - name: PlatformMessage
+    schema: PlatformMessage
+    fields: [id, timestamp, content, sent_by_name, direction, is_resolution, attachments]
+  - name: PlatformMessageAttachment
+    schema: PlatformMessageAttachment
+    fields: [id, file_name, url]
+  - name: PriorAuthActivityLogEntry
+    schemas: [PriorAuthActivityLogFollowUpCall, PriorAuthActivityLogReceivedFax, PriorAuthActivityLogSentFax]
+    fields: [id, created_at, type, details]
+relationships:
+  - from: BenefitVerification
+    to: Patient
+    kind: has_one
+    via: patient
+  - from: BenefitVerification
+    to: Provider
+    kind: has_one
+    via: provider
+  - from: BenefitVerification
+    to: Drug
+    kind: has_many
+    via: drugs
+  - from: ClinicalQualification
+    to: Patient
+    kind: has_one
+    via: patient
+  - from: ClinicalQualification
+    to: Drug
+    kind: has_many
+    via: drugs
+  - from: PriorAuthorization
+    to: Patient
+    kind: has_one
+    via: patient
+  - from: PriorAuthorization
+    to: Provider
+    kind: has_one
+    via: provider
+  - from: PriorAuthorization
+    to: Pharmacy
+    kind: has_one
+    via: pharmacy
+  - from: PriorAuthorization
+    to: PlatformMessage
+    kind: has_many
+    via: message_thread
+  - from: PriorAuthorization
+    to: PriorAuthActivityLogEntry
+    kind: has_many
+    via: activity_log
+  - from: PlatformMessage
+    to: PlatformMessageAttachment
+    kind: has_many
+    via: attachments

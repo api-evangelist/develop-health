@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.develophealth.ai/api-reference/changelog
+description: >-
+  Lifecycle profile for the Develop Health Public API. Versioning is a single
+  published v1.0 surface with a dated, product-grouped changelog. A public
+  status page is operated. No formal deprecation/sunset policy (RFC 8594
+  Sunset/Deprecation headers) is documented; changes are additive and
+  announced via the changelog.
+versioning:
+  scheme: single-version
+  current: '1.0'
+  docs: https://docs.develophealth.ai/api-reference/changelog
+change_log: https://docs.develophealth.ai/api-reference/changelog
+status_page: https://status.develophealth.io
+health_endpoint:
+  path: /status
+  operation: openapi/develop-health-openapi.yml#get_status_route_status_get
+deprecation:
+  policy_documented: false
+  sunset_header: false
+  notes: No documented deprecation/sunset policy; changelog history is additive.
+deprecated_operations: []

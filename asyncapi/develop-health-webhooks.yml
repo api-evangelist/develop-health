@@ -1,0 +1,49 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.develophealth.ai/api-reference/webhooks
+spec_type: Webhooks
+description: >-
+  Webhook event catalog for the Develop Health Public API. Develop Health
+  delivers asynchronous status updates for Benefit Verification and Prior
+  Authorization via user-configured HTTP callbacks (set up in the Admin panel).
+  Each POST carries an X-Webhook-Secret header, which is a JWT signed with the
+  webhook's shared secret; the payload wraps the full GET-endpoint object under
+  data with top-level title/description/event_type fields.
+delivery:
+  transport: https
+  method: POST
+  configuration: Admin panel > Webhooks (name, URL, secret key, events)
+  acknowledgement: endpoint must return a 2xx; non-2xx triggers retries
+  signature:
+    header: X-Webhook-Secret
+    scheme: JWT signed with the per-webhook secret key
+payload_envelope:
+  fields: [title, description, event_type, data]
+  data: full object matching the corresponding GET endpoint response
+events:
+  - event_type: benefit_verification.status_change
+    title: Benefit Verification Updated
+    description: A Benefit Verification has completed or failed (single terminal event).
+    data_object: benefit_verification
+    data_reference: openapi/develop-health-openapi.yml#get_benefit_verification_route_benefit_verification__id__get
+  - event_type: prior_authorization.status_change
+    title: Prior Authorization Updated
+    description: A Prior Authorization submission status or outcome has changed.
+    data_object: prior_authorization
+    data_reference: openapi/develop-health-openapi.yml#get_prior_auth_submission_by_id_prior_authorization__id__get
+  - event_type: prior_authorization.activity_log_updated
+    title: Prior Authorization Activity Log Updated
+    description: The activity log of a Prior Authorization was updated. Disabled by default; enable via support.
+    data_object: prior_authorization
+  - event_type: prior_authorization.message
+    title: Prior Authorization Message
+    description: A message was added to a Prior Authorization message thread (data.message_thread carries content).
+    data_object: prior_authorization
+  - event_type: prior_authorization.prescription_transfer_change
+    title: Prior Authorization Prescription Transfer Updated
+    description: The prescription transfer for a Prior Authorization was updated.
+    data_object: prior_authorization
+  - event_type: prior_authorization.real_time_benefits_check_change
+    title: Prior Authorization Real-Time Benefits Check
+    description: A real-time benefits check for a Prior Authorization completed.
+    data_object: prior_authorization

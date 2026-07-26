@@ -1,0 +1,141 @@
+asyncapi: 3.0.0
+info:
+  title: Develop Health Webhooks
+  version: '1.0'
+  description: >-
+    AsyncAPI description of the Develop Health webhook event surface, generated
+    by the API Evangelist enrichment pipeline from the published webhook
+    reference (https://docs.develophealth.ai/api-reference/webhooks). Develop
+    Health POSTs signed event notifications to a subscriber-configured callback
+    URL for Benefit Verification and Prior Authorization lifecycle changes.
+  x-generated: '2026-07-18'
+  x-method: generated
+  x-source: https://docs.develophealth.ai/api-reference/webhooks
+defaultContentType: application/json
+servers:
+  subscriber:
+    host: subscriber-configured
+    protocol: https
+    description: The HTTPS callback URL you register in the Develop Health Admin panel.
+channels:
+  webhookCallback:
+    address: '/'
+    description: Subscriber-hosted endpoint that receives Develop Health event POSTs.
+    messages:
+      benefitVerificationStatusChange:
+        $ref: '#/components/messages/benefitVerificationStatusChange'
+      priorAuthorizationStatusChange:
+        $ref: '#/components/messages/priorAuthorizationStatusChange'
+      priorAuthorizationActivityLogUpdated:
+        $ref: '#/components/messages/priorAuthorizationActivityLogUpdated'
+      priorAuthorizationMessage:
+        $ref: '#/components/messages/priorAuthorizationMessage'
+      priorAuthorizationPrescriptionTransferChange:
+        $ref: '#/components/messages/priorAuthorizationPrescriptionTransferChange'
+      priorAuthorizationRealTimeBenefitsCheckChange:
+        $ref: '#/components/messages/priorAuthorizationRealTimeBenefitsCheckChange'
+operations:
+  receiveWebhook:
+    action: receive
+    channel:
+      $ref: '#/channels/webhookCallback'
+    summary: Receive a Develop Health event notification.
+    messages:
+      - $ref: '#/channels/webhookCallback/messages/benefitVerificationStatusChange'
+      - $ref: '#/channels/webhookCallback/messages/priorAuthorizationStatusChange'
+      - $ref: '#/channels/webhookCallback/messages/priorAuthorizationActivityLogUpdated'
+      - $ref: '#/channels/webhookCallback/messages/priorAuthorizationMessage'
+      - $ref: '#/channels/webhookCallback/messages/priorAuthorizationPrescriptionTransferChange'
+      - $ref: '#/channels/webhookCallback/messages/priorAuthorizationRealTimeBenefitsCheckChange'
+components:
+  messages:
+    benefitVerificationStatusChange:
+      name: benefit_verification.status_change
+      title: Benefit Verification Updated
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/WebhookHeaders'
+      payload:
+        $ref: '#/components/schemas/Envelope'
+    priorAuthorizationStatusChange:
+      name: prior_authorization.status_change
+      title: Prior Authorization Updated
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/WebhookHeaders'
+      payload:
+        $ref: '#/components/schemas/Envelope'
+    priorAuthorizationActivityLogUpdated:
+      name: prior_authorization.activity_log_updated
+      title: Prior Authorization Activity Log Updated
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/WebhookHeaders'
+      payload:
+        $ref: '#/components/schemas/Envelope'
+    priorAuthorizationMessage:
+      name: prior_authorization.message
+      title: Prior Authorization Message
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/WebhookHeaders'
+      payload:
+        $ref: '#/components/schemas/Envelope'
+    priorAuthorizationPrescriptionTransferChange:
+      name: prior_authorization.prescription_transfer_change
+      title: Prior Authorization Prescription Transfer Updated
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/WebhookHeaders'
+      payload:
+        $ref: '#/components/schemas/Envelope'
+    priorAuthorizationRealTimeBenefitsCheckChange:
+      name: prior_authorization.real_time_benefits_check_change
+      title: Prior Authorization Real-Time Benefits Check
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/WebhookHeaders'
+      payload:
+        $ref: '#/components/schemas/Envelope'
+  schemas:
+    WebhookHeaders:
+      type: object
+      properties:
+        X-Webhook-Secret:
+          type: string
+          description: JWT signed with the per-webhook secret, for signature verification.
+    Envelope:
+      type: object
+      required: [title, description, event_type, data]
+      properties:
+        title:
+          type: string
+          example: Benefit Verification Updated
+        description:
+          type: string
+          example: A Benefit Verification has been updated.
+        event_type:
+          type: string
+          enum:
+            - benefit_verification.status_change
+            - prior_authorization.status_change
+            - prior_authorization.activity_log_updated
+            - prior_authorization.message
+            - prior_authorization.prescription_transfer_change
+            - prior_authorization.real_time_benefits_check_change
+        data:
+          type: object
+          description: >-
+            The full object, matching the corresponding GET endpoint response
+            (benefit_verification or prior_authorization).
+          properties:
+            id:
+              type: string
+              example: bv_nBElDPw
+            object:
+              type: string
+              example: benefit_verification
+            status:
+              type: string
+              example: completed
+          additionalProperties: true
