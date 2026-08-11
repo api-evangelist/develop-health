@@ -68,6 +68,10 @@ apis:
   - type: DataModel
     url: data-model/develop-health-data-model.yml
 common:
+- type: MCPServer
+  url: mcp/develop-health-mcp.yml
+- type: Overlay
+  url: overlays/develop-health-openapi-overlay.yaml
 - type: Documentation
   url: https://docs.develophealth.ai/introduction
 - type: APIReference
