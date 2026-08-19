@@ -2,58 +2,63 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: openapi/develop-health-openapi.yml
-description: >-
-  Candidate MCP tool surface DERIVED from the Develop Health Public API OpenAPI
-  operations. No official hosted/remote Develop Health MCP server was found on
-  the docs, npm (@modelcontextprotocol), or public MCP registries during this
-  pass. This is a proposed one-tool-per-operation mapping, not a live server.
+description: Candidate MCP tool surface DERIVED from the Develop Health Public API OpenAPI operations.
+  No official hosted/remote Develop Health MCP server was found on the docs, npm (@modelcontextprotocol),
+  or public MCP registries during this pass. This is a proposed one-tool-per-operation mapping, not a
+  live server.
 server:
   name: develop-health
   transport: http
   url: null
 tools:
-  - name: create_benefit_verification
-    description: Create a medication benefit verification request.
-    source_operation: openapi/develop-health-openapi.yml#create_benefit_verification_route_benefit_verification_post
-  - name: get_benefit_verification
-    description: Retrieve a benefit verification by id.
-    source_operation: openapi/develop-health-openapi.yml#get_benefit_verification_route_benefit_verification__id__get
-  - name: cancel_benefit_verification
-    description: Cancel a benefit verification request.
-    source_operation: openapi/develop-health-openapi.yml#cancel_benefit_verification_route_benefit_verification__id__cancel_post
-  - name: create_clinical_qualification
-    description: Create a clinical qualification submission.
-    source_operation: openapi/develop-health-openapi.yml#create_clinical_qualification_route_clinical_qualification_post
-  - name: get_clinical_qualification
-    description: Retrieve a clinical qualification submission by id.
-    source_operation: openapi/develop-health-openapi.yml#get_clinical_qualification_submission_by_id_clinical_qualification__id__get
-  - name: create_prior_authorization
-    description: Create a prior authorization request.
-    source_operation: openapi/develop-health-openapi.yml#create_prior_auth_route_prior_authorization_post
-  - name: get_prior_authorization
-    description: Retrieve a prior authorization by id.
-    source_operation: openapi/develop-health-openapi.yml#get_prior_auth_submission_by_id_prior_authorization__id__get
-  - name: cancel_prior_authorization
-    description: Cancel a prior authorization request.
-    source_operation: openapi/develop-health-openapi.yml#cancel_prior_auth_submission_by_id_prior_authorization__id__cancel_post
-  - name: submit_prior_authorization_feedback
-    description: Submit feedback for a prior authorization request.
-    source_operation: openapi/develop-health-openapi.yml#submit_prior_auth_feedback_prior_authorization__id__feedback_post
-  - name: update_ndp_submission
-    description: Update the preferred pharmacy NCPDP ID for a PA's NDP submission.
-    source_operation: openapi/develop-health-openapi.yml#update_ndp_submission_by_id_prior_authorization__id__ndp_submission_patch
-  - name: cancel_prescription_transfer
-    description: Cancel the prescription transfer for a prior authorization.
-    source_operation: openapi/develop-health-openapi.yml#cancel_prescription_transfer_by_id_prior_authorization__id__prescription_transfer_cancel_post
-  - name: get_status
-    description: Check API status/health.
-    source_operation: openapi/develop-health-openapi.yml#get_status_route_status_get
-  - name: authorize_provider
-    description: Initiate provider authorization.
-    source_operation: openapi/develop-health-openapi.yml#authorize_provider_provider_authorize_post
-  - name: get_authorized_providers
-    description: List authorized providers.
-    source_operation: openapi/develop-health-openapi.yml#get_authorized_providers_authorized_providers_get
-  - name: lookup_provider
-    description: Look up a provider.
-    source_operation: openapi/develop-health-openapi.yml#lookup_provider_provider_lookup_post
+- name: create_benefit_verification
+  description: Create a medication benefit verification request.
+  source_operation: openapi/develop-health-openapi.yml#create_benefit_verification_route_benefit_verification_post
+- name: get_benefit_verification
+  description: Retrieve a benefit verification by id.
+  source_operation: openapi/develop-health-openapi.yml#get_benefit_verification_route_benefit_verification__id__get
+- name: cancel_benefit_verification
+  description: Cancel a benefit verification request.
+  source_operation: openapi/develop-health-openapi.yml#cancel_benefit_verification_route_benefit_verification__id__cancel_post
+- name: create_clinical_qualification
+  description: Create a clinical qualification submission.
+  source_operation: openapi/develop-health-openapi.yml#create_clinical_qualification_route_clinical_qualification_post
+- name: get_clinical_qualification
+  description: Retrieve a clinical qualification submission by id.
+  source_operation: openapi/develop-health-openapi.yml#get_clinical_qualification_submission_by_id_clinical_qualification__id__get
+- name: create_prior_authorization
+  description: Create a prior authorization request.
+  source_operation: openapi/develop-health-openapi.yml#create_prior_auth_route_prior_authorization_post
+- name: get_prior_authorization
+  description: Retrieve a prior authorization by id.
+  source_operation: openapi/develop-health-openapi.yml#get_prior_auth_submission_by_id_prior_authorization__id__get
+- name: cancel_prior_authorization
+  description: Cancel a prior authorization request.
+  source_operation: openapi/develop-health-openapi.yml#cancel_prior_auth_submission_by_id_prior_authorization__id__cancel_post
+- name: submit_prior_authorization_feedback
+  description: Submit feedback for a prior authorization request.
+  source_operation: openapi/develop-health-openapi.yml#submit_prior_auth_feedback_prior_authorization__id__feedback_post
+- name: update_ndp_submission
+  description: Update the preferred pharmacy NCPDP ID for a PA's NDP submission.
+  source_operation: openapi/develop-health-openapi.yml#update_ndp_submission_by_id_prior_authorization__id__ndp_submission_patch
+- name: cancel_prescription_transfer
+  description: Cancel the prescription transfer for a prior authorization.
+  source_operation: openapi/develop-health-openapi.yml#cancel_prescription_transfer_by_id_prior_authorization__id__prescription_transfer_cancel_post
+- name: get_status
+  description: Check API status/health.
+  source_operation: openapi/develop-health-openapi.yml#get_status_route_status_get
+- name: authorize_provider
+  description: Initiate provider authorization.
+  source_operation: openapi/develop-health-openapi.yml#authorize_provider_provider_authorize_post
+- name: get_authorized_providers
+  description: List authorized providers.
+  source_operation: openapi/develop-health-openapi.yml#get_authorized_providers_authorized_providers_get
+- name: lookup_provider
+  description: Look up a provider.
+  source_operation: openapi/develop-health-openapi.yml#lookup_provider_provider_lookup_post
+deployment:
+  mode: none
+  verified: derived
+  tools: 15
+  checked: '2026-08-12'
+  source: catalog MCP census

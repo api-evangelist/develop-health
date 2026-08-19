@@ -1,0 +1,2892 @@
+{
+  "item": [
+    {
+      "id": "deb9406e-9393-4965-874f-afd5079e2535",
+      "name": "public-api",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28168af1-8377-4ac7-9e08-c85a547d14a9",
+          "name": "Create Benefit Verification Route",
+          "request": {
+            "name": "Create Benefit Verification Route",
+            "description": {},
+            "url": {
+              "path": [
+                "benefit-verification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"drugs\": [\n    {\n      \"ndc\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    }\n  ],\n  \"patient\": {\n    \"internal_id\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"date_of_birth\": \"<date>\",\n    \"address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state_province\": \"<string>\",\n      \"zip_postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"street_line_2\": \"<string>\"\n    },\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"provider\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state_province\": \"<string>\",\n      \"zip_postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"street_line_2\": \"<string>\"\n    },\n    \"npi\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"fax\": \"<string>\",\n    \"in_network_payers\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"priority\": 3,\n  \"replaces\": \"<string>\",\n  \"drug_history\": {},\n  \"diagnoses\": [\n    {\n      \"code\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\"\n    }\n  ],\n  \"insurance\": [\n    {\n      \"file_content\": \"<string>\"\n    },\n    {\n      \"file_content\": \"<string>\"\n    }\n  ],\n  \"insurance_content\": {\n    \"client_name\": \"<string>\",\n    \"group_number\": \"<string>\",\n    \"member_name\": \"<string>\",\n    \"member_number\": \"<string>\",\n    \"payer_name\": \"<string>\",\n    \"plan_name\": \"<string>\",\n    \"rx_bin\": \"<string>\",\n    \"rx_group\": \"<string>\",\n    \"rx_pcn\": \"<string>\"\n  },\n  \"entity\": {\n    \"legal_name\": \"<string>\",\n    \"tax_id\": \"<string>\"\n  },\n  \"mock_result\": {\n    \"status\": \"<string>\",\n    \"case\": \"<string>\"\n  },\n  \"use_patient_plan_fund_source_check\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5ae1cb1c-cff5-4cf3-8741-96e2d78d56a5",
+              "name": "Successful creation of a benefit verification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefit-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drugs\": [\n    {\n      \"ndc\": \"00169-4505-14\",\n      \"quantity\": 1\n    }\n  ],\n  \"patient\": {\n    \"internal_id\": \"s\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"gender\": \"not_specified\",\n    \"date_of_birth\": \"1947-03-31\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"phone\": \"string\",\n    \"email\": \"string\"\n  },\n  \"provider\": {\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"s\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"npi\": \"string\",\n    \"phone\": \"string\",\n    \"fax\": \"string\",\n    \"in_network_payers\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"priority\": 3,\n  \"replaces\": \"string\",\n  \"drug_history\": {},\n  \"diagnoses\": [\n    {\n      \"code\": \"string\"\n    },\n    {\n      \"code\": \"string\"\n    }\n  ],\n  \"insurance\": [\n    {\n      \"file_content\": \"string\"\n    },\n    {\n      \"file_content\": \"string\"\n    }\n  ],\n  \"insurance_content\": {\n    \"client_name\": \"string\",\n    \"group_number\": \"string\",\n    \"member_name\": \"string\",\n    \"member_number\": \"string\",\n    \"payer_name\": \"string\",\n    \"plan_name\": \"string\",\n    \"rx_bin\": \"string\",\n    \"rx_group\": \"string\",\n    \"rx_pcn\": \"string\"\n  },\n  \"entity\": {\n    \"legal_name\": \"string\",\n    \"tax_id\": \"string\"\n  },\n  \"mock_result\": {\n    \"status\": \"failed\",\n    \"case\": \"drugs_covered__prior_auth_not_required__has_copay\"\n  },\n  \"use_patient_plan_fund_source_check\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"bv_sdkfj3f\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0da79aa9-bbe8-4eff-a831-405ae5ee8a5f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefit-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drugs\": [\n    {\n      \"ndc\": \"00169-4505-14\",\n      \"quantity\": 1\n    }\n  ],\n  \"patient\": {\n    \"internal_id\": \"s\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"gender\": \"not_specified\",\n    \"date_of_birth\": \"1947-03-31\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"phone\": \"string\",\n    \"email\": \"string\"\n  },\n  \"provider\": {\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"s\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"npi\": \"string\",\n    \"phone\": \"string\",\n    \"fax\": \"string\",\n    \"in_network_payers\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"priority\": 3,\n  \"replaces\": \"string\",\n  \"drug_history\": {},\n  \"diagnoses\": [\n    {\n      \"code\": \"string\"\n    },\n    {\n      \"code\": \"string\"\n    }\n  ],\n  \"insurance\": [\n    {\n      \"file_content\": \"string\"\n    },\n    {\n      \"file_content\": \"string\"\n    }\n  ],\n  \"insurance_content\": {\n    \"client_name\": \"string\",\n    \"group_number\": \"string\",\n    \"member_name\": \"string\",\n    \"member_number\": \"string\",\n    \"payer_name\": \"string\",\n    \"plan_name\": \"string\",\n    \"rx_bin\": \"string\",\n    \"rx_group\": \"string\",\n    \"rx_pcn\": \"string\"\n  },\n  \"entity\": {\n    \"legal_name\": \"string\",\n    \"tax_id\": \"string\"\n  },\n  \"mock_result\": {\n    \"status\": \"failed\",\n    \"case\": \"drugs_covered__prior_auth_not_required__has_copay\"\n  },\n  \"use_patient_plan_fund_source_check\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "054cb566-bd5f-4928-9246-64eb66bd72af",
+          "name": "Get Benefit Verification Route",
+          "request": {
+            "name": "Get Benefit Verification Route",
+            "description": {},
+            "url": {
+              "path": [
+                "benefit-verification",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "82ea6274-6f40-4b6e-8c4a-152aac566bf8",
+              "name": "Successfully returned a benefit verification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefit-verification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"bv_dj3wiu\",\n    \"object\": \"benefit_verification\",\n    \"status\": \"completed\",\n    \"status_description\": \"The verification was successful\",\n    \"review_status\": \"not_reviewed\",\n    \"drugs\": [\n      {\n        \"name\": \"Wegovy\",\n        \"dosage\": \"0.25 mg\",\n        \"quantity\": 1,\n        \"coverage\": \"covered\",\n        \"coverage_detail_code\": \"insurer_reported_value\",\n        \"prior_authorization_required\": \"yes\",\n        \"copay\": \"$30 for 28 days supply\",\n        \"copay_options\": [\n          {\n            \"amount_cents\": 3000,\n            \"supply_duration_days\": 28\n          }\n        ],\n        \"determination_details\": {\n          \"is_on_formulary\": true\n        }\n      },\n      {\n        \"name\": \"Ozempic\",\n        \"dosage\": \"2.68 mg\",\n        \"quantity\": 1,\n        \"coverage\": \"covered\",\n        \"coverage_detail_code\": \"insurer_reported_value\",\n        \"prior_authorization_required\": \"yes\",\n        \"copay\": \"$30 for 28 days supply\",\n        \"copay_options\": [\n          {\n            \"amount_cents\": 3000,\n            \"supply_duration_days\": 28\n          }\n        ],\n        \"determination_details\": {\n          \"is_on_formulary\": true\n        }\n      },\n      {\n        \"name\": \"Mounjaro\",\n        \"dosage\": \"2.5 mg\",\n        \"quantity\": 1,\n        \"coverage\": \"covered\",\n        \"coverage_detail_code\": \"insurer_reported_value\",\n        \"prior_authorization_required\": \"yes\",\n        \"copay\": \"$30 for 28 days supply\",\n        \"copay_options\": [\n          {\n            \"amount_cents\": 3000,\n            \"supply_duration_days\": 28\n          }\n        ],\n        \"determination_details\": {\n          \"is_on_formulary\": true\n        }\n      }\n    ],\n    \"drug_history\": {\n      \"currently_taking_drugs\": [\n        {\n          \"name\": \"Metformin\"\n        }\n      ],\n      \"previously_taken_drugs\": [\n        {\n          \"name\": \"Jardiance\"\n        },\n        {\n          \"name\": \"Rybelsus\"\n        }\n      ]\n    },\n    \"diagnoses\": [\n      {\n        \"code\": \"E66.9\"\n      },\n      {\n        \"code\": \"I10\"\n      }\n    ],\n    \"patient\": {\n      \"internal_id\": \"39dca4a2-8788-4fd6-9e31-15c56e454322\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Smith\",\n      \"gender\": \"male\",\n      \"date_of_birth\": \"1980-01-01\",\n      \"address\": {\n        \"street\": \"123 Main St, Apt 1\",\n        \"city\": \"Los Angeles\",\n        \"state_province\": \"CA\",\n        \"zip_postal_code\": \"94001\",\n        \"country\": \"USA\"\n      },\n      \"phone\": \"555-555-5555\"\n    },\n    \"provider\": {\n      \"first_name\": \"Jane\",\n      \"last_name\": \"Green\",\n      \"address\": {\n        \"street\": \"9071 E. Mississippi Ave\",\n        \"city\": \"Denver\",\n        \"state_province\": \"CO\",\n        \"zip_postal_code\": \"80247\",\n        \"country\": \"USA\"\n      },\n      \"phone\": \"1231231234\",\n      \"fax\": \"None\",\n      \"npi\": \"0000000000\",\n      \"in_network_payers\": []\n    },\n    \"entity\": {\n      \"legal_name\": \"Test Entity\",\n      \"tax_id\": \"111223333\"\n    },\n    \"insurance\": [\n      {\n        \"scanned_content\": {\n          \"client_name\": \"Company\",\n          \"group_number\": \"12345678\",\n          \"member_name\": \"John Smith\",\n          \"member_number\": \"12345678\",\n          \"payer_name\": \"United\",\n          \"plan_name\": \"Plus Plan\",\n          \"rx_bin\": \"123456\",\n          \"rx_group\": \"ADV\",\n          \"rx_pcn\": \"FAC\"\n        },\n        \"discrete_content\": {},\n        \"url\": \"https://example.com/insurance_doc\"\n      },\n      {\n        \"scanned_content\": {\n          \"error\": \"Unable to extract information from card\"\n        },\n        \"discrete_content\": {},\n        \"url\": \"https://example.com/insurance_doc2\"\n      }\n    ],\n    \"patient_coverage_status\": \"covered\",\n    \"verification_methods\": [\n      {\n        \"id\": \"bva_23j3234\",\n        \"type\": \"ai_call\",\n        \"transcript\": \"Call transcript\",\n        \"recording_url\": \"https://example.com/recording\"\n      }\n    ],\n    \"patient_plan_fund_source\": \"question_not_asked\",\n    \"patient_coverage_type\": \"question_not_asked\",\n    \"priority\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5198cf8-1f51-4ed5-9906-5e1323574957",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefit-verification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4522c2f6-f48e-4085-8f85-71608d7feadb",
+          "name": "Cancel Benefit Verification Route",
+          "request": {
+            "name": "Cancel Benefit Verification Route",
+            "description": {},
+            "url": {
+              "path": [
+                "benefit-verification",
+                ":id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b46e2bc-01d0-4172-b51e-a5389f8930db",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefit-verification",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e350bb0b-ec00-45f9-9488-24f66d7a21b5",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefit-verification",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87994b3a-016a-4e1c-8d8b-95abc30afc5e",
+          "name": "Create Clinical Qualification Route",
+          "request": {
+            "name": "Create Clinical Qualification Route",
+            "description": {},
+            "url": {
+              "path": [
+                "clinical-qualification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"diagnoses\": [\n    {\n      \"code\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\"\n    }\n  ],\n  \"patient\": {\n    \"address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state_province\": \"<string>\",\n      \"zip_postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"street_line_2\": \"<string>\"\n    },\n    \"date_of_birth\": \"<date>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"internal_id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"mrn\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"insurance\": [\n    {\n      \"file_content\": \"<string>\"\n    },\n    {\n      \"file_content\": \"<string>\"\n    }\n  ],\n  \"drugs\": [\n    {\n      \"days_supply\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"directions\": \"<string>\",\n      \"drug_name\": \"<string>\",\n      \"strength\": \"<string>\",\n      \"dose_form\": \"<string>\",\n      \"route_of_administration\": \"<string>\",\n      \"extra\": \"<object>\",\n      \"expected_length_of_therapy\": \"<string>\"\n    },\n    {\n      \"days_supply\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"directions\": \"<string>\",\n      \"drug_name\": \"<string>\",\n      \"strength\": \"<string>\",\n      \"dose_form\": \"<string>\",\n      \"route_of_administration\": \"<string>\",\n      \"extra\": \"<object>\",\n      \"expected_length_of_therapy\": \"<string>\"\n    }\n  ],\n  \"provider\": {\n    \"address\": {\n      \"street\": \"<string>\",\n      \"street_line_2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state_province\": \"<string>\",\n      \"zip_postal_code\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"npi\": \"<string>\",\n    \"fax\": \"<string>\",\n    \"internal_id\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"evidence\": [\n    {\n      \"date_created\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"asset\": {\n        \"file_content\": \"<string>\",\n        \"file_url\": \"<uri>\"\n      },\n      \"content\": \"<object>\"\n    },\n    {\n      \"date_created\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"asset\": {\n        \"file_content\": \"<string>\",\n        \"file_url\": \"<uri>\"\n      },\n      \"content\": \"<object>\"\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"questions\": [\n        {\n          \"answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"<dateTime>\"\n    },\n    {\n      \"questions\": [\n        {\n          \"answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"<dateTime>\"\n    }\n  ],\n  \"visit_notes\": [\n    {\n      \"content\": \"<string>\",\n      \"date_created\": \"<dateTime>\",\n      \"title\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"date_created\": \"<dateTime>\",\n      \"title\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "42695783-7321-4dd5-ad93-fce2ed6dbb0f",
+              "name": "Successful creation of an clinical qualification.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clinical-qualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"diagnoses\": [\n    {\n      \"code\": \"string\"\n    },\n    {\n      \"code\": \"string\"\n    }\n  ],\n  \"patient\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"date_of_birth\": \"2020-10-01\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"gender\": \"female\",\n    \"internal_id\": \"string\",\n    \"email\": \"J2hsoXn0BneC8dY@bYZgugcqPSzp.uau\",\n    \"mrn\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"insurance\": [\n    {\n      \"file_content\": \"string\"\n    },\n    {\n      \"file_content\": \"string\"\n    }\n  ],\n  \"drugs\": [\n    {\n      \"days_supply\": 8283,\n      \"quantity\": 211,\n      \"directions\": \"string\",\n      \"drug_name\": \"string\",\n      \"strength\": \"string\",\n      \"dose_form\": \"graft\",\n      \"route_of_administration\": \"intralingual\",\n      \"extra\": {},\n      \"expected_length_of_therapy\": \"Until No Longer Needed\"\n    },\n    {\n      \"days_supply\": 1817,\n      \"quantity\": 9549,\n      \"directions\": \"string\",\n      \"drug_name\": \"string\",\n      \"strength\": \"string\",\n      \"dose_form\": \"capsule\",\n      \"route_of_administration\": \"ureteral\",\n      \"extra\": {},\n      \"expected_length_of_therapy\": \"Until No Longer Needed\"\n    }\n  ],\n  \"provider\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"street_line_2\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\"\n    },\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"npi\": \"string\",\n    \"fax\": \"string\",\n    \"internal_id\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"evidence\": [\n    {\n      \"date_created\": \"1999-07-09T19:14:49.324Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://NLIWLcREtgGBfLeaXdLnatFnY.whiYzvheSSa4xEVD-ioHwjpTTM-ajShlkY3+-x2pqn\"\n      },\n      \"content\": {}\n    },\n    {\n      \"date_created\": \"1986-09-24T15:32:57.384Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"https://sngvtKEAsBamenmBmSCbhZp.mmg3TEhOZFKZq+ZAVfjgZF5j8sV\"\n      },\n      \"content\": {}\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"2017-10-06T16:58:14.576Z\"\n    },\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"1976-05-10T15:05:12.115Z\"\n    }\n  ],\n  \"visit_notes\": [\n    {\n      \"content\": \"string\",\n      \"date_created\": \"2022-11-02T14:20:49.212Z\",\n      \"title\": \"string\"\n    },\n    {\n      \"content\": \"string\",\n      \"date_created\": \"1950-06-03T12:40:07.609Z\",\n      \"title\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"cq_sdkfj3f\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c97c9cdf-0237-41d6-b837-d8b8df447c80",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clinical-qualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"diagnoses\": [\n    {\n      \"code\": \"string\"\n    },\n    {\n      \"code\": \"string\"\n    }\n  ],\n  \"patient\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"date_of_birth\": \"2020-10-01\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"gender\": \"female\",\n    \"internal_id\": \"string\",\n    \"email\": \"J2hsoXn0BneC8dY@bYZgugcqPSzp.uau\",\n    \"mrn\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"insurance\": [\n    {\n      \"file_content\": \"string\"\n    },\n    {\n      \"file_content\": \"string\"\n    }\n  ],\n  \"drugs\": [\n    {\n      \"days_supply\": 8283,\n      \"quantity\": 211,\n      \"directions\": \"string\",\n      \"drug_name\": \"string\",\n      \"strength\": \"string\",\n      \"dose_form\": \"graft\",\n      \"route_of_administration\": \"intralingual\",\n      \"extra\": {},\n      \"expected_length_of_therapy\": \"Until No Longer Needed\"\n    },\n    {\n      \"days_supply\": 1817,\n      \"quantity\": 9549,\n      \"directions\": \"string\",\n      \"drug_name\": \"string\",\n      \"strength\": \"string\",\n      \"dose_form\": \"capsule\",\n      \"route_of_administration\": \"ureteral\",\n      \"extra\": {},\n      \"expected_length_of_therapy\": \"Until No Longer Needed\"\n    }\n  ],\n  \"provider\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"street_line_2\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\"\n    },\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"npi\": \"string\",\n    \"fax\": \"string\",\n    \"internal_id\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"evidence\": [\n    {\n      \"date_created\": \"1999-07-09T19:14:49.324Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://NLIWLcREtgGBfLeaXdLnatFnY.whiYzvheSSa4xEVD-ioHwjpTTM-ajShlkY3+-x2pqn\"\n      },\n      \"content\": {}\n    },\n    {\n      \"date_created\": \"1986-09-24T15:32:57.384Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"https://sngvtKEAsBamenmBmSCbhZp.mmg3TEhOZFKZq+ZAVfjgZF5j8sV\"\n      },\n      \"content\": {}\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"2017-10-06T16:58:14.576Z\"\n    },\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"1976-05-10T15:05:12.115Z\"\n    }\n  ],\n  \"visit_notes\": [\n    {\n      \"content\": \"string\",\n      \"date_created\": \"2022-11-02T14:20:49.212Z\",\n      \"title\": \"string\"\n    },\n    {\n      \"content\": \"string\",\n      \"date_created\": \"1950-06-03T12:40:07.609Z\",\n      \"title\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76f437d0-03da-4588-85a8-c989c2c11e10",
+          "name": "Get Clinical Qualification Submission By Id",
+          "request": {
+            "name": "Get Clinical Qualification Submission By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "clinical-qualification",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "275f9083-f54b-4eb2-9416-31d4d183e532",
+              "name": "Successfully returned an clinical qualification.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clinical-qualification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"cq_sdkfj3f\",\n    \"object\": \"clinical_qualification\",\n    \"diagnoses\": [\n      {\n        \"code\": \"E66.9\"\n      }\n    ],\n    \"evidence\": [\n      {\n        \"content\": {\n          \"bmi_value\": 32,\n          \"date_measured\": \"2023-11-10\"\n        },\n        \"date_created\": \"2023-11-10T10:15:00\",\n        \"title\": \"BMI Chart\"\n      },\n      {\n        \"content\": {\n          \"medication_name\": \"Metformin\",\n          \"response\": \"No significant weight loss\"\n        },\n        \"date_created\": \"2023-11-10T10:15:00\",\n        \"title\": \"Previous Medication History\"\n      }\n    ],\n    \"patient\": {\n      \"address\": {\n        \"street\": \"123 Health St.\",\n        \"city\": \"Wellness\",\n        \"state_province\": \"CA\",\n        \"zip_postal_code\": \"12345\",\n        \"country\": \"USA\"\n      },\n      \"date_of_birth\": \"1980-01-01\",\n      \"email\": \"johndoe@email.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"gender\": \"male\",\n      \"internal_id\": \"123456\",\n      \"phone\": \"123-456-7890\"\n    },\n    \"insurance\": [\n      {\n        \"scanned_content\": {\n          \"client_name\": \"Company\",\n          \"group_number\": \"12345678\",\n          \"member_name\": \"John Doe\",\n          \"member_number\": \"12345678\",\n          \"payer_name\": \"United\",\n          \"plan_name\": \"Plus Plan\",\n          \"rx_bin\": \"123456\",\n          \"rx_group\": \"ADV\",\n          \"rx_pcn\": \"FAC\"\n        },\n        \"discrete_content\": {},\n        \"url\": \"https://example.com/insurance_doc\"\n      },\n      {\n        \"scanned_content\": {\n          \"error\": \"Unable to extract information from card\"\n        },\n        \"discrete_content\": {},\n        \"url\": \"https://example.com/insurance_doc2\"\n      }\n    ],\n    \"drugs\": [\n      {\n        \"days_supply\": 30,\n        \"quantity\": 2,\n        \"directions\": \"Inject subcutaneously once a week\",\n        \"drug_name\": \"Wegovy\",\n        \"strength\": \"0.25 mg/0.5 mL (0.25 mg dose)\",\n        \"dose_form\": \"injectable\",\n        \"route_of_administration\": \"subcutaneous\"\n      },\n      {\n        \"days_supply\": 28,\n        \"quantity\": 1,\n        \"directions\": \"Inject subcutaneously once a week\",\n        \"drug_name\": \"Ozempic\",\n        \"strength\": \"0.5 mg/dose\",\n        \"dose_form\": \"injectable\",\n        \"route_of_administration\": \"subcutaneous\"\n      },\n      {\n        \"days_supply\": 28,\n        \"quantity\": 4,\n        \"directions\": \"Inject subcutaneously once a week\",\n        \"drug_name\": \"Zepbound\",\n        \"strength\": \"1 mg/dose\",\n        \"dose_form\": \"injectable\",\n        \"route_of_administration\": \"subcutaneous\"\n      }\n    ],\n    \"provider\": {\n      \"address\": {\n        \"street\": \"456 Care Blvd.\",\n        \"city\": \"Healtown\",\n        \"state_province\": \"CA\",\n        \"zip_postal_code\": \"67890\",\n        \"country\": \"USA\"\n      },\n      \"fax\": \"987-654-3211\",\n      \"first_name\": \"Alice\",\n      \"internal_id\": \"provider_12345\",\n      \"last_name\": \"Smith\",\n      \"npi\": \"1234567890\",\n      \"phone\": \"987-654-3210\"\n    },\n    \"questionnaires\": [\n      {\n        \"questions\": [\n          {\n            \"answer\": \"I usually eat a balanced diet and exercise 3 times a week.\",\n            \"question\": \"Please describe your current diet and exercise routine.\"\n          },\n          {\n            \"answer\": \"Yes, I have tried metformin without significant results.\",\n            \"question\": \"Have you previously tried other weight loss medications?\"\n          }\n        ],\n        \"date_created\": \"2023-11-01T08:00:00\"\n      }\n    ],\n    \"visit_notes\": [\n      {\n        \"content\": \"Patient presents with a BMI of 32, indicating obesity. Recommended to start Wegovy for weight management.\",\n        \"date_created\": \"2023-11-10T10:00:00\"\n      }\n    ],\n    \"results\": [\n      {\n        \"drug\": {\n          \"days_supply\": 30,\n          \"quantity\": 2,\n          \"directions\": \"Inject subcutaneously once a week\",\n          \"drug_name\": \"Wegovy\",\n          \"strength\": \"0.25 mg/0.5 mL (0.25 mg dose)\",\n          \"dose_form\": \"injectable\",\n          \"route_of_administration\": \"subcutaneous\"\n        },\n        \"status\": \"qualified\",\n        \"unqualified_reasons\": []\n      },\n      {\n        \"drug\": {\n          \"days_supply\": 28,\n          \"quantity\": 4,\n          \"directions\": \"Inject subcutaneously once a week\",\n          \"drug_name\": \"Zepbound\",\n          \"strength\": \"1 mg/dose\",\n          \"dose_form\": \"injectable\",\n          \"route_of_administration\": \"subcutaneous\"\n        },\n        \"status\": \"qualified\",\n        \"unqualified_reasons\": []\n      },\n      {\n        \"drug\": {\n          \"days_supply\": 28,\n          \"quantity\": 1,\n          \"directions\": \"Inject subcutaneously once a week\",\n          \"drug_name\": \"Ozempic\",\n          \"strength\": \"0.5 mg/dose\",\n          \"dose_form\": \"injectable\",\n          \"route_of_administration\": \"subcutaneous\"\n        },\n        \"status\": \"unqualified\",\n        \"unqualified_reasons\": [\n          {\n            \"description\": \"The patient does not have a diagnosis of type 2 diabetes.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a034d118-276a-4ce1-9541-b85a1d732abd",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clinical-qualification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8e4a945-8588-4df6-bd8e-7739d9564ba5",
+          "name": "Cancel Prior Auth Submission By Id",
+          "request": {
+            "name": "Cancel Prior Auth Submission By Id",
+            "description": {
+              "content": "Cancel a prior authorization request.\n\nThe request must not already be in a terminal state (`completed`, `failed`,\nor `cancelled`). Requires a `cancellation_reason` payload which is stored\nfor analytics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "prior-authorization",
+                ":id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancellation_reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "48ea6eef-6cb5-47f1-8858-5d4bc4b0fd4e",
+              "name": "Successfully cancelled a prior authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancellation_reason\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "587b31c4-56fe-4a35-aa9a-a75cfd6f956b",
+              "name": "Cannot cancel a prior authorization in completed, failed, or cancelled state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancellation_reason\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Cannot cancel a prior authorization request with status: COMPLETED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc8ee9c3-2607-49ec-b080-8ebc1f1c9685",
+              "name": "Prior Authorization Request does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancellation_reason\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Prior Authorization Request does not exist.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f6e8fc8-bef7-4b4a-9f24-cd839ac59df0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancellation_reason\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c592c1e-d4bd-4c13-bc1b-5a1edb896978",
+          "name": "Submit Prior Auth Feedback",
+          "request": {
+            "name": "Submit Prior Auth Feedback",
+            "description": {
+              "content": "Submit feedback related to a prior authorization request.\n\nThe feedback is used to improve the product and is surfaced in analytics dashboards.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "prior-authorization",
+                ":id",
+                "feedback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19e86698-c0df-466a-8f30-ecb9ce48720a",
+              "name": "Successfully submitted feedback",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"string\",\n  \"message\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83fd717d-f64b-4e60-a89b-db9d93426f47",
+              "name": "Prior Authorization Request does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"string\",\n  \"message\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Prior Authorization Request does not exist.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c31369f-e01a-40d5-b91b-95bfbcdb5675",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"string\",\n  \"message\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "968d9202-f9fe-4437-af26-a1cdbd120315",
+          "name": "Update Ndp Submission By Id",
+          "request": {
+            "name": "Update Ndp Submission By Id",
+            "description": {
+              "content": "Update the preferred pharmacy NCPDP ID for a prior authorization's NDP\nsubmission. Only allowed while the PA request is active and no transfer\nattempts have been made.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "prior-authorization",
+                ":id",
+                "ndp-submission"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"preferred_pharmacy_ncpdp_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0d68ed0-f73e-4ce2-9a3b-5fac153fa41a",
+              "name": "Successfully updated preferred pharmacy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "ndp-submission"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferred_pharmacy_ncpdp_id\": \"0233441\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"preferred_pharmacy_ncpdp_id\": \"1234567\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3168b09c-954a-402d-a541-019e1a97600a",
+              "name": "Cannot update preferred pharmacy for terminal PA requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "ndp-submission"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferred_pharmacy_ncpdp_id\": \"0233441\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Cannot update preferred pharmacy for a prior authorization request with status: COMPLETED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4d302bc-4a8a-4f6e-8065-768d0706d084",
+              "name": "Prior Authorization Request does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "ndp-submission"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferred_pharmacy_ncpdp_id\": \"0233441\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Prior Authorization Request does not exist.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0a6221b-85b6-46b9-aca0-2fe1f448b7c8",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "ndp-submission"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferred_pharmacy_ncpdp_id\": \"0233441\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c9235a7-070f-4fa7-bdf3-03e6eb251086",
+          "name": "Cancel Prescription Transfer By Id",
+          "request": {
+            "name": "Cancel Prescription Transfer By Id",
+            "description": {
+              "content": "Cancel the prescription transfer for a prior authorization with NDP submission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "prior-authorization",
+                ":id",
+                "prescription-transfer",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8ac08a38-0397-48bc-9bcd-fe078b740277",
+              "name": "Successfully cancelled prescription transfer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "prescription-transfer",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac4e8a64-1b5e-4a1e-bfac-f79a1f3d1b77",
+              "name": "Cannot cancel prescription transfer in completed state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "prescription-transfer",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Cannot cancel prescription transfer due to completed status\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e7a033b-2a33-45f5-8bac-b3ab4a4171db",
+              "name": "Prior Authorization Request does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "prescription-transfer",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Prior Authorization Request does not exist.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d1514c0-7bbb-4af4-8c83-7ced626e8dd0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id",
+                    "prescription-transfer",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8f7841b-7059-4e80-8861-7ace25e83cc3",
+          "name": "Create Prior Auth Route",
+          "request": {
+            "name": "Create Prior Auth Route",
+            "description": {},
+            "url": {
+              "path": [
+                "prior-authorization"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"diagnoses\": [\n    {\n      \"code\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\"\n    }\n  ],\n  \"patient\": {\n    \"address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state_province\": \"<string>\",\n      \"zip_postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"street_line_2\": \"<string>\"\n    },\n    \"date_of_birth\": \"<date>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"internal_id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"mrn\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"provider\": {\n    \"address\": {\n      \"street\": \"<string>\",\n      \"street_line_2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state_province\": \"<string>\",\n      \"zip_postal_code\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"npi\": \"<string>\",\n    \"fax\": \"<string>\",\n    \"internal_id\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"evidence\": [\n    {\n      \"date_created\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"asset\": {\n        \"file_content\": \"<string>\",\n        \"file_url\": \"<uri>\"\n      },\n      \"content\": \"<object>\"\n    },\n    {\n      \"date_created\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"asset\": {\n        \"file_content\": \"<string>\",\n        \"file_url\": \"<uri>\"\n      },\n      \"content\": \"<object>\"\n    }\n  ],\n  \"insurance\": [\n    {\n      \"file_content\": \"<string>\"\n    },\n    {\n      \"file_content\": \"<string>\"\n    }\n  ],\n  \"insurance_content\": {\n    \"client_name\": \"<string>\",\n    \"group_number\": \"<string>\",\n    \"member_name\": \"<string>\",\n    \"member_number\": \"<string>\",\n    \"payer_name\": \"<string>\",\n    \"plan_name\": \"<string>\",\n    \"rx_bin\": \"<string>\",\n    \"rx_group\": \"<string>\",\n    \"rx_pcn\": \"<string>\"\n  },\n  \"prescription\": {\n    \"ndc\": \"<string>\",\n    \"directions\": \"<string>\",\n    \"quantity\": \"<integer>\",\n    \"days_supply\": \"<integer>\",\n    \"prescription_date\": \"<dateTime>\",\n    \"quantity_unit_of_measure\": \"C38046\",\n    \"expected_length_of_therapy\": \"<string>\",\n    \"extra\": \"<object>\"\n  },\n  \"pharmacy\": {\n    \"name\": \"<string>\",\n    \"address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state_province\": \"<string>\",\n      \"zip_postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"street_line_2\": \"<string>\"\n    }\n  },\n  \"questionnaires\": [\n    {\n      \"questions\": [\n        {\n          \"answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"<dateTime>\"\n    },\n    {\n      \"questions\": [\n        {\n          \"answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"<dateTime>\"\n    }\n  ],\n  \"visit_notes\": [\n    {\n      \"content\": \"<string>\",\n      \"date_created\": \"<dateTime>\",\n      \"title\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"date_created\": \"<dateTime>\",\n      \"title\": \"<string>\"\n    }\n  ],\n  \"ndp_submission\": {\n    \"prescription_message_id\": \"<string>\",\n    \"ignore_eligibility_check_error\": \"<boolean>\",\n    \"submit_pa_with_eligibility_check_government_plan\": false,\n    \"preferred_pharmacy_ncpdp_id\": \"<string>\",\n    \"preferred_pharmacy_details\": \"<string>\"\n  },\n  \"resubmission_info\": {\n    \"previous_prior_auth_request_id\": \"<string>\",\n    \"note\": \"<string>\",\n    \"quantity_limit_exception_reason\": \"<string>\"\n  },\n  \"appeal_details\": {\n    \"appeal_letter\": {\n      \"asset\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"title\": \"<string>\",\n      \"date_created\": \"<dateTime>\"\n    },\n    \"is_urgent\": false\n  },\n  \"mock_result\": {\n    \"result\": \"Approved\",\n    \"detail_code\": \"<string>\",\n    \"prescription_transfer_error_code\": \"<string>\"\n  },\n  \"priority\": 2,\n  \"trigger_benefit_verification\": {\n    \"enabled\": \"<boolean>\",\n    \"additional_medications\": [\n      {\n        \"ndc\": \"<string>\",\n        \"quantity\": \"<integer>\"\n      },\n      {\n        \"ndc\": \"<string>\",\n        \"quantity\": \"<integer>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c508c50-136f-4501-9a77-8b5ee0efe1ad",
+              "name": "Successful creation of a prior authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"diagnoses\": [\n    {\n      \"code\": \"string\"\n    },\n    {\n      \"code\": \"string\"\n    }\n  ],\n  \"patient\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"date_of_birth\": \"2015-05-13\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"gender\": \"not_specified\",\n    \"internal_id\": \"string\",\n    \"email\": \"0rs2rtTXmrZ@ifwBJJHr.cax\",\n    \"mrn\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"provider\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"street_line_2\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\"\n    },\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"npi\": \"string\",\n    \"fax\": \"string\",\n    \"internal_id\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"evidence\": [\n    {\n      \"date_created\": \"1991-12-29T09:12:51.875Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://BfmpjNy.lagkBjmBkcBCDQjeHO8I2xGym-B5gWueJSFQG\"\n      },\n      \"content\": {}\n    },\n    {\n      \"date_created\": \"1968-12-08T17:46:20.449Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://YOpuRKfeCwMZsYzRwQFrhRScdNUuONXn.ttqVX7cYodH3zv6kWPTZu\"\n      },\n      \"content\": {}\n    }\n  ],\n  \"insurance\": [\n    {\n      \"file_content\": \"string\"\n    },\n    {\n      \"file_content\": \"string\"\n    }\n  ],\n  \"insurance_content\": {\n    \"client_name\": \"string\",\n    \"group_number\": \"string\",\n    \"member_name\": \"string\",\n    \"member_number\": \"string\",\n    \"payer_name\": \"string\",\n    \"plan_name\": \"string\",\n    \"rx_bin\": \"string\",\n    \"rx_group\": \"string\",\n    \"rx_pcn\": \"string\"\n  },\n  \"prescription\": {\n    \"ndc\": \"00169-4505-14\",\n    \"directions\": \"Inject 0.25 mg under the skin once weekly\",\n    \"quantity\": 1,\n    \"days_supply\": 28,\n    \"prescription_date\": \"2000-04-28T10:19:07.538Z\",\n    \"quantity_unit_of_measure\": \"C48504\",\n    \"expected_length_of_therapy\": \"Until No Longer Needed\",\n    \"extra\": {\n      \"notes\": \"Patient prefers brand name\",\n      \"prior_auth_reference\": \"ABC123\"\n    }\n  },\n  \"pharmacy\": {\n    \"name\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    }\n  },\n  \"questionnaires\": [\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"string\",\n          \"question\": \"s\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"2015-03-17T09:17:55.348Z\"\n    },\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"strin\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"1964-03-23T02:46:16.617Z\"\n    }\n  ],\n  \"visit_notes\": [\n    {\n      \"content\": \"string\",\n      \"date_created\": \"2001-07-06T17:41:20.100Z\",\n      \"title\": \"string\"\n    },\n    {\n      \"content\": \"string\",\n      \"date_created\": \"1990-10-18T13:13:27.184Z\",\n      \"title\": \"string\"\n    }\n  ],\n  \"ndp_submission\": {\n    \"prescription_message_id\": \"string\",\n    \"ignore_eligibility_check_error\": true,\n    \"submit_pa_with_eligibility_check_government_plan\": false,\n    \"preferred_pharmacy_ncpdp_id\": \"2683464\",\n    \"preferred_pharmacy_details\": \"string\"\n  },\n  \"resubmission_info\": {\n    \"previous_prior_auth_request_id\": \"string\",\n    \"note\": \"string\",\n    \"quantity_limit_exception_reason\": \"string\"\n  },\n  \"appeal_details\": {\n    \"appeal_letter\": {\n      \"asset\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"title\": \"string\",\n      \"date_created\": \"2003-01-20T18:18:23.953Z\"\n    },\n    \"is_urgent\": false\n  },\n  \"mock_result\": {\n    \"result\": \"Approved\",\n    \"detail_code\": \"approval\",\n    \"prescription_transfer_error_code\": \"pharmacy_unable_to_fill_prescription\"\n  },\n  \"priority\": 2,\n  \"trigger_benefit_verification\": {\n    \"enabled\": true,\n    \"additional_medications\": [\n      {\n        \"ndc\": \"string\",\n        \"quantity\": 2746\n      },\n      {\n        \"ndc\": \"string\",\n        \"quantity\": 4408\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"pa_sdkfj3f\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62874861-f78d-43ad-9edd-e3d928fb1d79",
+              "name": "API error during creation of the prior authorization request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"diagnoses\": [\n    {\n      \"code\": \"string\"\n    },\n    {\n      \"code\": \"string\"\n    }\n  ],\n  \"patient\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"date_of_birth\": \"2015-05-13\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"gender\": \"not_specified\",\n    \"internal_id\": \"string\",\n    \"email\": \"0rs2rtTXmrZ@ifwBJJHr.cax\",\n    \"mrn\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"provider\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"street_line_2\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\"\n    },\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"npi\": \"string\",\n    \"fax\": \"string\",\n    \"internal_id\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"evidence\": [\n    {\n      \"date_created\": \"1991-12-29T09:12:51.875Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://BfmpjNy.lagkBjmBkcBCDQjeHO8I2xGym-B5gWueJSFQG\"\n      },\n      \"content\": {}\n    },\n    {\n      \"date_created\": \"1968-12-08T17:46:20.449Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://YOpuRKfeCwMZsYzRwQFrhRScdNUuONXn.ttqVX7cYodH3zv6kWPTZu\"\n      },\n      \"content\": {}\n    }\n  ],\n  \"insurance\": [\n    {\n      \"file_content\": \"string\"\n    },\n    {\n      \"file_content\": \"string\"\n    }\n  ],\n  \"insurance_content\": {\n    \"client_name\": \"string\",\n    \"group_number\": \"string\",\n    \"member_name\": \"string\",\n    \"member_number\": \"string\",\n    \"payer_name\": \"string\",\n    \"plan_name\": \"string\",\n    \"rx_bin\": \"string\",\n    \"rx_group\": \"string\",\n    \"rx_pcn\": \"string\"\n  },\n  \"prescription\": {\n    \"ndc\": \"00169-4505-14\",\n    \"directions\": \"Inject 0.25 mg under the skin once weekly\",\n    \"quantity\": 1,\n    \"days_supply\": 28,\n    \"prescription_date\": \"2000-04-28T10:19:07.538Z\",\n    \"quantity_unit_of_measure\": \"C48504\",\n    \"expected_length_of_therapy\": \"Until No Longer Needed\",\n    \"extra\": {\n      \"notes\": \"Patient prefers brand name\",\n      \"prior_auth_reference\": \"ABC123\"\n    }\n  },\n  \"pharmacy\": {\n    \"name\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    }\n  },\n  \"questionnaires\": [\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"string\",\n          \"question\": \"s\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"2015-03-17T09:17:55.348Z\"\n    },\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"strin\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"1964-03-23T02:46:16.617Z\"\n    }\n  ],\n  \"visit_notes\": [\n    {\n      \"content\": \"string\",\n      \"date_created\": \"2001-07-06T17:41:20.100Z\",\n      \"title\": \"string\"\n    },\n    {\n      \"content\": \"string\",\n      \"date_created\": \"1990-10-18T13:13:27.184Z\",\n      \"title\": \"string\"\n    }\n  ],\n  \"ndp_submission\": {\n    \"prescription_message_id\": \"string\",\n    \"ignore_eligibility_check_error\": true,\n    \"submit_pa_with_eligibility_check_government_plan\": false,\n    \"preferred_pharmacy_ncpdp_id\": \"2683464\",\n    \"preferred_pharmacy_details\": \"string\"\n  },\n  \"resubmission_info\": {\n    \"previous_prior_auth_request_id\": \"string\",\n    \"note\": \"string\",\n    \"quantity_limit_exception_reason\": \"string\"\n  },\n  \"appeal_details\": {\n    \"appeal_letter\": {\n      \"asset\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"title\": \"string\",\n      \"date_created\": \"2003-01-20T18:18:23.953Z\"\n    },\n    \"is_urgent\": false\n  },\n  \"mock_result\": {\n    \"result\": \"Approved\",\n    \"detail_code\": \"approval\",\n    \"prescription_transfer_error_code\": \"pharmacy_unable_to_fill_prescription\"\n  },\n  \"priority\": 2,\n  \"trigger_benefit_verification\": {\n    \"enabled\": true,\n    \"additional_medications\": [\n      {\n        \"ndc\": \"string\",\n        \"quantity\": 2746\n      },\n      {\n        \"ndc\": \"string\",\n        \"quantity\": 4408\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"title\": \"Unsupported Drug\",\n    \"description\": \"The drug you submitted is not yet supported for prior authorization.\",\n    \"code\": \"unsupported_drug\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c309c0c-a436-4045-905e-3e32052ee78e",
+              "name": "Conflict: prescription message already linked to existing prior authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"diagnoses\": [\n    {\n      \"code\": \"string\"\n    },\n    {\n      \"code\": \"string\"\n    }\n  ],\n  \"patient\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"date_of_birth\": \"2015-05-13\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"gender\": \"not_specified\",\n    \"internal_id\": \"string\",\n    \"email\": \"0rs2rtTXmrZ@ifwBJJHr.cax\",\n    \"mrn\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"provider\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"street_line_2\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\"\n    },\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"npi\": \"string\",\n    \"fax\": \"string\",\n    \"internal_id\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"evidence\": [\n    {\n      \"date_created\": \"1991-12-29T09:12:51.875Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://BfmpjNy.lagkBjmBkcBCDQjeHO8I2xGym-B5gWueJSFQG\"\n      },\n      \"content\": {}\n    },\n    {\n      \"date_created\": \"1968-12-08T17:46:20.449Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://YOpuRKfeCwMZsYzRwQFrhRScdNUuONXn.ttqVX7cYodH3zv6kWPTZu\"\n      },\n      \"content\": {}\n    }\n  ],\n  \"insurance\": [\n    {\n      \"file_content\": \"string\"\n    },\n    {\n      \"file_content\": \"string\"\n    }\n  ],\n  \"insurance_content\": {\n    \"client_name\": \"string\",\n    \"group_number\": \"string\",\n    \"member_name\": \"string\",\n    \"member_number\": \"string\",\n    \"payer_name\": \"string\",\n    \"plan_name\": \"string\",\n    \"rx_bin\": \"string\",\n    \"rx_group\": \"string\",\n    \"rx_pcn\": \"string\"\n  },\n  \"prescription\": {\n    \"ndc\": \"00169-4505-14\",\n    \"directions\": \"Inject 0.25 mg under the skin once weekly\",\n    \"quantity\": 1,\n    \"days_supply\": 28,\n    \"prescription_date\": \"2000-04-28T10:19:07.538Z\",\n    \"quantity_unit_of_measure\": \"C48504\",\n    \"expected_length_of_therapy\": \"Until No Longer Needed\",\n    \"extra\": {\n      \"notes\": \"Patient prefers brand name\",\n      \"prior_auth_reference\": \"ABC123\"\n    }\n  },\n  \"pharmacy\": {\n    \"name\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    }\n  },\n  \"questionnaires\": [\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"string\",\n          \"question\": \"s\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"2015-03-17T09:17:55.348Z\"\n    },\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"strin\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"1964-03-23T02:46:16.617Z\"\n    }\n  ],\n  \"visit_notes\": [\n    {\n      \"content\": \"string\",\n      \"date_created\": \"2001-07-06T17:41:20.100Z\",\n      \"title\": \"string\"\n    },\n    {\n      \"content\": \"string\",\n      \"date_created\": \"1990-10-18T13:13:27.184Z\",\n      \"title\": \"string\"\n    }\n  ],\n  \"ndp_submission\": {\n    \"prescription_message_id\": \"string\",\n    \"ignore_eligibility_check_error\": true,\n    \"submit_pa_with_eligibility_check_government_plan\": false,\n    \"preferred_pharmacy_ncpdp_id\": \"2683464\",\n    \"preferred_pharmacy_details\": \"string\"\n  },\n  \"resubmission_info\": {\n    \"previous_prior_auth_request_id\": \"string\",\n    \"note\": \"string\",\n    \"quantity_limit_exception_reason\": \"string\"\n  },\n  \"appeal_details\": {\n    \"appeal_letter\": {\n      \"asset\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"title\": \"string\",\n      \"date_created\": \"2003-01-20T18:18:23.953Z\"\n    },\n    \"is_urgent\": false\n  },\n  \"mock_result\": {\n    \"result\": \"Approved\",\n    \"detail_code\": \"approval\",\n    \"prescription_transfer_error_code\": \"pharmacy_unable_to_fill_prescription\"\n  },\n  \"priority\": 2,\n  \"trigger_benefit_verification\": {\n    \"enabled\": true,\n    \"additional_medications\": [\n      {\n        \"ndc\": \"string\",\n        \"quantity\": 2746\n      },\n      {\n        \"ndc\": \"string\",\n        \"quantity\": 4408\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"title\": \"Prescription Already Linked\",\n    \"description\": \"The prescription_message_id provided is already linked to a prior authorization request that is in progress or has already been completed as approved. The existing PA request must be cancelled before submitting a new request for the same prescription.\",\n    \"code\": \"prescription_message_already_linked\",\n    \"existing_prior_auth_request_id\": \"par_example123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f38a889d-df35-46b7-9d4b-4147c0f02a3f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"diagnoses\": [\n    {\n      \"code\": \"string\"\n    },\n    {\n      \"code\": \"string\"\n    }\n  ],\n  \"patient\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    },\n    \"date_of_birth\": \"2015-05-13\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"gender\": \"not_specified\",\n    \"internal_id\": \"string\",\n    \"email\": \"0rs2rtTXmrZ@ifwBJJHr.cax\",\n    \"mrn\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"provider\": {\n    \"address\": {\n      \"street\": \"string\",\n      \"street_line_2\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\"\n    },\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"npi\": \"string\",\n    \"fax\": \"string\",\n    \"internal_id\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"evidence\": [\n    {\n      \"date_created\": \"1991-12-29T09:12:51.875Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://BfmpjNy.lagkBjmBkcBCDQjeHO8I2xGym-B5gWueJSFQG\"\n      },\n      \"content\": {}\n    },\n    {\n      \"date_created\": \"1968-12-08T17:46:20.449Z\",\n      \"title\": \"string\",\n      \"asset\": {\n        \"file_content\": \"string\",\n        \"file_url\": \"http://YOpuRKfeCwMZsYzRwQFrhRScdNUuONXn.ttqVX7cYodH3zv6kWPTZu\"\n      },\n      \"content\": {}\n    }\n  ],\n  \"insurance\": [\n    {\n      \"file_content\": \"string\"\n    },\n    {\n      \"file_content\": \"string\"\n    }\n  ],\n  \"insurance_content\": {\n    \"client_name\": \"string\",\n    \"group_number\": \"string\",\n    \"member_name\": \"string\",\n    \"member_number\": \"string\",\n    \"payer_name\": \"string\",\n    \"plan_name\": \"string\",\n    \"rx_bin\": \"string\",\n    \"rx_group\": \"string\",\n    \"rx_pcn\": \"string\"\n  },\n  \"prescription\": {\n    \"ndc\": \"00169-4505-14\",\n    \"directions\": \"Inject 0.25 mg under the skin once weekly\",\n    \"quantity\": 1,\n    \"days_supply\": 28,\n    \"prescription_date\": \"2000-04-28T10:19:07.538Z\",\n    \"quantity_unit_of_measure\": \"C48504\",\n    \"expected_length_of_therapy\": \"Until No Longer Needed\",\n    \"extra\": {\n      \"notes\": \"Patient prefers brand name\",\n      \"prior_auth_reference\": \"ABC123\"\n    }\n  },\n  \"pharmacy\": {\n    \"name\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state_province\": \"string\",\n      \"zip_postal_code\": \"string\",\n      \"country\": \"string\",\n      \"street_line_2\": \"string\"\n    }\n  },\n  \"questionnaires\": [\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"string\",\n          \"question\": \"s\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"2015-03-17T09:17:55.348Z\"\n    },\n    {\n      \"questions\": [\n        {\n          \"answer\": \"string\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"answer\": \"strin\",\n          \"question\": \"string\",\n          \"choices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"date_created\": \"1964-03-23T02:46:16.617Z\"\n    }\n  ],\n  \"visit_notes\": [\n    {\n      \"content\": \"string\",\n      \"date_created\": \"2001-07-06T17:41:20.100Z\",\n      \"title\": \"string\"\n    },\n    {\n      \"content\": \"string\",\n      \"date_created\": \"1990-10-18T13:13:27.184Z\",\n      \"title\": \"string\"\n    }\n  ],\n  \"ndp_submission\": {\n    \"prescription_message_id\": \"string\",\n    \"ignore_eligibility_check_error\": true,\n    \"submit_pa_with_eligibility_check_government_plan\": false,\n    \"preferred_pharmacy_ncpdp_id\": \"2683464\",\n    \"preferred_pharmacy_details\": \"string\"\n  },\n  \"resubmission_info\": {\n    \"previous_prior_auth_request_id\": \"string\",\n    \"note\": \"string\",\n    \"quantity_limit_exception_reason\": \"string\"\n  },\n  \"appeal_details\": {\n    \"appeal_letter\": {\n      \"asset\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"title\": \"string\",\n      \"date_created\": \"2003-01-20T18:18:23.953Z\"\n    },\n    \"is_urgent\": false\n  },\n  \"mock_result\": {\n    \"result\": \"Approved\",\n    \"detail_code\": \"approval\",\n    \"prescription_transfer_error_code\": \"pharmacy_unable_to_fill_prescription\"\n  },\n  \"priority\": 2,\n  \"trigger_benefit_verification\": {\n    \"enabled\": true,\n    \"additional_medications\": [\n      {\n        \"ndc\": \"string\",\n        \"quantity\": 2746\n      },\n      {\n        \"ndc\": \"string\",\n        \"quantity\": 4408\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4e1346b-ece5-4d3a-bc3d-521b594a0bff",
+          "name": "Get Prior Auth Submission By Id",
+          "request": {
+            "name": "Get Prior Auth Submission By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "prior-authorization",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "def006c7-acdd-4977-a804-a613d70051e7",
+              "name": "Successfully returned a prior authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"pa_sdkfj3f\",\n    \"object\": \"prior_authorization\",\n    \"url\": \"https://platform.develophealth.ai/prior-authorizations/pa_sdkfj3f\",\n    \"status\": \"completed\",\n    \"diagnoses\": [\n      {\n        \"code\": \"E66.9\"\n      }\n    ],\n    \"evidence\": [\n      {\n        \"content\": {\n          \"bmi_value\": 32,\n          \"date_measured\": \"2023-11-10\"\n        },\n        \"date_created\": \"2023-11-10T10:15:00\",\n        \"title\": \"BMI Chart\"\n      },\n      {\n        \"content\": {\n          \"medication_name\": \"Metformin\",\n          \"response\": \"No significant weight loss\"\n        },\n        \"date_created\": \"2023-11-10T10:15:00\",\n        \"title\": \"Previous Medication History\"\n      }\n    ],\n    \"patient\": {\n      \"address\": {\n        \"street\": \"123 Health St.\",\n        \"city\": \"Wellness\",\n        \"state_province\": \"CA\",\n        \"zip_postal_code\": \"12345\",\n        \"country\": \"USA\"\n      },\n      \"date_of_birth\": \"1980-01-01\",\n      \"email\": \"johndoe@email.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"gender\": \"male\",\n      \"internal_id\": \"123456\",\n      \"phone\": \"123-456-7890\"\n    },\n    \"insurance\": [\n      {\n        \"scanned_content\": {\n          \"client_name\": \"Company\",\n          \"group_number\": \"12345678\",\n          \"member_name\": \"John Doe\",\n          \"member_number\": \"12345678\",\n          \"payer_name\": \"United\",\n          \"plan_name\": \"Plus Plan\",\n          \"rx_bin\": \"123456\",\n          \"rx_group\": \"ADV\",\n          \"rx_pcn\": \"FAC\"\n        },\n        \"discrete_content\": {},\n        \"url\": \"https://example.com/insurance_doc\"\n      },\n      {\n        \"scanned_content\": {\n          \"error\": \"Unable to extract information from card\"\n        },\n        \"discrete_content\": {},\n        \"url\": \"https://example.com/insurance_doc2\"\n      }\n    ],\n    \"prescription\": {\n      \"days_supply\": 30,\n      \"quantity\": 2,\n      \"directions\": \"Inject subcutaneously once a week\",\n      \"drug_name\": \"Wegovy\",\n      \"strength\": \"0.25 mg/0.5 mL (0.25 mg dose)\",\n      \"dose_form\": \"injectable\",\n      \"route_of_administration\": \"subcutaneous\",\n      \"extra\": {\n        \"prescribing_information\": \"Prescribed for weight management in patients with obesity\"\n      },\n      \"prescription_date\": \"2024-02-14T05:46:07.764000\"\n    },\n    \"provider\": {\n      \"address\": {\n        \"street\": \"456 Care Blvd.\",\n        \"city\": \"Healtown\",\n        \"state_province\": \"CA\",\n        \"zip_postal_code\": \"67890\",\n        \"country\": \"USA\"\n      },\n      \"fax\": \"987-654-3211\",\n      \"first_name\": \"Alice\",\n      \"internal_id\": \"provider_12345\",\n      \"last_name\": \"Smith\",\n      \"npi\": \"1234567890\",\n      \"phone\": \"987-654-3210\"\n    },\n    \"pharmacy\": {\n      \"name\": \"Walgreens\",\n      \"address\": {\n        \"street\": \"789 Pharmacy Ave.\",\n        \"city\": \"Medtown\",\n        \"state_province\": \"MD\",\n        \"zip_postal_code\": \"12345\",\n        \"country\": \"USA\"\n      }\n    },\n    \"questionnaires\": [\n      {\n        \"questions\": [\n          {\n            \"answer\": \"I usually eat a balanced diet and exercise 3 times a week.\",\n            \"question\": \"Please describe your current diet and exercise routine.\"\n          },\n          {\n            \"answer\": \"Yes, I have tried metformin without significant results.\",\n            \"question\": \"Have you previously tried other weight loss medications?\"\n          }\n        ],\n        \"date_created\": \"2023-11-01T08:00:00\"\n      }\n    ],\n    \"visit_notes\": [\n      {\n        \"content\": \"Patient presents with a BMI of 32, indicating obesity. Recommended to start Wegovy for weight management.\",\n        \"date_created\": \"2023-11-10T10:00:00\"\n      }\n    ],\n    \"activity_log\": [\n      {\n        \"id\": \"sent_fax__S4382DA\",\n        \"created_at\": \"2024-02-14T02:01:02\",\n        \"type\": \"sent_fax\",\n        \"details\": {\n          \"url\": \"https://example.com/sent_fax\"\n        }\n      },\n      {\n        \"id\": \"rec_fax__SJ34WX\",\n        \"created_at\": \"2024-02-14T05:46:07\",\n        \"type\": \"received_fax\",\n        \"details\": {\n          \"url\": \"https://example.com/received_fax\"\n        }\n      },\n      {\n        \"id\": \"pa_follow_up_call__BF9AJ56\",\n        \"created_at\": \"2024-02-14T05:50:10\",\n        \"type\": \"follow_up_call\",\n        \"details\": {\n          \"notes\": \"Called Example PBM and ...\",\n          \"recording_url\": \"https://example.com/follow_up_call_recording\",\n          \"transcript\": \"Hello, this is Example PBM ...\"\n        }\n      }\n    ],\n    \"submitted_by\": {\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"email\": \"johndoe@email.com\"\n    },\n    \"reviewed_by\": {\n      \"first_name\": \"Jane\",\n      \"last_name\": \"Doe\",\n      \"email\": \"janedoe@email.com\"\n    },\n    \"denial_reason_analysis\": {\n      \"categories\": [\n        \"Preferred Products Not Tried First\"\n      ],\n      \"explanation\": \"The prior authorization request for Zepbound (tirzepatide) was denied because the patient's health plan requires ...\",\n      \"next_steps\": \"Discuss with Provider\",\n      \"next_steps_explanation\": \"The denial was due to the requirement to try a primary covered drug, Wegovy, before Zepbound can be approved. The client should discuss with the provider ...\"\n    },\n    \"is_appeal\": false,\n    \"patient_consent_required\": false,\n    \"outcome\": {\n      \"detail\": \"Step Therapy Criteria Not Met\",\n      \"result\": \"Denied\",\n      \"detail_code\": \"step_therapy_criteria_not_met\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa96c7b8-586d-4bb5-92dc-e45b2179dda7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prior-authorization",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf36e662-28e5-457d-91ad-a8ee6721ad1d",
+          "name": "Get Status Route",
+          "request": {
+            "name": "Get Status Route",
+            "description": {
+              "content": "Handles GET requests at the '/status' endpoint.\n\nThis route function is designed to provide a quick status check of the API.\nWhen called, it returns a JSON response indicating the operational status of the API.\n\nReturns:\n    ApiResponse: An object of ApiResponse schema which includes a 'status' key set to 'success'\n                 and a 'data' key containing a message about the API's operational status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "15d0fb83-433b-4770-bdef-4d9e888ef9cd",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b65811c9-8a42-4cf3-9e18-e035341777b5",
+          "name": "Authorize Provider",
+          "request": {
+            "name": "Authorize Provider",
+            "description": {},
+            "url": {
+              "path": [
+                "provider",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"npi\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"fax_number\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"street_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state_province\": \"<string>\",\n    \"zip_postal_code\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1ddc183-35d9-457b-963d-c7f6d358908e",
+              "name": "Successful initiation of provider authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"npi\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"fax_number\": \"string\",\n  \"phone_number\": \"string\",\n  \"address\": {\n    \"street\": \"string\",\n    \"street_line_2\": \"string\",\n    \"city\": \"string\",\n    \"state_province\": \"string\",\n    \"zip_postal_code\": \"string\",\n    \"country\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08f509ae-589c-4c9b-8bab-0aa8b94139ec",
+              "name": "Provider authorization already initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"npi\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"fax_number\": \"string\",\n  \"phone_number\": \"string\",\n  \"address\": {\n    \"street\": \"string\",\n    \"street_line_2\": \"string\",\n    \"city\": \"string\",\n    \"state_province\": \"string\",\n    \"zip_postal_code\": \"string\",\n    \"country\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"title\": \"Provider Authorization Already Initiated\",\n    \"description\": \"Authorization has already been initiated for a provider with this NPI or email\",\n    \"code\": \"PROVIDER_AUTHORIZATION_ALREADY_INITIATED\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d13f6075-c98f-4e6c-a05a-833bb79b5d50",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"npi\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"fax_number\": \"string\",\n  \"phone_number\": \"string\",\n  \"address\": {\n    \"street\": \"string\",\n    \"street_line_2\": \"string\",\n    \"city\": \"string\",\n    \"state_province\": \"string\",\n    \"zip_postal_code\": \"string\",\n    \"country\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f122608-5c71-4d74-b6bd-e9cd64162fe7",
+          "name": "Get Authorized Providers",
+          "request": {
+            "name": "Get Authorized Providers",
+            "description": {
+              "content": "Retrieve all authorized providers for the organization.\n\nReturns a list of providers that have been authorized or are pending authorization.\nProviders with signed_at=null are pending authorization (they haven't signed the form yet).\nProviders with signed_at populated have completed the authorization process.\n\nReturns:\n    ApiResponse containing a list of AuthorizedProviderResponse objects",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authorized-providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f0ef79aa-b29a-4e9e-9e6b-d285c07a05d0",
+              "name": "Successfully retrieved authorized providers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authorized-providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"npi\": \"1234567890\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"email\": \"john.doe@example.com\",\n      \"signed_at\": \"2024-01-15T10:30:00Z\"\n    },\n    {\n      \"npi\": 987654321,\n      \"first_name\": \"Jane\",\n      \"last_name\": \"Smith\",\n      \"email\": \"jane.smith@example.com\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c29c701-8e0a-4cfd-aeb1-8bc53056a7e1",
+          "name": "Lookup Provider",
+          "request": {
+            "name": "Lookup Provider",
+            "description": {
+              "content": "Look up a provider by NPI or by name+state.\n\nNPI mode: returns ``active``, ``deactivated`` (with name+state search\ncandidates seeded from the deactivated record's name), ``not_found``, or\n``registry_error``. Sandbox organizations may receive an ``active``\nmock identity when the NPI is absent from the registry. Deactivated\nrecords with no name on file return an empty candidate list — the FE\nprompts for manual name+state entry.\n\nName mode: ``last_name`` is required, ``first_name`` and ``state`` are\noptional. Always returns ``search_results`` (the candidate list may be\nempty when no match is found).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"npi\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12ecdf34-7aab-45bb-93ff-5df9c795788f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"npi\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"state\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"error\": {\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"code\": \"string\"\n  },\n  \"data\": {\n    \"status\": \"registry_error\",\n    \"individual\": {\n      \"npi\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"status\": \"string\",\n      \"middle_name\": \"string\",\n      \"name_prefix\": \"string\",\n      \"name_suffix\": \"string\",\n      \"credential\": \"string\",\n      \"practice_address\": {\n        \"street\": \"string\",\n        \"street_line_2\": \"string\",\n        \"city\": \"string\",\n        \"state_province\": \"string\",\n        \"zip_postal_code\": \"string\",\n        \"country\": \"string\"\n      },\n      \"addresses\": [\n        {\n          \"address\": {\n            \"street\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"street_line_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zip_postal_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"phone\": \"string\",\n          \"fax\": \"string\"\n        },\n        {\n          \"address\": {\n            \"street\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"street_line_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zip_postal_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"phone\": \"string\",\n          \"fax\": \"string\"\n        }\n      ]\n    },\n    \"candidates\": [\n      {\n        \"npi\": \"string\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"status\": \"string\",\n        \"middle_name\": \"string\",\n        \"name_prefix\": \"string\",\n        \"name_suffix\": \"string\",\n        \"credential\": \"string\",\n        \"practice_address\": {\n          \"street\": \"string\",\n          \"street_line_2\": \"string\",\n          \"city\": \"string\",\n          \"state_province\": \"string\",\n          \"zip_postal_code\": \"string\",\n          \"country\": \"string\"\n        },\n        \"addresses\": [\n          {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"phone\": \"string\",\n            \"fax\": \"string\"\n          },\n          {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"phone\": \"string\",\n            \"fax\": \"string\"\n          }\n        ]\n      },\n      {\n        \"npi\": \"string\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"status\": \"string\",\n        \"middle_name\": \"string\",\n        \"name_prefix\": \"string\",\n        \"name_suffix\": \"string\",\n        \"credential\": \"string\",\n        \"practice_address\": {\n          \"street\": \"string\",\n          \"street_line_2\": \"string\",\n          \"city\": \"string\",\n          \"state_province\": \"string\",\n          \"zip_postal_code\": \"string\",\n          \"country\": \"string\"\n        },\n        \"addresses\": [\n          {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"phone\": \"string\",\n            \"fax\": \"string\"\n          },\n          {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"phone\": \"string\",\n            \"fax\": \"string\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9b37f59-0adb-43e4-9410-abca8cacfddf",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"npi\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"state\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.develophealth.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "69c6654e-95f6-429f-8f74-c246fdc5c235",
+    "name": "Develop Health Public public-api API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Develop Health Public API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Develop Health Public public-api API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "public-api",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Benefit Verification Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.develophealth.ai/benefit-verification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Benefit Verification Route"
+        },
+        {
+          "info": {
+            "name": "Get Benefit Verification Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.develophealth.ai/benefit-verification/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Benefit Verification Route"
+        },
+        {
+          "info": {
+            "name": "Cancel Benefit Verification Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.develophealth.ai/benefit-verification/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel Benefit Verification Route"
+        },
+        {
+          "info": {
+            "name": "Create Clinical Qualification Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.develophealth.ai/clinical-qualification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Clinical Qualification Route"
+        },
+        {
+          "info": {
+            "name": "Get Clinical Qualification Submission By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.develophealth.ai/clinical-qualification/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Clinical Qualification Submission By Id"
+        },
+        {
+          "info": {
+            "name": "Cancel Prior Auth Submission By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.develophealth.ai/prior-authorization/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel a prior authorization request.\n\nThe request must not already be in a terminal state (`completed`, `failed`,\nor `cancelled`). Requires a `cancellation_reason` payload which is stored\nfor analytics."
+        },
+        {
+          "info": {
+            "name": "Submit Prior Auth Feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.develophealth.ai/prior-authorization/:id/feedback",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit feedback related to a prior authorization request.\n\nThe feedback is used to improve the product and is surfaced in analytics dashboards."
+        },
+        {
+          "info": {
+            "name": "Update Ndp Submission By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.develophealth.ai/prior-authorization/:id/ndp-submission",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update the preferred pharmacy NCPDP ID for a prior authorization's NDP\nsubmission. Only allowed while the PA request is active and no transfer\nattempts have been made."
+        },
+        {
+          "info": {
+            "name": "Cancel Prescription Transfer By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.develophealth.ai/prior-authorization/:id/prescription-transfer/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel the prescription transfer for a prior authorization with NDP submission."
+        },
+        {
+          "info": {
+            "name": "Create Prior Auth Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.develophealth.ai/prior-authorization",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Prior Auth Route"
+        },
+        {
+          "info": {
+            "name": "Get Prior Auth Submission By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.develophealth.ai/prior-authorization/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Prior Auth Submission By Id"
+        },
+        {
+          "info": {
+            "name": "Get Status Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.develophealth.ai/status",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Handles GET requests at the '/status' endpoint.\n\nThis route function is designed to provide a quick status check of the API.\nWhen called, it returns a JSON response indicating the operational status of the API.\n\nReturns:\n    ApiResponse: An object of ApiResponse schema which includes a 'status' key set to 'success'\n                 and a 'data' key containing a message about the API's operational status."
+        },
+        {
+          "info": {
+            "name": "Authorize Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.develophealth.ai/provider/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Authorize Provider"
+        },
+        {
+          "info": {
+            "name": "Get Authorized Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.develophealth.ai/authorized-providers",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve all authorized providers for the organization.\n\nReturns a list of providers that have been authorized or are pending authorization.\nProviders with signed_at=null are pending authorization (they haven't signed the form yet).\nProviders with signed_at populated have completed the authorization process.\n\nReturns:\n    ApiResponse containing a list of AuthorizedProviderResponse objects"
+        },
+        {
+          "info": {
+            "name": "Lookup Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.develophealth.ai/provider/lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Look up a provider by NPI or by name+state.\n\nNPI mode: returns ``active``, ``deactivated`` (with name+state search\ncandidates seeded from the deactivated record's name), ``not_found``, or\n``registry_error``. Sandbox organizations may receive an ``active``\nmock identity when the NPI is absent from the registry. Deactivated\nrecords with no name on file return an empty candidate list — the FE\nprompts for manual name+state entry.\n\nName mode: ``last_name`` is required, ``first_name`` and ``state`` ar"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
