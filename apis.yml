@@ -55,6 +55,8 @@ apis:
   humanURL: https://docs.develophealth.ai/introduction
   baseURL: https://api.develophealth.io
   tags:
+  - Public API
+  tags_raw:
   - public-api
   properties:
   - type: OpenAPI
