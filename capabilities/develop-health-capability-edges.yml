@@ -18,11 +18,11 @@ edges:
   capability_id: BC-2800.30
   capability_id_l1: BC-2800
   capability_name: Eligibility & Benefits Verification
-  confidence: 0.85
-  evidence: POST /benefit-verification 'Create Benefit Verification Route'; POST /prior-authorization
-    'Create Prior Auth Route'; GET /prior-authorization/{id} 'Get Prior Auth Submission By Id'; schemas
-    DrugCoverage, EligibilityCheckResponseSuccessItem
-  reason: Operations perform real-time medication benefit/coverage verification and end-to-end prior authorization
-    submission and status retrieval, which is verification of insurance coverage, benefits and authorisation
-    requirements before service delivery. Some ambiguity because medication-specific prior auth also touches
-    pharmacy capabilities, hence 0.85.
+  confidence: 0.88
+  evidence: POST /benefit-verification create_benefit_verification_route; POST /clinical-qualification;
+    POST /prior-authorization create_prior_auth_route; schemas DrugCoverage, EligibilityCheckResponseSuccessItem,
+    CoverageDetailCode
+  reason: Operations run real-time medication benefit verification, coverage checks and prior-authorisation
+    submission/status — squarely verification of insurance coverage, benefits and authorisation requirements
+    before service delivery. Some overlap with pharmacy operations, but the eligibility/authorisation
+    reading dominates the surface.
