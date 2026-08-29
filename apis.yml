@@ -82,6 +82,9 @@ apis:
   - type: DataModel
     url: data-model/develop-health-data-model.yml
 common:
+- type: CapabilityMap
+  url: capabilities/develop-health-capability-edges.yml
+  name: Develop Health Business Capability Map
 - type: MCPServer
   url: mcp/develop-health-mcp.yml
 - type: Overlay

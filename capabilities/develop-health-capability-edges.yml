@@ -1,0 +1,28 @@
+slug: develop-health
+provider: Develop Health
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: public-api
+  spec_file: develop-health-public-api-api-openapi.yml
+  capability_id: BC-2800.30
+  capability_id_l1: BC-2800
+  capability_name: Eligibility & Benefits Verification
+  confidence: 0.85
+  evidence: POST /benefit-verification 'Create Benefit Verification Route'; POST /prior-authorization
+    'Create Prior Auth Route'; GET /prior-authorization/{id} 'Get Prior Auth Submission By Id'; schemas
+    DrugCoverage, EligibilityCheckResponseSuccessItem
+  reason: Operations perform real-time medication benefit/coverage verification and end-to-end prior authorization
+    submission and status retrieval, which is verification of insurance coverage, benefits and authorisation
+    requirements before service delivery. Some ambiguity because medication-specific prior auth also touches
+    pharmacy capabilities, hence 0.85.
