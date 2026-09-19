@@ -66,7 +66,7 @@ apis:
   humanURL: https://docs.develophealth.ai/introduction
   baseURL: https://api.develophealth.io
   tags:
-  - Public API
+  - Public APIs
   tags_raw:
   - public-api
   properties:
