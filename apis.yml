@@ -45,6 +45,9 @@ x-tier-reason: enriched
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-09-16'
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-25
 tags:
 - Company
 - Healthcare
@@ -61,7 +64,7 @@ maintainers:
   email: info@apis.io
 apis:
 - aid: develop-health:develop-health-public-api-api
-  name: Develop Health public-api
+  name: Develop Health Public API
   description: The public-api API from Develop Health — 15 operation(s) for public-api.
   humanURL: https://docs.develophealth.ai/introduction
   baseURL: https://api.develophealth.io
