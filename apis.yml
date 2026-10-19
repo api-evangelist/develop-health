@@ -63,18 +63,34 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- aid: develop-health:develop-health-public-api-api
-  name: Develop Health Public API
-  description: The public-api API from Develop Health — 15 operation(s) for public-api.
+- aid: develop-health:develop-health-eligibility-check-api
+  name: Develop Health Eligibility Check API
+  description: The Eligibility Check API from Develop Health — 1 operation(s) for eligibility check.
   humanURL: https://docs.develophealth.ai/introduction
   baseURL: https://api.develophealth.io
   tags:
-  - Public APIs
-  tags_raw:
-  - public-api
+  - Eligibility Check
   properties:
   - type: OpenAPI
-    url: openapi/develop-health-public-api-api-openapi.yml
+    url: openapi/develop-health-eligibility-check-api-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/develop-health-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/develop-health-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/develop-health-problem-types.yml
+  - type: DataModel
+    url: data-model/develop-health-data-model.yml
+- aid: develop-health:develop-health-support-program-api
+  name: Develop Health Support Program API
+  description: The Support Program API from Develop Health — 1 operation(s) for support program.
+  humanURL: https://docs.develophealth.ai/introduction
+  baseURL: https://api.develophealth.io
+  tags:
+  - Support Program
+  properties:
+  - type: OpenAPI
+    url: openapi/develop-health-support-program-api-openapi.yml
   - type: AsyncAPI
     url: asyncapi/develop-health-asyncapi.yml
   - type: Webhooks

@@ -1,0 +1,64 @@
+openapi: 3.2.0
+info:
+  title: Develop Health Prior Authorization Support Program API
+  description: API services for managing prior authorization in the healthcare domain.
+  version: 1.0.0
+servers:
+- url: https://api.develophealth.ai
+security:
+- BearerAuth: []
+tags:
+- name: Support Program
+paths:
+  /support-program:
+    get:
+      summary: Retrieve support program based on given NDC
+      operationId: getSupportProgramByNDC
+      parameters:
+      - name: ndc
+        in: query
+        required: true
+        schema:
+          type: string
+        description: National Drug Code to identify the support program
+      responses:
+        '200':
+          description: Support program details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportProgramDetails'
+        '404':
+          description: Support program not found
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+      tags:
+      - Support Program
+components:
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+  schemas:
+    SupportProgramDetails:
+      type: object
+      properties:
+        programId:
+          type: string
+          description: Unique identifier for the support program
+        programName:
+          type: string
+          description: Name of the support program
+        providedBy:
+          type: string
+          enum:
+          - hub_service
+          - drug_manufacturer
+          description: Entity providing the support program
+        description:
+          type: string
+          description: Brief overview of the support program
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
