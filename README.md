@@ -64,6 +64,132 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Develop Health is a company surfaced as a portfolio company of wing-venture-capital and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Develop Health is a San Francisco-based healthcare technology company that automates medication access for prescribers using generative AI. Its platform runs real-time medication benefit verification, clinical qualification, and end-to-end prior authorization (generating and submitting PA packages, then following up and returning structured status) so care teams spend less time on payer paperwork. The Develop Health Public API exposes these capabilities to EHRs and partners over an HTTPS JSON REST interface secured with Frontegg JWT bearer tokens, with asynchronous results delivered by signed webhooks. It integrates with EHRs such as athenahealth and Canvas. Surfaced as a portfolio company of Wing Venture Capital and enriched into the API Evangelist network.
 
-Backed by: wing-venture-capital — https://www.develophealth.ai/
+**Areas:** Company · Healthcare · Prior Authorization · Benefit Verification · Medication Access · Insurance · Health Tech · Artificial Intelligence
+
+## Develop Health on APIs.io
+
+Everything profiled for Develop Health is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/develop-health/](https://apis.io/providers/develop-health/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Develop Health Public API](https://apis.io/apis/develop-health/develop-health-public-api-api/) — The public-api API from Develop Health — 15 operation(s) for public-api.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (2)
+
+Event-driven and webhook contracts.
+
+- [Develop Health Webhooks](https://apis.io/asyncapis/develop-health/develop-health-asyncapi/)
+- [Develop Health Webhooks](https://apis.io/asyncapis/develop-health/develop-health-webhooks/)
+
+#### Event channels (1)
+
+Individual events and webhooks the provider emits.
+
+- [/](https://apis.io/channels/develop-health/webhookcallback/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [develop-health](https://apis.io/servers/develop-health/develop-health/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Develop Health Agentic Access](https://apis.io/agentic-access/develop-health/develop-health-agentic-access/)
+
+#### Collections (1)
+
+Postman and Open Collection request collections.
+
+- [Develop Health Public public-api API](https://apis.io/collections/develop-health/open-develop-health-public-api-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Develop Health Openapi Overlay](https://apis.io/overlays/develop-health/develop-health-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Develop Health Authentication](https://apis.io/security/develop-health/develop-health-authentication/)
+- [Develop Health Domain Security](https://apis.io/security/develop-health/develop-health-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.develophealth.ai/)
+- [Documentation](https://docs.develophealth.ai/introduction)
+- [Getting started](https://docs.develophealth.ai/api-reference/quickstart)
+- [API reference](https://docs.develophealth.ai/api-reference/quickstart)
+- [Sign up](https://platform.develophealth.ai)
+- [Blog](https://www.develophealth.ai/blog)
+- [Terms of service](https://www.develophealth.ai/terms-of-use)
+- [Privacy policy](https://www.develophealth.ai/privacy-notice)
+- [GitHub](https://github.com/develop-health)
+- [Status](https://status.develophealth.io)
+
+## API Evangelist rating
+
+**Kin Score 40.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 51.5 |
+| Contract governance | 4.5 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 56.5 |
+| Access clarity | 21.1 |
+
+**Agent readiness 24.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 18.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/develop-health/](https://apis.io/providers/develop-health/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Develop Health: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/develop-health/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
